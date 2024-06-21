@@ -2,18 +2,21 @@
 	
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <Version>1.0</Version>
+    <Version>1.0.0.0</Version>
     <Title>Fab.Grasshopper</Title>
     <Description>Description of Fab.Grasshopper</Description>
     <TargetExt>.gha</TargetExt>
     <OutputType>Library</OutputType>
+    <Authors>$(NilsOpgenorth)</Authors>
+    <Company>$(ICD)</Company>
+    <UserSecretsId>b168538b-afd9-4ec8-9b2b-5479c1fac45e</UserSecretsId>
   </PropertyGroup>
 	
   <ItemGroup>
     <Compile Remove="GhComponents\NewFolder\**" />
     <EmbeddedResource Remove="GhComponents\NewFolder\**" />
     <None Remove="GhComponents\NewFolder\**" />
-  </ItemGroup>
+  </ItemGroup> 
   
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="7.34.23267.11001" IncludeAssets="compile;build" />

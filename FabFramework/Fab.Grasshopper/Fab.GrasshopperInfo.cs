@@ -17,7 +17,7 @@ namespace Fab.Grasshopper
         public override Guid Id => new Guid("87b0a073-bb71-4b32-ba05-aa3d46393196");
 
         //Return a string identifying you or your company.
-        public override string AuthorName => "";
+        public override string AuthorName => "Nils_Opgenorth";
 
         //Return a string representing your preferred contact details.
         public override string AuthorContact => "";
