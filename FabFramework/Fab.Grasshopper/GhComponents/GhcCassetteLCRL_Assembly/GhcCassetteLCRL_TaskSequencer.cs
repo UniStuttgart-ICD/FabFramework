@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabCollection;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using System.Linq;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -23,7 +14,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_TaskSequencer()
-          : base("LCRLCassette Task Sequencer", 
+          : base("LCRLCassette Task Sequencer",
                 "LCRL TaskSeq",
                 "OLD: Sequence the FabTasks for the LCRLCassette.",
                 "Fab",
@@ -67,7 +58,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             FabCollection fabCollection = FabCollection.GetFabCollection();
             List<FabTask> sortedTasks = new List<FabTask>();
 
-            List<string> sortingOrder_BottomPlate = new List<string> { "Pick", "Place", "Glue" }; 
+            List<string> sortingOrder_BottomPlate = new List<string> { "Pick", "Place", "Glue" };
             List<string> sortingOrder_Beams = new List<string> { "Pick", "PlaceNail" };
             List<string> sortingOrder_TopPlate = new List<string> { "Glue", "Pick", "Place", "Nail" };
             List<string> sortingOrder_Component = new List<string> { "Pick", "Place" };

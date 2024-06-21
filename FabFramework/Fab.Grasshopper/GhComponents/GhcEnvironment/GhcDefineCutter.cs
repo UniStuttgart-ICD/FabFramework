@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabEnvironment;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {
-    public class GhcDefineCutter: GH_Component
+    public class GhcDefineCutter : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the GhcDefineTool class.
@@ -100,10 +97,10 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
             }
 
             Dictionary<string, Fab.Core.FabEnvironment.Action> inputActions = new Dictionary<string, Fab.Core.FabEnvironment.Action>();
-                foreach (Fab.Core.FabEnvironment.Action action in iActions)
-                {
-                    inputActions[action.Name] = action;
-                }
+            foreach (Fab.Core.FabEnvironment.Action action in iActions)
+            {
+                inputActions[action.Name] = action;
+            }
 
             DA.SetData("Cutter", new Cutter(iToolNum, iName, iTcpFrame, iMountingFrame, convertedGeometry, inputActions, iLength, iDiameter, iWidth, iMinImmersion));
         }

@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.DesignElement;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.DesignElement;
-using Fab.Core.FabUtilities;
-using Fab.Grasshopper.Properties;
-using Fab.Core.FabElement;
-using System.Reflection;
+using System;
 
 namespace Fab.Grasshopper.GhComponents.GhcElement
 {
-    public class GhcDefineDesignPlate: GH_Component
+    public class GhcDefineDesignPlate : GH_Component
     {
         // Static variable to store the counter value
         private static int counter = -1;
@@ -26,7 +19,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
               "DesignPlate",
               "DP",
               "Define a DesignPlate",
-              "Fab", 
+              "Fab",
               "Element")
         {
         }
@@ -38,7 +31,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Name", "N", "The name of the element", GH_ParamAccess.item);
-            pManager.AddBrepParameter("Geometry", "G",  "Element Geometry", GH_ParamAccess.item);
+            pManager.AddBrepParameter("Geometry", "G", "Element Geometry", GH_ParamAccess.item);
             pManager.AddPlaneParameter("BaseFrame", "F", "Reference BaseFrame with the wanted orientation of the plate.", GH_ParamAccess.item);
             pManager[2].Optional = true;
             pManager.AddCurveParameter("Outline", "O", "The outline of the plate.", GH_ParamAccess.item);

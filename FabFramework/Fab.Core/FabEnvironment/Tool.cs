@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Rhino.Geometry;
-using Fab.Core.FabCollection;
 
 namespace Fab.Core.FabEnvironment
 {
@@ -79,7 +74,7 @@ namespace Fab.Core.FabEnvironment
 
         private Dictionary<string, Action> actions;
 
-        public Tool() 
+        public Tool()
         {
             this.id = Guid.NewGuid().ToString();
         }

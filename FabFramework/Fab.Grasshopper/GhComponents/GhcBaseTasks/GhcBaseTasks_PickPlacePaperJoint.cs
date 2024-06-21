@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabCollection;
+using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Fab.Core.FabTask;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Rhino.Input.Custom;
-using Rhino.Geometry.Intersect;
-using System.Management.Instrumentation;
-using System.Numerics;
-using Rhino;
-using static Rhino.Render.TextureGraphInfo;
-using Fab.Grasshopper.Properties;
 
 namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
 {
@@ -31,7 +19,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcBaseTasks_PickPlacePaperJoint()
-          : base("Pick & Place for Paper Joint", 
+          : base("Pick & Place for Paper Joint",
                 "PnP_Paper",
                 "Get pick and place task for FabElement. The PnP order will be decided on the Index value of each FabElement.",
                 "Fab",
@@ -237,11 +225,11 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                                             intersectionPlane.Rotate(FabUtilities.DegreeToRadian(iRotation), intersectionPlane.ZAxis, intersectionPlane.Origin);
 
 
-                                             placePlanesPaper.Add(intersectionPlane);
+                                            placePlanesPaper.Add(intersectionPlane);
 
                                         }
 
-  
+
 
                                     }
 
@@ -250,7 +238,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                             }
                         }
                     }
-                 
+
                 }
 
 
@@ -285,7 +273,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                         staticEnvCounter += 1;
                         if (staticEnvCounter >= iStaticEnvPaper.AlignPln.Count)
                         {
-                        staticEnvCounter = 0;
+                            staticEnvCounter = 0;
                         }
 
 
@@ -295,7 +283,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                         FabTaskFrame fabTask_pickPaper = new FabTaskFrame(iPickAction.Name + "_" + p.ToString("D3") + "_" + fabBeam.Name);
                         FabTaskFrame fabTask_placePaper = new FabTaskFrame(iPlaceAction.Name + "_" + p.ToString("D3") + "_" + fabBeam.Name);
 
-                        FabTaskFrame.SetPickPlaceTask(fabTask_pickPaper, fabTask_placePaper, 
+                        FabTaskFrame.SetPickPlaceTask(fabTask_pickPaper, fabTask_placePaper,
                             pickPlanePaper, placePlanePaper,
                             fabBeam, iPickAction, iPlaceAction, iEndeffector, iFabActor, iOffsetPick, iOffsetPlace);
 
@@ -326,7 +314,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                         double paper_thickness = 4;
 
                         //create rectangular brep
-                        Rhino.Geometry.Plane updatedPlacePlanePaper= fabTask_placePaper.Main_Frames[0];
+                        Rhino.Geometry.Plane updatedPlacePlanePaper = fabTask_placePaper.Main_Frames[0];
                         //gete YZ plane from updatedPlacePlanePaper
                         Rhino.Geometry.Plane flipped_placePlanePaper = new Rhino.Geometry.Plane(updatedPlacePlanePaper.Origin, updatedPlacePlanePaper.YAxis, updatedPlacePlanePaper.ZAxis);
 

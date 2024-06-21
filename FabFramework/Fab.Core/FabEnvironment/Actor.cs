@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Rhino.Geometry;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Rhino.Render.ChangeQueue;
 using System.Drawing;
 
 namespace Fab.Core.FabEnvironment
@@ -99,7 +94,7 @@ namespace Fab.Core.FabEnvironment
         public Actor(string name) { this.name = name; }
 
         public Actor(string name, Plane refPlane)
-        { 
+        {
             this.name = name;
             this.refPln = refPlane;
         }

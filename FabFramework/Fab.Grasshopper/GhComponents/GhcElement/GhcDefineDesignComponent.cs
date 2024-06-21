@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.DesignElement;
-using Fab.Core.FabUtilities;
+﻿using Fab.Core.DesignElement;
 using Fab.Core.FabCollection;
 using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcElement
 {
-    public class GhcDefineDesignComponent: GH_Component
+    public class GhcDefineDesignComponent : GH_Component
     {
         // Static variable to store the counter value
         private static int counter = -1;
@@ -25,7 +21,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
               "DesignComponent",
               "DC",
               "Define a DesignComponent",
-              "Fab", 
+              "Fab",
               "Element")
         {
         }
@@ -138,7 +134,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
                 return;
             }
             else
-            { 
+            {
                 //check for baseFrame input
                 if (iBaseFrame != Plane.Unset)
                 {

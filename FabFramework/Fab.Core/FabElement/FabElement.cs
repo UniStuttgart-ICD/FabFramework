@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fab.Core.FabEnvironment;
 using Rhino.Geometry;
-using Fab.Core.FabCollection;
-using Fab.Core.FabTask;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Fab.Core.DesignElement;
-using System.ComponentModel.Design;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Fab.Core.FabElement
 {
@@ -34,7 +24,7 @@ namespace Fab.Core.FabElement
         }
         public string Id
         {
-            get 
+            get
             {
                 if (id == null)
                 {
@@ -56,7 +46,7 @@ namespace Fab.Core.FabElement
             get { return elementName; }
             set { elementName = value; }
         }
-        public string ParentComponentName 
+        public string ParentComponentName
         {
             get { return parentComponentName; }
             set { parentComponentName = value; }
@@ -75,7 +65,7 @@ namespace Fab.Core.FabElement
         {
             get { return refPln_Situ; }
             set
-            { 
+            {
                 refPln_Situ = value;
                 transform_Box = Transform.PlaneToPlane(RefPln_Situ, RefPln_SituBox);
             }
@@ -83,14 +73,14 @@ namespace Fab.Core.FabElement
         public Plane RefPln_SituBox
         {
             get { return refPln_SituBox; }
-            set { refPln_SituBox = value;}
+            set { refPln_SituBox = value; }
         }
         public Plane RefPln_Mag
         {
             get { return refPln_Mag; }
-            set 
-            { 
-                refPln_Mag = value; 
+            set
+            {
+                refPln_Mag = value;
                 Transform_Spawn = Transform.PlaneToPlane(RefPln_Situ, RefPln_Mag);
             }
         }
@@ -165,9 +155,9 @@ namespace Fab.Core.FabElement
 
         private List<string> fabTasksName;
 
-        public FabElement() 
-        { 
-            this.id = Guid.NewGuid().ToString(); 
+        public FabElement()
+        {
+            this.id = Guid.NewGuid().ToString();
             this.fabTasksName = new List<string>();
         }
 

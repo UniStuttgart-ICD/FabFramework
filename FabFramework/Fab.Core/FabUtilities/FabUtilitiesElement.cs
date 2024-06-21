@@ -1,22 +1,10 @@
-﻿using Rhino.Geometry;
+﻿using Fab.Core.FabElement;
+using Rhino.Geometry;
+using Rhino.Geometry.Collections;
+using Rhino.Geometry.Intersect;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grasshopper;
-using Grasshopper.Kernel;
-using Grasshopper.Kernel.Data;
-using Rhino.Geometry.Collections;
-using Fab.Core.FabElement;
-using Fab.Core.FabEnvironment;
-using Grasshopper.GUI;
-using Rhino.Geometry.Intersect;
-using Fab.Core.FabCollection;
-using Fab.Core.DesignElement;
-using System.Xml.Linq;
-using System.Runtime.Remoting.Messaging;
 
 namespace Fab.Core.FabUtilities
 {
@@ -223,7 +211,8 @@ namespace Fab.Core.FabUtilities
             return newRefPln;
         }
 
-        public static List<FabElement.FabElement> GetMatchingFabElement(FabComponent fabComponent, List<String> fabElementName) {
+        public static List<FabElement.FabElement> GetMatchingFabElement(FabComponent fabComponent, List<String> fabElementName)
+        {
 
             FabCollection.FabCollection fabCollection = FabCollection.FabCollection.GetFabCollection();
 

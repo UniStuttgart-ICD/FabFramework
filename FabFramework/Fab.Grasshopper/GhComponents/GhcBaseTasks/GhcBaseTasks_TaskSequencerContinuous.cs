@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabCollection;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
@@ -37,7 +29,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddGenericParameter("FabComponent", "FC", "FabComponent Data.", GH_ParamAccess.item);
-    
+
             pManager.AddGenericParameter("Action", "A", "Action for the task sequencing.", GH_ParamAccess.list);
         }
 

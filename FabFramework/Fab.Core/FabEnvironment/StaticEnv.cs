@@ -1,9 +1,5 @@
 ﻿using Rhino.Geometry;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace Fab.Core.FabEnvironment
@@ -34,7 +30,7 @@ namespace Fab.Core.FabEnvironment
         }
 
         public List<Plane> SafePosition
-        {   
+        {
             get { return safePosition; }
             set { safePosition = value; }
         }
@@ -81,7 +77,7 @@ namespace Fab.Core.FabEnvironment
 
         public StaticEnv() { }
 
-        public StaticEnv(int index,  string name, List<Plane> refPlane, List<Plane> alignPln, double width, double length, double height, List<GeometryBase> geometry)
+        public StaticEnv(int index, string name, List<Plane> refPlane, List<Plane> alignPln, double width, double length, double height, List<GeometryBase> geometry)
         {
 
             this.index = index;

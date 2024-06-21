@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.DesignElement;
+﻿using Fab.Core.DesignElement;
 using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
+using System.Collections.Generic;
 
 namespace Fab.Core.FabElement
 {
@@ -30,7 +23,7 @@ namespace Fab.Core.FabElement
 
         public FabPlate(string name, FabComponent parentComponent, DesignElement.DesignPlate designElement, StaticEnv envMag)
             : base(name, parentComponent, designElement, envMag)
-        { 
+        {
             this.DesignPlateName = designElement.Name;
             parentComponent.AddFabPlate(this);
 

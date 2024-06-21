@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabCollection;
+using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Fab.Core.FabTask;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using System.Linq;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
-using static System.Collections.Specialized.BitVector32;
+using System;
+using System.Collections.Generic;
 
 
 namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
@@ -161,7 +153,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                 }
 
 
-                
+
 
             }
 

@@ -1,16 +1,8 @@
-﻿using Rhino.Geometry;
+﻿using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grasshopper;
-using Grasshopper.Kernel;
-using Rhino.Geometry.Collections;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabElement;
-using Grasshopper.Kernel.Types.Transforms;
 
 namespace Fab.Core.FabUtilities
 {
@@ -57,7 +49,7 @@ namespace Fab.Core.FabUtilities
 
                 nailPositionPointList.Add(nailPositionPoint);
                 topPlateNailStates.Add(topPlateNailState);
-                
+
             }
 
             Plane nail_TempPlane = new Plane();
@@ -97,9 +89,9 @@ namespace Fab.Core.FabUtilities
             default_pickPln.Origin = cPT_uncheck_PickPln;
 
             if (envMagPln_V_dis > envMagPln_safetyDis_Y && envMagPln_U_dis > envMagPln_safetyDis_X)
-                {
-                    pickPln = uncheck_pickPln;
-                }
+            {
+                pickPln = uncheck_pickPln;
+            }
             else if (envMagPln_V_dis > envMagPln_safetyDis_Y)
             {
                 //incorrect

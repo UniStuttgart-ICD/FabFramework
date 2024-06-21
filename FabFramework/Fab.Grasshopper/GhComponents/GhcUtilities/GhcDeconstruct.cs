@@ -1,20 +1,13 @@
-﻿using Grasshopper;
+﻿using Fab.Grasshopper.Properties;
+using Grasshopper;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Parameters;
-using Grasshopper.Kernel.Types;
 using System;
-using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Fab.Grasshopper.Properties;
-using Rhino.Display;
-using static Rhino.Render.TextureGraphInfo;
 
 //This code contains parts from the repository for building Speckle Clients for Rhino and Grasshopper.
 //https://github.com/speckleworks/SpeckleRhino/tree/master

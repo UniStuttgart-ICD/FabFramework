@@ -1,31 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabTask;
 using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using System.IO;
-using System.ComponentModel;
-using Fab.Core.FabCollection;
-using Fab.Core.DesignElement;
+using Fab.Core.FabTask;
+using Fab.Core.FabUtilities;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
-    public class GhcCassetteLCRL_GluePlanes: GH_Component
+    public class GhcCassetteLCRL_GluePlanes : GH_Component
     {
 
         /// <summary>
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_GluePlanes()
-          : base("LCRLCassette Glue Plates", 
+          : base("LCRLCassette Glue Plates",
                 "LCRL Glue",
                 "Get glue task for the bot and top plate for the LCRL Cassette.",
                 "Fab",
@@ -89,13 +81,13 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             FabTaskFrame glueTopPlateTask = new FabTaskFrame(iGlueAction.Name + "_" + fabCassette.GetFabPlates()[1].Name);
 
             (
-            List<Plane> glueBotStartPlanes, 
-            List<Plane>  glueBotEndPlanes, 
-            List<double> glueBotStartTTAngles, 
-            List<double>  glueBotEndTTAngles, 
-            List<int>  glueBotStates
-            )  = FabUtilitiesBeam.GetListofBeamsGlueLines(fabCassette.GetFabBeams(), iEndeffector, false, reverseOrder);
-            
+            List<Plane> glueBotStartPlanes,
+            List<Plane> glueBotEndPlanes,
+            List<double> glueBotStartTTAngles,
+            List<double> glueBotEndTTAngles,
+            List<int> glueBotStates
+            ) = FabUtilitiesBeam.GetListofBeamsGlueLines(fabCassette.GetFabBeams(), iEndeffector, false, reverseOrder);
+
 
 
             (
@@ -108,8 +100,8 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 
             FabTaskFrame.SetGlueTask(glueBotPlateTask, fabCassette.GetFabPlates()[0], glueBotStartPlanes, glueBotEndPlanes, glueBotStartTTAngles, glueBotEndTTAngles, glueBotStates, iGlueAction, iEndeffector, iFabActor, offsetList);
             FabTaskFrame.SetGlueTask(glueTopPlateTask, fabCassette.GetFabPlates()[1], glueTopStartPlanes, glueTopEndPlanes, glueTopStartTTAngles, glueTopEndTTAngles, glueTopStates, iGlueAction, iEndeffector, iFabActor, offsetList);
-            
-            
+
+
             //Add Geometry, very custom for LCRL cassette
             AddGlueBotPlateGeo(glueBotPlateTask);
             AddGlueTopPlateGeo(glueTopPlateTask, fabCassette);
@@ -141,14 +133,14 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 if (i < glueStartPlanes.Count)
                 {
                     List<GeometryBase> glueStartGeos = new List<GeometryBase>();
-                    GeometryBase glueStartPlate= FabUtilities.OrientGeometryBase(fabPlate.Geometry, fabPlate.RefPln_Situ, fabPlate.RefPln_FabOut);
+                    GeometryBase glueStartPlate = FabUtilities.OrientGeometryBase(fabPlate.Geometry, fabPlate.RefPln_Situ, fabPlate.RefPln_FabOut);
                     double turnStartPlateAngle = FabUtilities.DegreeToRadian(glueStartAngles[i] - fabPlate.Angle_FabOut);
                     Transform rotationStartTransform = Transform.Rotation(turnStartPlateAngle, fabPlate.EnvFab.RefPln[0].ZAxis, fabPlate.EnvFab.RefPln[0].Origin);
                     glueStartPlate.Transform(rotationStartTransform);
                     glueStartGeos.Add(glueStartPlate);
 
                     for (int j = 0; j < fabCassette.FabBeamsName.Count; j++)
-                    { 
+                    {
                         fabCollection.fabBeamCollection.TryGetValue(fabCassette.FabBeamsName[j], out FabBeam fabBeam);
 
                         if (fabBeam.Angle_FabOut == glueStartAngles[i])

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Grasshopper.Properties;
+using System;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {
@@ -16,10 +11,10 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// </summary>
         public GhcDefineAction()
           : base(
-              "Define Action", 
+              "Define Action",
               "Action",
               "Define an Action",
-              "Fab", 
+              "Fab",
               "Environment")
         {
         }
@@ -50,7 +45,7 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            int iActionID = -1 ;
+            int iActionID = -1;
             DA.GetData<int>("ActionID", ref iActionID);
 
             String iName = String.Empty;

@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Rhino.Geometry;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Fab.Core;
 
 namespace Fab.Core.FabEnvironment
 {
@@ -13,7 +8,7 @@ namespace Fab.Core.FabEnvironment
         public double Length
         {
             get { return length; }
-            set { length = value; } 
+            set { length = value; }
         }
 
         public double Diameter
@@ -42,10 +37,10 @@ namespace Fab.Core.FabEnvironment
         public Cutter() : base() { }
         public Cutter(int toolNum, string name) : base(toolNum, name) { }
         public Cutter(
-            int toolNum, string name, Plane tcpPln, Plane mountPln, List<GeometryBase> geometry, Dictionary<string, Action> actions, 
+            int toolNum, string name, Plane tcpPln, Plane mountPln, List<GeometryBase> geometry, Dictionary<string, Action> actions,
             double length, double diameter, double width, double minImmersion)
             : base(toolNum, name, tcpPln, mountPln, geometry, actions)
-        { 
+        {
             this.length = length;
             this.diameter = diameter;
             this.width = width;

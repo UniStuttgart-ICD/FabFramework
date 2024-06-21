@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
+﻿using Rhino.Geometry;
 
 namespace Fab.Core.DesignElement
 {
@@ -18,8 +12,8 @@ namespace Fab.Core.DesignElement
         }
 
         private Polyline outline;
-        
-        public DesignPlate() : base()  { }
+
+        public DesignPlate() : base() { }
         public DesignPlate(string name) : base(name) { }
 
     }

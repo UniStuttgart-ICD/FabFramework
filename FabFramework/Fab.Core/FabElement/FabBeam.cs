@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.DesignElement;
+﻿using Fab.Core.DesignElement;
 using Fab.Core.FabEnvironment;
 using Fab.Core.FabUtilities;
+using Rhino.Geometry;
+using System.Collections.Generic;
 
 namespace Fab.Core.FabElement
 {
@@ -50,7 +45,7 @@ namespace Fab.Core.FabElement
             //RefPln_SituBox only semi-correct calculation of frame
 
             //get start frame from beam at lower side of beam
-            Plane beamstartFrame =  fabCollection.designBeamCollection[designBeamName].FrameLower.Clone();
+            Plane beamstartFrame = fabCollection.designBeamCollection[designBeamName].FrameLower.Clone();
             Point3d beamStartOrigin = beamstartFrame.ClosestPoint(fabCollection.designBeamCollection[designBeamName].StartPoint);
             beamstartFrame.Origin = beamStartOrigin;
             //orient refPln_SituBox by 180 to align x and y axis better

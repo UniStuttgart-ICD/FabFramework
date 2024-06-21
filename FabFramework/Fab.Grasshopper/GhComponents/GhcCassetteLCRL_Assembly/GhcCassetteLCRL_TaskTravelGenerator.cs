@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabCollection;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
+﻿using Fab.Core.FabElement;
 using Fab.Core.FabEnvironment;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using System.Linq;
-using System.Xml.Linq;
-using Rhino.Runtime;
-using System.Runtime.Remoting.Messaging;
-using Rhino;
-using Newtonsoft.Json.Linq;
-using System.Text.RegularExpressions;
-using GH_IO.Serialization;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -30,7 +15,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_TaskTravelGenerator()
-          : base("LCRLCassette Task TravelGenerator", 
+          : base("LCRLCassette Task TravelGenerator",
                 "LCRL TaskTravel",
                 "Generate all travel specific tasks for the fabrication.",
                 "Fab",
@@ -89,13 +74,13 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             Plane frames_PT_VGrip = new Plane(new Point3d(2200, -300, 1700), new Vector3d(0, -1, 0), new Vector3d(1, 0, 0));
 
             var extValues_BT_NGrip = FabTaskFrame.CreateTravelAxis_ExtValues(-102.241, -67.932, 88.877, 19.935, 26.085, -116.765, 3917.0);
-            Plane frames_BT_NGrip = new Plane(new Point3d( -6875, -500, 1900), new Vector3d(0, 1, 0), new Vector3d(-1, 0, 0));
+            Plane frames_BT_NGrip = new Plane(new Point3d(-6875, -500, 1900), new Vector3d(0, 1, 0), new Vector3d(-1, 0, 0));
 
             var extValues_TT_VGrip = FabTaskFrame.CreateTravelAxis_ExtValues(-179.961, -31.331, 21.752, 0.0, 99.579, -89.961, 1877.0);
             Plane frames_TT_VGrip = new Plane(new Point3d(-1876.790037, -3115.958475, 1923), new Vector3d(-1, 0, 0), new Vector3d(0, -1, 0));
 
             var extValues_TT_NGrip = FabTaskFrame.CreateTravelAxis_ExtValues(141.461, -71.18, 88.211, -2.202, 27.995, -87.022, 4750.0);
-            Plane frames_TT_NGrip = new Plane(new Point3d( -2876.790037, -2315.958475, 2023), new Vector3d(-1, 0, 0), new Vector3d(0, -1, 0));
+            Plane frames_TT_NGrip = new Plane(new Point3d(-2876.790037, -2315.958475, 2023), new Vector3d(-1, 0, 0), new Vector3d(0, -1, 0));
 
             var extValues_TT_GGun = FabTaskFrame.CreateTravelAxis_ExtValues(147.045, -69.976, 77.909, -28.754, 13.861, -59.534, 4750.0);
             Plane frames_TT_GGun = new Plane(new Point3d(-2876.790037, -2315.958475, 1823), new Vector3d(-1, 0, 0), new Vector3d(0, -1, 0));

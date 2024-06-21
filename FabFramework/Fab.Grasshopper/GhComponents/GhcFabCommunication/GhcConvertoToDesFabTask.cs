@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
+﻿using Fab.Core.DesignElement;
+using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Newtonsoft.Json.Linq;
+using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using Eto.Forms;
-using System.Xml.Linq;
-using Fab.Core.FabCollection;
-using Fab.Core.DesignElement;
 
 namespace Fab.Grasshopper.GhComponents.GhcFabCommunication
 {

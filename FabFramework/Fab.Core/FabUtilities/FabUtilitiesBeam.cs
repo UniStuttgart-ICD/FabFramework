@@ -1,18 +1,8 @@
-﻿using Rhino.Geometry;
+﻿using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grasshopper;
-using Grasshopper.Kernel;
-using Rhino.Geometry.Collections;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabElement;
-using System.Net;
-using Grasshopper.Kernel.Data;
-using Rhino.Geometry.Intersect;
 
 namespace Fab.Core.FabUtilities
 {
@@ -53,7 +43,7 @@ namespace Fab.Core.FabUtilities
             return (glueStartPlanes, glueEndPlanes, glueStartTTAngles, glueEndTTAngles, glueStates);
         }
 
-            public static (List<Plane>, List<Plane>, List<double>, List<double>, List<int>) GetBeamGlueLines(FabBeam fabBeam, Endeffector glueGun, bool upperSide = false, bool reverseGlueLines = false)
+        public static (List<Plane>, List<Plane>, List<double>, List<double>, List<int>) GetBeamGlueLines(FabBeam fabBeam, Endeffector glueGun, bool upperSide = false, bool reverseGlueLines = false)
         {
             List<Plane> glueStartPlanes = new List<Plane>();
             List<Plane> glueEndPlanes = new List<Plane>();
@@ -292,7 +282,7 @@ namespace Fab.Core.FabUtilities
             nailStates = beam_NailTypeList;
             nailPositionPlanes = beam_NailPositionPlanesList;
 
-                return true;
+            return true;
         }
 
 
@@ -336,8 +326,8 @@ namespace Fab.Core.FabUtilities
 
         }
 
-        
-        public static Plane ConvertBeamBasePointToUpperFacePlane(Point3d beamBasePoint, FabBeam beam) 
+
+        public static Plane ConvertBeamBasePointToUpperFacePlane(Point3d beamBasePoint, FabBeam beam)
         {
             //Define beam target plane
             Plane beam_TempTargetPlane = beam.RefPln_Situ.Clone();
@@ -358,7 +348,7 @@ namespace Fab.Core.FabUtilities
             beam_TempTargetPlane.Transform(Transform.Translation(targetPlaneWidth_Vector));
 
             return beam_TempTargetPlane;
-         }
+        }
 
 
         public static Plane Optimized_FabOut_BeamTurnTable(FabBeam fabBeam)
@@ -444,7 +434,7 @@ namespace Fab.Core.FabUtilities
 
             if (optimized_RefPln_FabOutBool == false)
             {
-                 throw new InvalidOperationException("No solution found for RefPln_FabOut. Beam No: " + fabBeam.Index.ToString());
+                throw new InvalidOperationException("No solution found for RefPln_FabOut. Beam No: " + fabBeam.Index.ToString());
                 //AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "refPln_FabOut invalid! Beam No: " + i.ToString());
             }
 
@@ -480,7 +470,7 @@ namespace Fab.Core.FabUtilities
             fabBeams.RemoveRange(0, closestIndex);
 
             //Set Index according to list order for each beam
-            for(int i = 0; i < fabBeams.Count; i++)
+            for (int i = 0; i < fabBeams.Count; i++)
             {
                 //fabBeams[i].Name = "Beam_" + i.ToString(); //needs custom function to modify
                 fabBeams[i].Index = i;
@@ -577,7 +567,7 @@ namespace Fab.Core.FabUtilities
 
         }
 
-     
+
     }
 
 }

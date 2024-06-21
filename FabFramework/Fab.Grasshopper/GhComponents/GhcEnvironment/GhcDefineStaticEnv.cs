@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
+﻿using Fab.Core.FabEnvironment;
 using Fab.Core.FabUtilities;
 using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {
@@ -17,10 +15,10 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// </summary>
         public GhcDefineStativEnv()
           : base(
-              "Define StaticEnv", 
+              "Define StaticEnv",
               "StaticEnv",
               "Define a static Environment",
-              "Fab", 
+              "Fab",
               "Environment")
         {
         }
@@ -73,7 +71,7 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
             DA.GetDataList<Plane>("Safe Position", iSafePosition);
 
             double iWidth = double.NaN;
-            DA.GetData<double>("Width", ref iWidth); 
+            DA.GetData<double>("Width", ref iWidth);
 
             double iLength = double.NaN;
             DA.GetData<double>("Length", ref iLength);

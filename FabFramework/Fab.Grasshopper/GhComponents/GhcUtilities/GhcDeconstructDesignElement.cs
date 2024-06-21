@@ -1,28 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
-using Fab.Core.FabElement;
-using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Newtonsoft.Json.Linq;
-using System.Linq;
-using Eto.Forms;
+﻿using Fab.Core.DesignElement;
 using Fab.Core.FabCollection;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
 using Rhino.Display;
-using System.Drawing;
-using Eto.Drawing;
-using Rhino.Runtime;
-using System.Xml.Linq;
-using Fab.Core.DesignElement;
-using static System.Net.Mime.MediaTypeNames;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcUtilities
 {
@@ -271,7 +255,7 @@ namespace Fab.Grasshopper.GhComponents.GhcUtilities
                             args.Display.DrawLine((Line)designLine_List[i], System.Drawing.Color.MediumVioletRed);
                         //convert to Polyline
                         else if (designLine_List[i].GetType() == typeof(Polyline))
-                                        args.Display.DrawPolyline((Polyline)designLine_List[i], System.Drawing.Color.MediumVioletRed);
+                            args.Display.DrawPolyline((Polyline)designLine_List[i], System.Drawing.Color.MediumVioletRed);
 
             //Box EdgeLines
             if (geometryBox_List != null && geometryBox_List.Count > 0)

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fab.Core.DesignElement;
-using Grasshopper.Kernel;
-using Rhino.DocObjects;
-using Rhino.Geometry;
+﻿using Rhino.Geometry;
 using Rhino.Geometry.Collections;
-using Rhino.Geometry.Intersect;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fab.Core.FabUtilities
 {
@@ -975,7 +968,7 @@ namespace Fab.Core.FabUtilities
         public static double GetLinAxisRadiusBasedList(List<Plane> frames, Line linAxis, bool sortBiggest = true, double maxDistance = 2700, Vector3d toolOffsetVector = new Vector3d())
         {
             List<Point3d> origins = new List<Point3d>();
-            foreach(Plane frame in frames)
+            foreach (Plane frame in frames)
             {
                 origins.Add(frame.Origin);
             }
@@ -988,7 +981,7 @@ namespace Fab.Core.FabUtilities
         }
 
 
-            public static double GetLinAxisRadiusBased(Plane frame, Line linAxis, bool sortBiggest = true, double maxDistance = 2000, Vector3d toolOffsetVector = new Vector3d())
+        public static double GetLinAxisRadiusBased(Plane frame, Line linAxis, bool sortBiggest = true, double maxDistance = 2000, Vector3d toolOffsetVector = new Vector3d())
         {
             // Convert Line to Curve
             Polyline polyAxis = new Polyline(new Point3d[] { linAxis.From, linAxis.To });

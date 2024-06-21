@@ -1,16 +1,11 @@
-﻿using System;
+﻿using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Fab.Core.FabCollection;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabElement;
-using GH_IO.Serialization;
-using System.Runtime.Remoting.Messaging;
 
 namespace Fab.Core.FabTask
 {
@@ -143,7 +138,7 @@ namespace Fab.Core.FabTask
             this.staticEnvs = new Dictionary<string, StaticEnv>();
             this.tools = new Dictionary<string, Tool>();
         }
-        public FabTask(string name) 
+        public FabTask(string name)
         {
             if (name != null)
             {
@@ -201,12 +196,12 @@ namespace Fab.Core.FabTask
                 { fabElement.GetParentComponent().CompTasksName.Add(Name); }
             }
             //check if FabElement is FabComponent
-            if (fabElement is FabElement.FabComponent fabComponent) 
+            if (fabElement is FabElement.FabComponent fabComponent)
             {
                 if (!fabComponent.CompTasksName.Contains(Name))
                 { fabComponent.CompTasksName.Add(Name); }
             }
-                
+
         }
 
         public static List<FabTask> SortTasksFabComponent(FabComponent fabComponent, List<string> sortingOrder)

@@ -1,13 +1,7 @@
-﻿using System;
+﻿using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using Fab.Core.FabUtilities;
-using Rhino.Geometry;
-using Rhino.Geometry.Intersect;
-using Rhino.Render.ChangeQueue;
 
 
 namespace Fab.Core.DesignElement
@@ -22,7 +16,7 @@ namespace Fab.Core.DesignElement
             {
                 if (name == null)
                 {
-                     throw new InvalidOperationException("Name is null");
+                    throw new InvalidOperationException("Name is null");
                 }
                 return name;
             }
@@ -81,7 +75,8 @@ namespace Fab.Core.DesignElement
         public double Height
         {
             get { return height; }
-            set { 
+            set
+            {
                 height = value;
                 FrameLower = FabUtilities.FabUtilities.OffsetPlane(FrameBase, (-1) * Height / 2, FrameBase.Normal);
                 FrameUpper = FabUtilities.FabUtilities.OffsetPlane(FrameBase, Height / 2, FrameBase.Normal);
@@ -105,13 +100,13 @@ namespace Fab.Core.DesignElement
         public Plane FrameBase
         {
             get { return frameBase; }
-            set 
-            { 
+            set
+            {
                 frameBase = value;
 
                 //ADD HERE IF BOUNDINGBOX NOT SET
                 if (BoundingBox.Equals(Box.Empty) || BoundingBox.IsValid == false)
-                { 
+                {
                     BoundingBox = FabUtilities.FabUtilities.CreateAlignedBox(Geometry, frameBase);
                 }
 
@@ -124,7 +119,7 @@ namespace Fab.Core.DesignElement
                 frameBase.Origin = projected_frame_origin;
 
                 Height = Math.Round(boundingBox.Z[1] - boundingBox.Z[0], 2);
-                Width = Math.Round(boundingBox.Y[1] - boundingBox.Y[0], 2); 
+                Width = Math.Round(boundingBox.Y[1] - boundingBox.Y[0], 2);
                 Length = Math.Round(boundingBox.X[1] - boundingBox.X[0], 2);
             }
         }
@@ -165,7 +160,7 @@ namespace Fab.Core.DesignElement
 
         public DesignElement() { }
 
-        public DesignElement(string name) 
+        public DesignElement(string name)
         {
             this.id = Guid.NewGuid().ToString();
 
@@ -216,12 +211,12 @@ namespace Fab.Core.DesignElement
             Geometry = geometry;
             Box minimumBoundingBox = FabUtilities.FabUtilities.GetMinimumBoundingBox3DFromBrep(geometry);
             FrameBase = FabUtilities.FabUtilities.AdjustBaseFrameToLongestEdgeAndClosestNormal(minimumBoundingBox);
-         }
+        }
 
         public void AddCoreAttributes(Brep geometry, Plane baseFrame)
         {
             Geometry = geometry;
-            FrameBase = baseFrame;            
+            FrameBase = baseFrame;
         }
 
         public void AddCoreAttributesOutline(Brep geometry, Plane baseFrame, Polyline polyline)

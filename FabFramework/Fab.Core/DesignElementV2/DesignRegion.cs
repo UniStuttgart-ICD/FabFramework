@@ -1,11 +1,6 @@
-﻿using System;
+﻿using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Rhino.Render.ChangeQueue;
 
 
 namespace Fab.Core.DesignElement
@@ -154,7 +149,7 @@ namespace Fab.Core.DesignElement
 
         public DesignRegion() { }
 
-        public DesignRegion(string name) 
+        public DesignRegion(string name)
         {
             this.name = name;
 

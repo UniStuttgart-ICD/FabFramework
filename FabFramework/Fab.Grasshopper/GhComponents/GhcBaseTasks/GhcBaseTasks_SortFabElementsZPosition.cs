@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
 using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using System.Linq;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
 using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 
 
 namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
@@ -26,8 +16,8 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcBaseTasks_SortFabElementsZPosition()
-          : base("Sort By Z Height", 
-                "SortZ",               
+          : base("Sort By Z Height",
+                "SortZ",
                 "Sort the FabElements according to their Origin.Z Height and overwrite Index Value.",
                 "Fab",
                 "BaseTasks")
@@ -75,7 +65,8 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
             allFabElements.Sort((x1, y1) => x1.RefPln_FabOut.Origin.Z.CompareTo(y1.RefPln_FabOut.Origin.Z));
 
             // Sort by Z, Y, and X position
-            allFabElements.Sort((x, y) => {
+            allFabElements.Sort((x, y) =>
+            {
                 int zComparison = x.RefPln_FabOut.Origin.Z.CompareTo(y.RefPln_FabOut.Origin.Z);
                 if (zComparison != 0) return zComparison;
 

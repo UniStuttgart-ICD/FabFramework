@@ -1,11 +1,5 @@
-﻿using Fab.Core.FabElement;
-using Fab.Core.FabEnvironment;
-using GH_IO.Serialization;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fab.Core.FabCollection
 {
@@ -98,19 +92,19 @@ namespace Fab.Core.FabCollection
                     //iterate through all associated FabTasks in fabElement
                     foreach (string fabTaskName in fabElement.FabTasksName)
                     {
-                    FabTask.FabTask fabElementTask = fabTaskCollection[fabTaskName];
+                        FabTask.FabTask fabElementTask = fabTaskCollection[fabTaskName];
 
 
                         //iterate through all actions in actionList
-                        foreach(var fabElementAction in fabElementTask.Action) 
+                        foreach (var fabElementAction in fabElementTask.Action)
                         {
 
                             if (fabElementAction.Key == action)
                             {
                                 sortedFabTasks.Add(fabElementTask);
 
-                            }                          
-                          
+                            }
+
                         }
 
                     }
@@ -122,7 +116,7 @@ namespace Fab.Core.FabCollection
             return sortedFabTasks;
 
         }
-        
+
 
 
         public void AddToFabTaskSequence(string componentName, params string[] tasks)
@@ -134,9 +128,9 @@ namespace Fab.Core.FabCollection
         public void AddDesignElement(DesignElement.DesignElement designElement)
         {
             if (!designElementCollection.ContainsKey(designElement.Name))
-            { 
-                designElementCollection.Add(designElement.Name, designElement); 
-            
+            {
+                designElementCollection.Add(designElement.Name, designElement);
+
                 // Check the type of designElement and add it to the appropriate collection
                 if (designElement is DesignElement.DesignPlate designPlate)
                 {
@@ -151,9 +145,10 @@ namespace Fab.Core.FabCollection
                     AddDesignComponent(designComponent);
                 }
             }
-            else { 
-                designElementCollection[designElement.Name] = designElement; 
-            
+            else
+            {
+                designElementCollection[designElement.Name] = designElement;
+
                 //The designElement already exists in designElementCollection, so check its type and update it in the appropriate collection
                 if (designElementCollection[designElement.Name] is DesignElement.DesignPlate existingDesignPlate && designElement is DesignElement.DesignPlate newDesignPlate)
                 {
@@ -195,7 +190,7 @@ namespace Fab.Core.FabCollection
         public void AddFabElement(FabElement.FabElement fabElement)
         {
             if (!fabElementCollection.ContainsKey(fabElement.Name))
-            { 
+            {
                 fabElementCollection.Add(fabElement.Name, fabElement);
 
                 // Check the type of fabElement and add it to the appropriate collection
@@ -213,10 +208,11 @@ namespace Fab.Core.FabCollection
                 }
 
             }
-            else { 
-                
-                fabElementCollection[fabElement.Name] = fabElement; 
-            
+            else
+            {
+
+                fabElementCollection[fabElement.Name] = fabElement;
+
                 // The fabElement already exists in fabElementCollection, so check its type and update it in the appropriate collection
                 if (fabElementCollection[fabElement.Name] is FabElement.FabPlate existingFabPlate && fabElement is FabElement.FabPlate newFabPlate)
                 {

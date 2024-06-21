@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
+﻿using Fab.Core.DesignElement;
 using Fab.Core.FabEnvironment;
-using Fab.Core.FabTask;
-using Fab.Core.FabElement;
-using Fab.Core.DesignElement;
-using Fab.Core.FabUtilities;
-using System.Runtime.CompilerServices;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Core.FabElement
 {
@@ -51,7 +43,7 @@ namespace Fab.Core.FabElement
 
         private List<string> compTasksName;
 
-        public FabComponent() : base()  { }
+        public FabComponent() : base() { }
 
         public FabComponent(string name, DesignElement.DesignComponent designComponent, StaticEnv envFab) : base(name)
         {

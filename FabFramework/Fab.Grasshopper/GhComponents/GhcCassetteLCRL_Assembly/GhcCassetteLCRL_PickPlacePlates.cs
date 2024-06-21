@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
 using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
 using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
@@ -24,8 +16,8 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_PickPlacePlates()
-          : base("LCRLCassette PnP Plates", 
-                "LCRL PnpPlates",               
+          : base("LCRLCassette PnP Plates",
+                "LCRL PnpPlates",
                 "Get pick and place tasks for the bot & top plate and the finished cassette of the LCRL cassette.",
                 "Fab",
                 "LCRL")
@@ -99,18 +91,18 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             //BOTPLATE
             FabTaskFrame fabTask_PickBotPlate = new FabTaskFrame(iPickAction.Name + "_" + fabBotPlate.Name); ;
             FabTaskFrame fabTask_PlaceBotPlate = new FabTaskFrame(iPlaceAction.Name + "_" + fabBotPlate.Name);
-           
+
             FabTaskFrame.SetFabPlatePickPlaceTask_TurnTable(fabTask_PickBotPlate, fabTask_PlaceBotPlate, fabBotPlate, iPickAction, iPlaceAction, iEndeffector, iFabActor, offsetList);
 
             bool invertAngleBotPlate_FabOut = false; // Start at turntable -180 --> set to true
 
-            if (invertAngleBotPlate_FabOut ==  true )
+            if (invertAngleBotPlate_FabOut == true)
             {
                 fabTask_PickBotPlate.InvertExternalValues(fabTask_PickBotPlate.Main_ExtValues, "E2");
                 fabTask_PlaceBotPlate.InvertExternalValues(fabTask_PlaceBotPlate.Main_ExtValues, "E2");
             }
 
-  
+
 
             //TOPPLATE
             FabTaskFrame fabTask_PickTopPlate = new FabTaskFrame(iPickAction.Name + "_" + fabTopPlate.Name); ;
@@ -124,9 +116,9 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 fabTask_PlaceTopPlate.InvertExternalValues(fabTask_PlaceTopPlate.Main_ExtValues, "E2");
             }
 
-            
+
             //CASSETTE
-            FabTaskFrame fabTask_PickCassette = new FabTaskFrame(iPickAction.Name  + "_" + fabCassette.Name);
+            FabTaskFrame fabTask_PickCassette = new FabTaskFrame(iPickAction.Name + "_" + fabCassette.Name);
             FabTaskFrame fabTask_PlaceCassette = new FabTaskFrame(iPlaceAction.Name + "_" + fabCassette.Name);
 
 
@@ -142,7 +134,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 fabTask_PickCassette.InvertExternalValues(fabTask_PickCassette.Main_ExtValues, "E2");
                 fabTask_PlaceCassette.InvertExternalValues(fabTask_PlaceCassette.Main_ExtValues, "E2");
             }
-            
+
 
             //-----------
             //OUTPUTS

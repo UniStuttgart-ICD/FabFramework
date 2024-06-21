@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Rhino.Geometry;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Fab.Core;
 
 namespace Fab.Core.FabEnvironment
 {

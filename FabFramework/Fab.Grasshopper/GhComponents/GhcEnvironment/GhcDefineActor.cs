@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabEnvironment;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {
@@ -18,10 +15,10 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// </summary>
         public GhcDefineActor()
           : base(
-              "Define Actor", 
+              "Define Actor",
               "Actor",
               "Define an Actor",
-              "Fab", 
+              "Fab",
               "Environment")
         {
         }
@@ -122,7 +119,7 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
                 foreach (Fab.Core.FabEnvironment.Action action in iActions)
                 {
                     inputActions[action.Name] = action;
-                } 
+                }
             }
             actor.Actions = inputActions;
 

@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
 using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
 using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
@@ -24,8 +16,8 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_PickPlaceCassette()
-          : base("LCRLCassette PnP Cassette", 
-                "LCRL PnpCassette",               
+          : base("LCRLCassette PnP Cassette",
+                "LCRL PnpCassette",
                 "Get pick and place tasks for the cassette plate and the finished cassette of the LCRL cassette.",
                 "Fab",
                 "LCRL")
@@ -92,18 +84,18 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             //BOTPLATE
             FabTaskFrame fabTask_PickCassettePlate = new FabTaskFrame(iPickAction.Name + "_" + cassettePlate.Name); ;
             FabTaskFrame fabTask_PlaceCassettePlate = new FabTaskFrame(iPlaceAction.Name + "_" + cassettePlate.Name);
-           
+
             FabTaskFrame.SetFabPlatePickPlaceTask(fabTask_PickCassettePlate, fabTask_PlaceCassettePlate, cassettePlate, iPickAction, iPlaceAction, iEndeffector, iFabActor, offsetList);
 
             bool invertAngleCassettePlate_FabOut = true; // Start at turntable -180 --> set to true
 
-            if (invertAngleCassettePlate_FabOut ==  true )
+            if (invertAngleCassettePlate_FabOut == true)
             {
                 fabTask_PickCassettePlate.InvertExternalValues(fabTask_PickCassettePlate.Main_ExtValues, "E2");
                 fabTask_PlaceCassettePlate.InvertExternalValues(fabTask_PlaceCassettePlate.Main_ExtValues, "E2");
             }
 
-            
+
 
             //-----------
             //OUTPUTS

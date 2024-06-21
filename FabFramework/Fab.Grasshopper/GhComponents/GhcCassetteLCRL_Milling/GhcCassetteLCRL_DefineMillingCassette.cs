@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.DesignElement;
+using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
 using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
-using Fab.Core.DesignElement;
-using Rhino.DocObjects;
-using Fab.Core.FabCollection;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
     public class GhcCassetteLCRL_DefineMillingCassette : GH_Component
     {
-        
+
 
         /// <summary>
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_DefineMillingCassette()
-          : base("LCRLMillingCassette", 
-                "LCRL FCas", 
+          : base("LCRLMillingCassette",
+                "LCRL FCas",
                 "Convert the FabComponent data for LCRL Milling FabCassette data.",
                 "Fab",
                 "LCRL")
@@ -94,7 +87,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 designRegion.DoubleDict["Angle_FabOut"] = GetDesignRegionAngleFabOutForTurnTable(cassettePlate, designRegion, turnTable_StartAngle);
             }
 
-            
+
             //RESORT DESIGN REGION DICTIONARY ACCORDING TO TURNTABLE ANGLE
             //Extract the dictionary entries and sort them by TT_Angle
             var dictionaryEntries = cassettePlate.GetDesignPlate().DesignRegion
@@ -122,19 +115,19 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 
         static double GetDesignRegionAngleFabOutForTurnTable(FabPlate fabPlate, DesignRegion designRegion, double turnTable_StartAngle)
         {
-                Plane flippedTT_Plane = new Plane(fabPlate.EnvFab.RefPln[0].Origin, fabPlate.EnvFab.RefPln[0].XAxis, fabPlate.EnvFab.RefPln[0].YAxis); ;
-                flippedTT_Plane.Flip();
-                Double diff_FabOutAngle = Vector3d.VectorAngle(fabPlate.RefPln_FabOut.XAxis, designRegion.PlaneDict["RefPln_FabOut"].XAxis, flippedTT_Plane);
-                Double designRegion_FabOutAngle = turnTable_StartAngle - FabUtilities.RadianToDegree(diff_FabOutAngle);
+            Plane flippedTT_Plane = new Plane(fabPlate.EnvFab.RefPln[0].Origin, fabPlate.EnvFab.RefPln[0].XAxis, fabPlate.EnvFab.RefPln[0].YAxis); ;
+            flippedTT_Plane.Flip();
+            Double diff_FabOutAngle = Vector3d.VectorAngle(fabPlate.RefPln_FabOut.XAxis, designRegion.PlaneDict["RefPln_FabOut"].XAxis, flippedTT_Plane);
+            Double designRegion_FabOutAngle = turnTable_StartAngle - FabUtilities.RadianToDegree(diff_FabOutAngle);
 
-                return designRegion_FabOutAngle;
+            return designRegion_FabOutAngle;
         }
 
         static Plane DesignRegionFabOutTurnTable(FabPlate fabPlate, DesignRegion designRegion)
         {
 
             Plane newRefPln_FabOut = fabPlate.RefPln_FabOut.Clone();
-              
+
 
             //OPTIMIZATION FOR RefPln_FabOut
             //1. Angle Variation
@@ -151,7 +144,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 {
                     angleIterate *= -1;
                 }
-                    
+
 
                 Plane turnTable_AlignPln = fabPlate.EnvFab.AlignPln[0];
                 Plane fabMitrePlate = FabUtilities.OrientPlane(designRegion.PlaneDict["MitrePlane"], fabPlate.RefPln_Situ, fabPlate.RefPln_FabOut);
@@ -208,7 +201,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                         optimized_RefPln_FabOutBool = true;
                         break;
                     }
-                    
+
                 }
             }
 

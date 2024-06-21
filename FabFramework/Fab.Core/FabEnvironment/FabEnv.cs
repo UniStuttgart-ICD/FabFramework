@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
+﻿using System.Collections.Generic;
 
 namespace Fab.Core.FabEnvironment
 {
     public class FabEnv
     {
-        public Dictionary<string,Actor> Actors
+        public Dictionary<string, Actor> Actors
         {
             get { return actors; }
             set { actors = value; }
@@ -20,7 +15,7 @@ namespace Fab.Core.FabEnvironment
             get { return staticEnvs; }
             set { staticEnvs = value; }
         }
-        
+
         public Dictionary<string, Tool> Tools
         {
             get { return tools; }
@@ -32,14 +27,14 @@ namespace Fab.Core.FabEnvironment
         private Dictionary<string, Tool> tools;
 
         public FabEnv() { }
-        public FabEnv(Dictionary<string,Actor> Actors, Dictionary<string, StaticEnv> StaticEnvs, Dictionary<string, Tool> Tools)
+        public FabEnv(Dictionary<string, Actor> Actors, Dictionary<string, StaticEnv> StaticEnvs, Dictionary<string, Tool> Tools)
         {
 
             this.actors = Actors;
             this.staticEnvs = StaticEnvs;
             this.tools = Tools;
         }
-        
+
     }
 
 }

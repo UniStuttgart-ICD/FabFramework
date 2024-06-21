@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.DesignElement;
+using Fab.Core.FabCollection;
+using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Fab.Core.FabTask;
+using Fab.Core.FabUtilities;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Core.DesignElement;
-using Rhino.Render.DataSources;
-using static System.Collections.Specialized.BitVector32;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -27,7 +19,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// </summary>
         public GhcCassetteLCRL_SawCutEdges()
           : base("LCRLCassette Saw Cut Edges Cassette",
-                "LCRL SawCutEdge",               
+                "LCRL SawCutEdge",
                 "Get Task to cut the edges of the LCRL Cassette with sawblade.",
                 "Fab",
                 "LCRL")
@@ -61,7 +53,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// </summary>
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
-        { 
+        {
             FabCollection fabCollection = FabCollection.GetFabCollection();
             //-----------
             //INPUTS
@@ -83,7 +75,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
             //-----------
             //EDIT
             //-----------
-            List<double> offsetList = new List<double> { 0.0, 0.0, 200.0 }; 
+            List<double> offsetList = new List<double> { 0.0, 0.0, 200.0 };
 
 
             FabPlate cassettePlate = fabCollection.fabPlateCollection[fabCassette.FabPlatesName[0]];
@@ -154,7 +146,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 
 
                 //EndFrame
-                if (i == cassettePlate.GetDesignPlate().DesignRegion.Count-1)
+                if (i == cassettePlate.GetDesignPlate().DesignRegion.Count - 1)
                 {
                     Plane sawStartTaskPlane_OffsetOut = sawEndPlane_OffsetOut.Clone();
                     double sawTask_OffsetOutDistance = iCutter.Diameter / 2 + sawBladeSafetyOffset * 2;
@@ -169,7 +161,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 foreach (Plane plane in sawPlaneDesignRegion)
                 {
                     //Rotate by 180 degree
-                    plane.Rotate(Math.PI/2, plane.ZAxis, plane.Origin);
+                    plane.Rotate(Math.PI / 2, plane.ZAxis, plane.Origin);
 
                     sawMillingPlanes.Add(plane);
                     Plane orientedPlane = FabUtilities.OrientPlane(plane, cassettePlate.RefPln_Situ, designRegion.PlaneDict["RefPln_FabOut"]);
@@ -179,7 +171,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                 //Add All Milling Task Informations
                 double linearAxisValue = FabUtilities.GetLinAxisRadiusBasedList(orientedPlanes, iFabActor.LinearAxis);
                 foreach (Plane orientedPlane in orientedPlanes)
-                { 
+                {
                     fabTask_SawCutEdges.AddMainFrames(orientedPlane);
                     //Add E1 & E2
                     fabTask_SawCutEdges.AddMainExternalValues("E1", linearAxisValue);

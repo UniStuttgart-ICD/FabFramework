@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
+﻿using Rhino.Geometry;
 
 namespace Fab.Core.DesignElement
 {
@@ -14,7 +9,8 @@ namespace Fab.Core.DesignElement
         public Line BaseLine
         {
             get { return baseLine; }
-            set { 
+            set
+            {
                 baseLine = value;
                 startPoint = baseLine.From;
                 endPoint = baseLine.To;

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
-using Rhino.Render.ChangeQueue;
-using System.Drawing;
-
-namespace Fab.Core.FabEnvironment
+﻿namespace Fab.Core.FabEnvironment
 {
     public class Action
     {
@@ -40,7 +31,7 @@ namespace Fab.Core.FabEnvironment
         private string type;
         private string programName;
 
-        public Action() {}
+        public Action() { }
 
         public Action(int actionID, string name, string type)
         {

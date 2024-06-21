@@ -1,11 +1,6 @@
-﻿using System;
+﻿using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Rhino.Geometry;
 
 namespace Fab.Core.DesignElement
 {
@@ -39,7 +34,7 @@ namespace Fab.Core.DesignElement
 
 
         public DesignComponent() : base() { }
-        public DesignComponent(string name) : base(name)  { }
+        public DesignComponent(string name) : base(name) { }
 
         public new void AddCoreAttributes(Brep geometry)
         {
@@ -74,7 +69,7 @@ namespace Fab.Core.DesignElement
         public void AddCoreAttributes(List<Brep> geometry, Plane baseFrame)
         {
             Box componentBox = FabUtilities.FabUtilities.CreateAlignedBoxFromBreps(geometry, baseFrame);
-            
+
             ComponentGeometries = geometry;
             Geometry = componentBox.ToBrep(); ;
             FrameBase = baseFrame;

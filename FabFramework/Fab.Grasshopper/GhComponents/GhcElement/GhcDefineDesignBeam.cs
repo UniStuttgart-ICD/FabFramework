@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.DesignElement;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.DesignElement;
-using Fab.Core.FabUtilities;
-using Fab.Grasshopper.Properties;
-using System.Linq;
-using Rhino.Geometry.Collections;
-using Fab.Core.FabCollection;
+using System;
 
 namespace Fab.Grasshopper.GhComponents.GhcElement
 {
@@ -28,7 +20,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
               "DesignBeam",
               "DB",
               "Define a DesignBeam",
-              "Fab", 
+              "Fab",
               "Element")
         {
         }
@@ -41,7 +33,7 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Name", "N", "The name of the element", GH_ParamAccess.item);
-            pManager.AddBrepParameter("Geometry", "G",  "Element Geometry", GH_ParamAccess.item);
+            pManager.AddBrepParameter("Geometry", "G", "Element Geometry", GH_ParamAccess.item);
             pManager.AddPlaneParameter("BaseFrame", "F", "Reference BaseFrame of the beam. If no plane is provided, then the best-fit plane will be used.", GH_ParamAccess.item);
             pManager[2].Optional = true;
             pManager.AddLineParameter("BaseLine", "BL", "The baseline of the DesignBeam. Make sure to have correct orientation of baseline as wanted. If no line is provided, then the best-fit line will be used.", GH_ParamAccess.item);
@@ -110,12 +102,13 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
 
             //check if Index is defined
             if (iIndex == -1)
-            { designBeam.Index = counter;
+            {
+                designBeam.Index = counter;
                 //FabCollection.InitializeFabCollection();
             }
             else
             { designBeam.Index = iIndex; }
-            
+
 
             //check for baseFrame input
             if (iBaseFrame != Plane.Unset)
@@ -137,8 +130,8 @@ namespace Fab.Grasshopper.GhComponents.GhcElement
             else
             {
                 //create function to create baseLine from Geometry
-                Point3d startPoint = designBeam.BoundingBox.PointAt(0,0.5,0.5);
-                Point3d endPoint = designBeam.BoundingBox.PointAt(1,0.5,0.5);
+                Point3d startPoint = designBeam.BoundingBox.PointAt(0, 0.5, 0.5);
+                Point3d endPoint = designBeam.BoundingBox.PointAt(1, 0.5, 0.5);
                 baseLine = new Line(startPoint, endPoint);
             }
             designBeam.BaseLine = baseLine;

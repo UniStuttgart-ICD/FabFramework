@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
+﻿using Fab.Core.FabElement;
 using Fab.Core.FabEnvironment;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using System.Linq;
-using Fab.Core.FabCollection;
-using System.Diagnostics.Eventing.Reader;
+using Fab.Core.FabUtilities;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -24,7 +15,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_Testtask()
-          : base("LCRLCassette Test Task", 
+          : base("LCRLCassette Test Task",
                 "MyTestTask",
                 "Get nail task for the top plate of the LCRL Cassette.",
                 "Fab",
@@ -105,7 +96,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 
         }
 
-      
+
 
         /// <summary>
         /// Provides an Icon for the component.

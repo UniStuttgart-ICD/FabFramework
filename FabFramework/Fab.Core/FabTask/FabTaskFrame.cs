@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Rhino.Geometry;
+﻿using Fab.Core.FabElement;
 using Fab.Core.FabEnvironment;
-using Fab.Core.FabElement;
 using Fab.Core.FabUtilities;
-using System.Net;
-using Rhino.Render.DataSources;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Eto.Forms;
-using GH_IO.Serialization;
-using static System.Collections.Specialized.BitVector32;
-using System.Xml.Linq;
-using Fab.Core.FabCollection;
-using Grasshopper.Kernel.Geometry;
-using Rhino.Geometry.Intersect;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fab.Core.FabTask
 {
@@ -448,7 +434,7 @@ namespace Fab.Core.FabTask
 
 
         public static bool SetPickPlaceTask(
-        FabTaskFrame pickTask, FabTaskFrame placeTask, 
+        FabTaskFrame pickTask, FabTaskFrame placeTask,
         Rhino.Geometry.Plane pickPlane, Rhino.Geometry.Plane placePlane,
         FabElement.FabElement fabElement,
         Fab.Core.FabEnvironment.Action pickAction, Fab.Core.FabEnvironment.Action placeAction,
@@ -592,7 +578,7 @@ namespace Fab.Core.FabTask
             pickPln = FabUtilities.FabUtilities.OrientPlane(pickPln, fabBeam.RefPln_Situ, fabBeam.RefPln_Mag);
 
             Rhino.Geometry.Plane placePln = fabBeam.GetDesignBeam().FrameUpper;
-            placePln = FabUtilities.FabUtilities.OrientPlane(placePln, fabBeam.RefPln_Situ, fabBeam.RefPln_FabOut); 
+            placePln = FabUtilities.FabUtilities.OrientPlane(placePln, fabBeam.RefPln_Situ, fabBeam.RefPln_FabOut);
 
             pickBeamFrameTask.AddMainFrames(pickPln);
             placeBeamFrameTask.AddMainFrames(placePln);
@@ -908,7 +894,7 @@ namespace Fab.Core.FabTask
         }
 
 
-       
+
     }
 
 }

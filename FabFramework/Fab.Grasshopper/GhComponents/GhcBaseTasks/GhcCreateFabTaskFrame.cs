@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
 using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
-using System.Linq;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using System.Reflection;
-using Grasshopper.Kernel.Types;
 using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using Grasshopper.Kernel.Types;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
@@ -113,12 +104,12 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
             fabTaskFrame.Tools = iFabTask.Tools;
             fabTaskFrame.StaticEnvs = iFabTask.StaticEnvs;
             foreach (string fabElementName in iFabTask.FabElementsName)
-            { 
+            {
                 fabCollection.fabElementCollection.TryGetValue(fabElementName, out FabElement fabElement);
                 fabTaskFrame.AssociateElement(fabElement);
             }
             fabTaskFrame.Geometry = iFabTask.Geometry;
-        
+
 
             if (iMainFrames.Count > 0)
             {
@@ -165,9 +156,9 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                 }
             }
 
-                // Add sub external values if any
-                if (iSubExtValues != null && iSubExtValues.Count > 0)
-                {
+            // Add sub external values if any
+            if (iSubExtValues != null && iSubExtValues.Count > 0)
+            {
                 foreach (var kvp in iSubExtValues)
                 {
                     string key = kvp.Key;
@@ -200,29 +191,29 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
                 }
             }
 
-                if (iState.Count > 0)
-                {
-                    fabTaskFrame.State = iState;
-                }
-
-                if (iSpeed.Count > 0)
-                {
-                    fabTaskFrame.Speed = iSpeed;
-                }
-
-                if (iOffset.Count > 0)
-                {
-                    fabTaskFrame.Offset = iOffset;
-                }
-
-
-
-
-                //-----------
-                //OUTPUTS
-                //-----------
-                DA.SetData("FabTaskFrame", fabTaskFrame);
+            if (iState.Count > 0)
+            {
+                fabTaskFrame.State = iState;
             }
+
+            if (iSpeed.Count > 0)
+            {
+                fabTaskFrame.Speed = iSpeed;
+            }
+
+            if (iOffset.Count > 0)
+            {
+                fabTaskFrame.Offset = iOffset;
+            }
+
+
+
+
+            //-----------
+            //OUTPUTS
+            //-----------
+            DA.SetData("FabTaskFrame", fabTaskFrame);
+        }
 
         /// <summary>
         /// Provides an Icon for the component.

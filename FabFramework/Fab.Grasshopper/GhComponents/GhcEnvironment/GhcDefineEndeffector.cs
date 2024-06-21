@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
+﻿using Fab.Core.FabEnvironment;
 using Fab.Core.FabUtilities;
 using Fab.Grasshopper.Properties;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {

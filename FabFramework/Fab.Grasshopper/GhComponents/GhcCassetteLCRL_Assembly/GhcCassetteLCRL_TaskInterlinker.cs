@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabCollection;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
+﻿using Fab.Core.FabElement;
 using Fab.Core.FabEnvironment;
 using Fab.Core.FabTask;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using System.Linq;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -23,7 +14,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_TaskInterlinker()
-          : base("LCRLCassette Task Interlinker", 
+          : base("LCRLCassette Task Interlinker",
                 "LCRL TaskLink",
                 "Create necessary tasks to link prior tasks together for a functional fabrication.",
                 "Fab",

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabEnvironment;
+using Fab.Core.FabUtilities;
+using Fab.Grasshopper.Properties;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabEnvironment;
-using Fab.Core.FabUtilities;
-using static Rhino.UI.Controls.CollapsibleSectionImpl;
-using Fab.Grasshopper.Properties;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcEnvironment
 {
@@ -18,10 +15,10 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// </summary>
         public GhcDefineTool()
           : base(
-              "Define Tool", 
+              "Define Tool",
               "Tool",
               "Define a Tool",
-              "Fab", 
+              "Fab",
               "Environment")
         {
         }
@@ -95,7 +92,7 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
         /// <summary>
         /// Provides an Icon for the component.
         /// </summary>
-        protected override System.Drawing.Bitmap Icon 
+        protected override System.Drawing.Bitmap Icon
         {
             get
             {

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using Fab.Core.FabCollection;
+using Fab.Core.FabElement;
+using Fab.Core.FabEnvironment;
+using Fab.Core.FabTask;
+using Fab.Core.FabUtilities;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using Eto.Forms;
-using Fab.Core.FabTask;
-using Fab.Core.FabCollection;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
@@ -22,7 +17,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_PickPlaceNailBeams()
-          : base("LCRL Cassette PickPlaceNail Beam", 
+          : base("LCRL Cassette PickPlaceNail Beam",
                 "LCRL PnpNailBeam",
                 "Get pick, place and nail tasks for the beams of the LCRL Cassette.",
                 "Fab",

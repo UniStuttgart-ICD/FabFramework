@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
-using Fab.Core.FabElement;
-using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using System.Linq;
-using System.Collections;
-using Fab.Core.DesignElement;
-using Rhino.DocObjects;
-using Fab.Core.FabCollection;
+﻿using Fab.Core.FabCollection;
 using Fab.Grasshopper.Properties;
-using System.Reflection;
+using Grasshopper.Kernel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fab.Grasshopper.GhComponents.GhcUtilities
 {

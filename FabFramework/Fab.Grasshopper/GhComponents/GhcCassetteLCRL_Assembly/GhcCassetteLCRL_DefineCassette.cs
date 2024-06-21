@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Grasshopper.Kernel;
-using Rhino.Geometry;
-using Fab.Core;
+﻿using Fab.Core.FabCollection;
 using Fab.Core.FabElement;
 using Fab.Core.FabUtilities;
-using Fab.Core.FabEnvironment;
-using Grasshopper;
-using Grasshopper.Kernel.Data;
-using System.Linq;
-using System.Collections;
-using Fab.Core.DesignElement;
-using Rhino.DocObjects;
-using Fab.Core.FabCollection;
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
 
 namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 {
     public class GhcCassetteLCRL_DefineCassette : GH_Component
     {
-        
+
 
         /// <summary>
         /// Initializes a new instance of the MyComponent1 class.
         /// </summary>
         public GhcCassetteLCRL_DefineCassette()
-          : base("LCRLAssemlbyCassette", 
-                "LCRL FCas", 
+          : base("LCRLAssemlbyCassette",
+                "LCRL FCas",
                 "Convert the FabComponent data for LCRL Assembly FabCassette data.",
                 "Fab",
                 "LCRL")
@@ -80,7 +71,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
 
 
             FabComponent fabComponent = iFabComponent.ShallowCopy() as FabComponent;
-           
+
             FabPlate fabBotPlate = fabCollection.fabPlateCollection[fabComponent.FabPlatesName[0]];
             FabPlate fabTopPlate = fabCollection.fabPlateCollection[fabComponent.FabPlatesName[1]];
 
@@ -119,7 +110,7 @@ namespace Fab.Grasshopper.GhComponents.GhcCassette.LCRL
                     // The key does not exist, throw an exception
                     throw new KeyNotFoundException($"Key '{fabComponent.FabBeamsName[i]}' does not exist in the dictionary.");
                 }
-                
+
             }
 
 
