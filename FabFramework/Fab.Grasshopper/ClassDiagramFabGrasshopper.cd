@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fab.Grasshopper.GhComponents.GhcCassette.GhcCassetteConvertData" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcCassette\GhcCassetteConvertData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcCassette.GhcCassetteGluePlanes" Collapsed="true">
+    <Position X="11" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcCassette\GhcCassetteGluePlanes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcCassette.GhcCassettePnPNail_Beams" Collapsed="true">
+    <Position X="11" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcCassette\GhcCassettePnPNail_Beams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcCassette.GhcCassettePnP_Plates" Collapsed="true">
+    <Position X="11" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcCassette\GhcCassettePnP_Plates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineActor" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineActor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineCutter" Collapsed="true">
+    <Position X="2.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineCutter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineEndeffector" Collapsed="true">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineEndeffector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineFabEnv" Collapsed="true">
+    <Position X="6.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineFabEnv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineStativEnv" Collapsed="true">
+    <Position X="4.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineStaticEnv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Grasshopper.GhComponents.GhcEnvironment.GhcDefineTool" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>GhComponents\GhcEnvironment\GhcDefineTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

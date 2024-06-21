@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Version>1.0</Version>
+    <Title>Fab.Grasshopper</Title>
+    <Description>Description of Fab.Grasshopper</Description>
+    <TargetExt>.gha</TargetExt>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="GhComponents\NewFolder\**" />
+    <EmbeddedResource Remove="GhComponents\NewFolder\**" />
+    <None Remove="GhComponents\NewFolder\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Grasshopper" Version="7.34.23267.11001" IncludeAssets="compile;build" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Fab.Core\Fab.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+    
+  <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+	  <StartArguments>/nosplash /runscript="-grasshopper editor load document open C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\240619_DigitalFUTURES_TestFile.gh _enter" "C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\240512_DigitalFUTURES_TestFile.3dm" </StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+
+</Project>

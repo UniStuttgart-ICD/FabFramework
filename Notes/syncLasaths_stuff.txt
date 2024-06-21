@@ -1,0 +1,16 @@
+C:\ICD_Projects\GitHub\FabFramework\FabFramework\Fab.Grasshopper\bin\Debug\net48\
+
+
+gh error keeps coming
+	- Debug folder also includes LCRL.dll --> duplicate LCRL.dll files (one is also in gh-library folder)
+	- solution: remove LCRL.dll from gh-library folder
+how can I internalize cassettes
+	- could not make .json file to read
+how can I still link all the information of the bottom plate to the FabElement?
+
+Object Browser to find all the namespaces of a project
+
+Copy $C:\ICD_Projects\GitHub\FabFramework\FabFramework\Fab.Grasshopper\bin\Debug\net48\Fab.Grasshopper.pdb C:\Users\opgenorth\AppData\Roaming\Grasshopper\Libraries
+Copy $C:\ICD_Projects\GitHub\FabFramework\FabFramework\Fab.Grasshopper\bin\Debug\net48\Fab.Grasshopper.gha C:\Users\opgenorth\AppData\Roaming\Grasshopper\Libraries
+Copy $C:\ICD_Projects\GitHub\FabFramework\FabFramework\Fab.Grasshopper\bin\Debug\net48\Fab.Core.dll C:\Users\opgenorth\AppData\Roaming\Grasshopper\Libraries
+Copy $C:\ICD_Projects\GitHub\FabFramework\FabFramework\Fab.Grasshopper\bin\Debug\net48\Fab.Core.pdb C:\Users\opgenorth\AppData\Roaming\Grasshopper\Libraries
