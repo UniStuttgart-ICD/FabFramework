@@ -173,6 +173,36 @@ namespace Fab.Grasshopper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_AttachFabTask_hammer {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_AttachFabTask_hammer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_ChangeToolGenerator {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_ChangeToolGenerator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_ChangeToolGenerator1 {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_ChangeToolGenerator1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FabFramework_Icon_Collection {
             get {
                 object obj = ResourceManager.GetObject("FabFramework_Icon_Collection", resourceCulture);
@@ -233,9 +263,19 @@ namespace Fab.Grasshopper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FabFramework_Icon_DipWater {
+        internal static System.Drawing.Bitmap FabFramework_Icon_DipWaterBeam {
             get {
-                object obj = ResourceManager.GetObject("FabFramework_Icon_DipWater", resourceCulture);
+                object obj = ResourceManager.GetObject("FabFramework_Icon_DipWaterBeam", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_DipWaterPaper {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_DipWaterPaper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +383,16 @@ namespace Fab.Grasshopper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_SortByZ_Height1 {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_SortByZ_Height1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FabFramework_Icon_StaticEnv {
             get {
                 object obj = ResourceManager.GetObject("FabFramework_Icon_StaticEnv", resourceCulture);
@@ -356,6 +406,16 @@ namespace Fab.Grasshopper.Properties {
         internal static System.Drawing.Bitmap FabFramework_Icon_Tool {
             get {
                 object obj = ResourceManager.GetObject("FabFramework_Icon_Tool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FabFramework_Icon_TravelGenerator {
+            get {
+                object obj = ResourceManager.GetObject("FabFramework_Icon_TravelGenerator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

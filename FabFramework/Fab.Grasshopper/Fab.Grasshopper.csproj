@@ -10,13 +10,7 @@
     <Authors>$(NilsOpgenorth)</Authors>
     <Company>$(ICD)</Company>
     <UserSecretsId>b168538b-afd9-4ec8-9b2b-5479c1fac45e</UserSecretsId>
-  </PropertyGroup>
-	
-  <ItemGroup>
-    <Compile Remove="GhComponents\NewFolder\**" />
-    <EmbeddedResource Remove="GhComponents\NewFolder\**" />
-    <None Remove="GhComponents\NewFolder\**" />
-  </ItemGroup> 
+  </PropertyGroup> 
   
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="7.34.23267.11001" IncludeAssets="compile;build" />
@@ -56,7 +50,7 @@
     
   <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
     <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
-	  <StartArguments>/nosplash /runscript="-grasshopper editor load document open C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\240619_DigitalFUTURES_TestFile.gh _enter" "C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\240512_DigitalFUTURES_TestFile.3dm" </StartArguments>
+	  <StartArguments>/nosplash /runscript="-grasshopper editor load document open C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_FullFabrication.gh _enter" "C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_SetupRobot.3dm" </StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
 

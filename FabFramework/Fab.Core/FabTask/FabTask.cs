@@ -501,7 +501,32 @@ namespace Fab.Core.FabTask
             return HasTools() ? Tools.Values.FirstOrDefault()?.Name : null;
         }
 
+        public static bool SetToolChangeTask(
+        FabTask toolChangeTask,
+        Fab.Core.FabEnvironment.Action toolChange,
+        FabTask priorTask)
+        {
+            var priorStaticEnvVar = priorTask.StaticEnvs.FirstOrDefault();
+            StaticEnv priorStaticEnv = priorStaticEnvVar.Value;
 
+            //StaticEnvs
+            toolChangeTask.StaticEnvs[priorStaticEnv.Name] = priorStaticEnv;
+
+            //Action
+            toolChangeTask.Action[toolChange.Name] = toolChange;
+
+            //Actor
+            var priorActorVar = priorTask.Actors.FirstOrDefault();
+            Actor priorActor = priorActorVar.Value;
+            toolChangeTask.Actors[priorActor.Name] = priorActor;
+
+            //Tool
+            var priorToolVar = priorTask.Tools.FirstOrDefault();
+            Tool priorTool = priorToolVar.Value;
+            toolChangeTask.Tools[priorTool.Name] = priorTool;
+
+            return true;
+        }
     }
 
 }

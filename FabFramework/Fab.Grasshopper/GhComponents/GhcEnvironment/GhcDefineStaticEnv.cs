@@ -102,8 +102,8 @@ namespace Fab.Grasshopper.GhComponents.GhcEnvironment
                 staticEnv.SafePosition = new List<Plane>();
 
                 Plane safePosition = iAlignPln[0].Clone(); ;
-                //move plane up by 400
-                safePosition.Origin = safePosition.Origin + safePosition.ZAxis * 400;
+                //move plane up by 800
+                safePosition.Origin = safePosition.Origin + safePosition.ZAxis * 800;
 
                 staticEnv.SafePosition.Add(safePosition);
             }

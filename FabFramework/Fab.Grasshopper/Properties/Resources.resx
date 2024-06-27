@@ -151,6 +151,15 @@
   <data name="FabFramework_Icon_Actor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_Actor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FabFramework_Icon_AttachFabTask_hammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_AttachFabTask_hammer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FabFramework_Icon_ChangeToolGenerator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_ChangeToolGenerator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FabFramework_Icon_ChangeToolGenerator1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_ChangeToolGenerator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FabFramework_Icon_Collection" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_Collection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -169,8 +178,11 @@
   <data name="FabFramework_Icon_CreateFabTaskFrame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_CreateFabTaskFrame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FabFramework_Icon_DipWater" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FabFramework_Icon_DipWater.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FabFramework_Icon_DipWaterBeam" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_DipWaterBeam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FabFramework_Icon_DipWaterPaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_DipWaterPaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FabFramework_Icon_Endeffector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_Endeffector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,11 +214,17 @@
   <data name="FabFramework_Icon_SortByZ_Height" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_SortByZ-Height.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FabFramework_Icon_SortByZ_Height1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_SortByZ-Height.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FabFramework_Icon_StaticEnv" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_StaticEnv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FabFramework_Icon_Tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_Icon_Tool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FabFramework_Icon_TravelGenerator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FabFramework_Icon_TravelGenerator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FabFramework_SearchByName" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FabFramework_SearchByName.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -1,10 +1,13 @@
 ﻿using Fab.Core.FabElement;
 using Fab.Core.FabEnvironment;
 using Fab.Core.FabUtilities;
+using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using static Rhino.UI.Controls.CollapsibleSectionImpl;
 
 namespace Fab.Core.FabTask
 {
@@ -428,6 +431,103 @@ namespace Fab.Core.FabTask
             //Add To FabTaskSequence
             FabCollection.FabCollection fabCollection = FabCollection.FabCollection.GetFabCollection();
             fabCollection.AddToFabTaskSequence(fabElement.Name, dipAction.Name);
+
+            return true;
+        }
+
+
+        public static bool SetTravelTaskSafePositions(
+       FabTaskFrame travelTask,
+       Fab.Core.FabEnvironment.Action travelAction,
+        FabTask priorTask, FabTask nextTask,
+        bool pickOptimalZ = false, double optimalZ = 0.0)
+        {
+            var priorStaticEnvVar = priorTask.StaticEnvs.FirstOrDefault();
+            StaticEnv priorStaticEnv = priorStaticEnvVar.Value;
+
+            var nextStaticEnvVar = nextTask.StaticEnvs.FirstOrDefault();
+            StaticEnv nextStaticEnv = nextStaticEnvVar.Value;
+
+
+            //Add travel planes
+            List<Rhino.Geometry.Plane> travelPlanes = new List<Rhino.Geometry.Plane>();
+            if (pickOptimalZ == true)
+            {
+
+                //check if priorTask is FabTaskFrame
+                if (nextTask is FabTaskFrame)
+                {
+                    FabTaskFrame nextTaskFrame = nextTask as FabTaskFrame;
+                    Plane firstFrame = nextTaskFrame.Main_Frames[0];
+                    Plane firstFrameOptimalZ = firstFrame.Clone();
+                    firstFrameOptimalZ.Origin = firstFrame.Origin + optimalZ * firstFrame.ZAxis;
+
+                    //check closest Frame between firstFrame and nextStaticEnv.SafePosition
+                    Plane closestPlane = nextStaticEnv.SafePosition[0];
+                    foreach (Plane plane in nextStaticEnv.SafePosition)
+                    {
+                        if (plane.Origin.DistanceTo(firstFrameOptimalZ.Origin) < closestPlane.Origin.DistanceTo(firstFrameOptimalZ.Origin))
+                        {
+                            closestPlane = plane;
+                        }
+                    }
+                    travelPlanes.Add(closestPlane);
+                }
+                else
+                {
+                    travelPlanes.Add(nextStaticEnv.SafePosition[0]);
+                }
+            }
+            else
+            {
+                travelPlanes.Add(nextStaticEnv.SafePosition[0]);
+            }
+
+            travelTask.AddMainFrames(travelPlanes);
+
+            //check for linearAxis of actor
+            var nextTaskkActorVar = priorTask.Actors.FirstOrDefault();
+            Actor nextTaskActor = nextTaskkActorVar.Value;
+
+            //Add E1
+            if (nextTaskActor.LinearAxis != null)
+            {
+                foreach (Rhino.Geometry.Plane travelPlane in travelPlanes)
+                {
+                    double travelLinAxisValue = FabUtilities.FabUtilities.GetLinAxisRadiusBased(travelPlane, nextTaskActor.LinearAxis);
+
+                    travelTask.AddMainExternalValues("E1", travelLinAxisValue);
+                }
+            }
+
+            //Associate item
+            if (priorTask.FabElementsName.Count > 0)
+            {
+                foreach (string fabElementName in priorTask.FabElementsName)
+                {
+                    FabElement.FabElement fabElement = FabCollection.FabCollection.GetFabCollection().fabElementCollection[fabElementName];
+
+                    travelTask.AssociateElement(fabElement);
+                }
+            }
+
+            //StaticEnvs
+            travelTask.StaticEnvs[priorStaticEnv.Name] = priorStaticEnv;
+            travelTask.StaticEnvs[nextStaticEnv.Name] = nextStaticEnv;
+
+            //Action
+            travelTask.Action[travelAction.Name] = travelAction;
+
+            //Actor
+            var priorActorVar = priorTask.Actors.FirstOrDefault();
+            Actor priorActor = priorActorVar.Value;
+            travelTask.Actors[priorActor.Name] = priorActor;
+
+            //Tool
+            var priorToolVar = priorTask.Tools.FirstOrDefault();
+            Tool priorTool = priorToolVar.Value;
+            travelTask.Tools[priorTool.Name] = priorTool;
+
 
             return true;
         }
