@@ -504,8 +504,9 @@ namespace Fab.Core.FabTask
         public static bool SetToolChangeTask(
         FabTask toolChangeTask,
         Fab.Core.FabEnvironment.Action toolChange,
-        FabTask priorTask)
+        FabTask priorTask, FabTask currentTask)
         {
+            //add nextTask and get this tool Number!!!!!!!
             var priorStaticEnvVar = priorTask.StaticEnvs.FirstOrDefault();
             StaticEnv priorStaticEnv = priorStaticEnvVar.Value;
 
@@ -521,9 +522,9 @@ namespace Fab.Core.FabTask
             toolChangeTask.Actors[priorActor.Name] = priorActor;
 
             //Tool
-            var priorToolVar = priorTask.Tools.FirstOrDefault();
-            Tool priorTool = priorToolVar.Value;
-            toolChangeTask.Tools[priorTool.Name] = priorTool;
+            var currentToolVar = currentTask.Tools.FirstOrDefault();
+            Tool currentTool = currentToolVar.Value;
+            toolChangeTask.Tools[currentTool.Name] = currentTool;
 
             return true;
         }

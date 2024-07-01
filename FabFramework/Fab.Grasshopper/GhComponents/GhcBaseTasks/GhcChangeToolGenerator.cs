@@ -111,7 +111,7 @@ namespace Fab.Grasshopper.GhComponents.GhcBaseTasks
 
                     // Create Travel Task
                     FabTask toolChangeTask = new FabTask(changeToolName);
-                    FabTask.SetToolChangeTask(toolChangeTask, iToolChangeAction, priorTask);
+                    FabTask.SetToolChangeTask(toolChangeTask, iToolChangeAction, priorTask, currentTask); //add current task
 
                     sequencedFabTasks.Add(toolChangeTask);               
                 }

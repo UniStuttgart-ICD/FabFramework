@@ -1085,6 +1085,8 @@ namespace Fab.Core.FabUtilities
             // Final linear axis value
             double linAxisValue = tClosestPoint * crvAxis.GetLength();
 
+            linAxisValue -= 600;
+
             return linAxisValue;
         }
 
