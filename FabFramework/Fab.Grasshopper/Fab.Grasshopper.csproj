@@ -50,7 +50,7 @@
     
   <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
     <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
-	  <StartArguments>/nosplash /runscript="-grasshopper editor load document open C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_FullFabrication.gh _enter" "C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_SetupRobot.3dm" </StartArguments>
+	  <StartArguments>/nosplash /runscript="-grasshopper editor load document open C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_SetupRobot_0702.gh _enter" "C:\ICD_Projects\GitHub\FabFramework\ExampleFiles\DigitalFUTURES\DigitalFUTURES_SetupRobot_0702.3dm" </StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
 

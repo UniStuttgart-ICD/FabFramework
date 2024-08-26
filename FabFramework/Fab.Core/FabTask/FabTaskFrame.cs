@@ -414,13 +414,13 @@ namespace Fab.Core.FabTask
 
             dipFrameTask.AssociateElement(fabElement);
 
-            dipFrameTask.StaticEnvs[fabElement.EnvMag.Name] = fabElement.EnvMag;
-
             dipFrameTask.Action[dipAction.Name] = dipAction;
 
             dipFrameTask.Actors[actor.Name] = actor;
 
             dipFrameTask.Tools[endeffector.Name] = endeffector;
+
+            dipFrameTask.StaticEnvs[staticEnv.Name] = staticEnv;
 
             if (offsetDipList != null)
             {
@@ -442,8 +442,6 @@ namespace Fab.Core.FabTask
         FabTask priorTask, FabTask nextTask,
         bool pickOptimalZ = false, double optimalZ = 0.0)
         {
-            var priorStaticEnvVar = priorTask.StaticEnvs.FirstOrDefault();
-            StaticEnv priorStaticEnv = priorStaticEnvVar.Value;
 
             var nextStaticEnvVar = nextTask.StaticEnvs.FirstOrDefault();
             StaticEnv nextStaticEnv = nextStaticEnvVar.Value;
@@ -512,7 +510,6 @@ namespace Fab.Core.FabTask
             }
 
             //StaticEnvs
-            travelTask.StaticEnvs[priorStaticEnv.Name] = priorStaticEnv;
             travelTask.StaticEnvs[nextStaticEnv.Name] = nextStaticEnv;
 
             //Action
