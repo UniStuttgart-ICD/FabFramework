@@ -3,3 +3,5 @@ FabFramework is designed around a Task-Based Fabrication methodology, which tran
 The framework begins with the Design layer, where the user design model is converted into a model consisting of beams and plates with defined geometric attributes. The Fab layer builds on this by adjusting these elements to fit specific fabrication requirements, such as positioning, assembly sequence, and alignment within the robotic workspace. This layer also accommodates unique connection methods and robotic adjustments. Finally, the Task layer sequences the robot’s actions—like picking, placing, and tool changes—to streamline assembly, with frame-based tasks for precise movements and non-frame-based tasks for simpler actions.
 
 FabFramework is setup to be integrated with the ICD Virtual Robot Grasshopper Plugin, allowing users to simulate and verify the entire fabrication process digitally before fabrication. (2024-11-26) 
+
+Opgenorth, Nils, 2024, "FabFramework.Core: Task-Based Robotic Fabrication Framework", https://doi.org/10.18419/DARUS-4600, DaRUS, V1 
