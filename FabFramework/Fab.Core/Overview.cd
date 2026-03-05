@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fab.Core.FabUtilities.FabUtilities" Collapsed="true">
+    <Position X="19.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gUoACAAcAKQgEhAAAAAAAAgGFAABAQAAgAEVAhEClhA=</HashCode>
+      <FileName>FabUtilities\FabUtilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabUtilities.FabUtilitiesBeam" Collapsed="true">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAIIAAAAgAAAEAQEAAAAIEAAAAAAAAAA=</HashCode>
+      <FileName>FabUtilities\FabUtilitiesBeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabUtilities.FabUtilitiesElement" Collapsed="true">
+    <Position X="17.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgBAAAAAAAAAAAAACAAAAAAAAAAAAACA=</HashCode>
+      <FileName>FabUtilities\FabUtilitiesElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabUtilities.FabUtilitiesPlate" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgCAAAAAAAAAAAIABAAAAAAAQA=</HashCode>
+      <FileName>FabUtilities\FabUtilitiesPlate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabTask.FabTask">
+    <Position X="8.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiCBgBCAAgEgAAkAIAAABQECEBEhAJAQJAAABBCgjQ=</HashCode>
+      <FileName>FabTask\FabTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabTask.FabTaskFrame">
+    <Position X="8.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FBCAIAAiBAAAAACAAgIhAQABBEAIAQFEAAQBBAwUiAA=</HashCode>
+      <FileName>FabTask\FabTaskFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.Tool">
+    <Position X="5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCCAAAAIABAACAAQCAAAAQAAAAEAAAQAIAAEAAAggA=</HashCode>
+      <FileName>FabEnvironment\Tool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.Action" Collapsed="true">
+    <Position X="16" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAFAQAAAQEAACAAAAA=</HashCode>
+      <FileName>FabEnvironment\Action.cs</FileName>
+      <NewMemberFileName>FabEnvironment\Actor.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.Cutter">
+    <Position X="6" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAwEAAAEBAAAAAAAEAAAABAAAAAAA=</HashCode>
+      <FileName>FabEnvironment\Cutter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.Endeffector">
+    <Position X="3.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAQAAgAEAAAEAABABAAAQAAAAAAEAAAABAAAA=</HashCode>
+      <FileName>FabEnvironment\Endeffector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.FabEnv" Collapsed="true">
+    <Position X="17.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAIAAAAAAAEBAAABAQAAAAAAAAAA=</HashCode>
+      <FileName>FabEnvironment\FabEnv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabEnvironment.StaticEnv" Collapsed="true">
+    <Position X="16" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAABCAAAAwAUEAAAFRAACAEAAAAAIEAAAABgAA=</HashCode>
+      <FileName>FabEnvironment\StaticEnv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabElement.FabPlate" Collapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAgAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FabElement\FabPlate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabElement.FabBeam" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAggAgAAAAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FabElement\FabBeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabElement.FabComponent" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEkAwAAACAAAABMAAAAAAAACAAAAAQBAAEAAAgBAAA=</HashCode>
+      <FileName>FabElement\FabComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.FabElement.FabElement" Collapsed="true">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECDIw4RAAhKAQQeAAAAEAQAAAAEAgAyQBMAEBABggE=</HashCode>
+      <FileName>FabElement\FabElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.DesignElement.DesignBeam" Collapsed="true">
+    <Position X="5.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAQAAAAEAIAAAACAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>DesignElementV2\DesignBeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.DesignElement.DesignComponent" Collapsed="true">
+    <Position X="1.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAABEAAAQAIABAAAAAAAAEACQABAAAA=</HashCode>
+      <FileName>DesignElementV2\DesignComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.DesignElement.DesignElement" Collapsed="true">
+    <Position X="3.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAQRAAAAAQFQEAAAERRACAFExAgQVNQAAABwgA=</HashCode>
+      <FileName>DesignElementV2\DesignElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fab.Core.DesignElement.DesignPlate" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DesignElementV2\DesignPlate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

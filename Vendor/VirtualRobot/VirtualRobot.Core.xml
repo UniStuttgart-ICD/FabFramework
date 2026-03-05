@@ -1,0 +1,706 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualRobot.Core</name>
+    </assembly>
+    <members>
+        <member name="M:ICD.VirtualRobot.Core.NonSphericalWrist6AxisRobot.ComputePoseFromAxisValues(System.Collections.Generic.List{System.Double},Rhino.Geometry.Plane@)">
+            <summary>Apply forward kinematics (FK) to compute the robot pose based on the input axis values</summary>
+            <param name="axisValues">Axis values</param>
+            <param name="tcpFrame">The resulting TCP frame</param>
+            <returns>The pose geometry of the robot </returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.NonSphericalWrist6AxisRobot.ComputeAxisValuesFromTargetTcpFrame(Rhino.Geometry.Plane,System.Collections.Generic.List{System.Boolean})">
+            <summary>Compute the axis values that result in the robot reaching the input target TCP frame (Inverse Kinematics)</summary>
+            <param name="targetTcpFrame">The target TCP frame that the robot is trying to reach</param>
+            <param name="robotFrame">The frame that describes the position and orientation of the base of the robot.</param>
+            <param name="axisToggles">Three boolean values that toggle the flipping of the robot shoulder, elbow and wrist</param>
+            <returns>The robot geometries</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.NonSphericalWrist6AxisRobot.Create_UR10">
+            <summary>Create a UR10 robot object with built-in values</summary>
+            <returns>The UR Robot object that describe the UR10 model</returns>
+        </member>
+        <member name="T:ICD.VirtualRobot.Core.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Geometry_End_Effector_Fibre_Placement_00">
+            <summary>
+              Looks up a localized string similar to nJpnUBXb1q47rY4LcxazYkKSIirJnHMOKKIiKioIAqIIKoo5YMBA2uaEgBFQBAyYUDGjiIBEFQEFySDfO3vvuvVV3R+36vrUXOMZY47u0at7tWfvcw5FUxRVjz8kkj9aBh/Tpi5bvtppmNOqVU6r9TvOtHdxXe602tLUwNigrxH+GBj31+84zG3lWjcXe8vV9m5rXexW6nec7LZo5fLF4+w9pzs52qPb1MRkgLH9QLPFZqampn2NNGRCU/XEBqPsnVbZr3XxNJhg77qMQ11w/3eGbOeyeNlyd/u+S1ZJTs72q1e7uSxy5ZbYrbUjTaIoMuTyGnWnKHKUlMhoJRbSkHyEplEUU+3DUEchNfUM1QzFnHcpE0d9f9s4Ppdq5Et3/tUnpq1NLfYc0WN6SEtRdhJFvWnXN+RuZW79/2+k/q8/m6z/14r/X+v/Vf8v/+8Po37SiAzFYtGAozRwluIROUAqJBcokZJUZDjJhP9zFhEoqJNdLaVDNQANqUZUY6DF [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Geometry_End_Effector_Spindle_00">
+            <summary>
+              Looks up a localized string similar to nL15vI112/7PtrDY27bNU0mGROahECopRaNSEooSypShSKXSqHme5xmNNEilUkIqKk0qpZEGmmnyO47nen9e6/zef/7u1+v9fI7jOK+19nld12dYPff93E+58uXKlduuf3n0v0qK9D+OGDhm7ISJ+04cP37ihDZNjho1ecrYiRN6dW3XsV3nDvpXu467t2my77RxU6dNHtVrwqhpUyePGNemyWHTRo4be8KAUTOOnHjKKF3dtVOnbh1Hdd/jhD26du3auUNF/4Va//fF7fqNmjh+1NTJM9odPGrKmJzyyqdlf6PqiMknjBl72qjOJ46vMnHSqAkTpk0eOSV34oipI3xRPp8vcntlLcuV86eqvFZUUqWCRHX/j3JFbcsV/TWrqNzW8m3L/b29qFxtZV+998Eh/Ta+W2PJ1+XKZpdvuqXtokZD/1Ftla7puuvN5ct16Fq+3Ds7dr7jha1fb///O5b7n3+9fculS4fNXv6K9d+9F/V58btlfQ6cXrdvuXLn [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_DKP_A0_00">
+            <summary>
+              Looks up a localized string similar to XJ1zvBxZ17ZL3V1d1d1VJ7Zt27Zt27Z9kpzYycTGxLZt28bEznvtffLH83tz/Vbd97rX2ru6k3lnJs83M5+iKoryhx9CxY+AxqNqlVatO3Qs2rF9+44d0iWq0bxL19YdO+TPniFzhqyZ+JEhc450iYp2b9ete5fm+Ts0796tS+N26RJV6t6kXeumZZv3rtaxbXO2s2fJkitz89w5m+bMnj171kwe8Yao8uIMJZt3bN+8W5feGco379rKIPf1iHyH1bhL01atezTP2qy9v2On5h06dO/SpKvRrHG3xmLJNE1NfDw3paKIU/7DWsCvYxzxyPVMU7TvAzUlE+bHH02JRvjo0tUKJZ9fDNv7WHGHqknepd8et95PZk2eaEr2q7EUpQRbncLbPf0ZeFow6f4XQ7LnfFrw3T1txYCzxwq23TwzvfbxeMHYj77fblSjVKHebZPmT/SwcqGxRY7OcNbW3Vdu79eC1xvV2jf/8fRce+/mKDQoTrcjG1qnKXT/98CD [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_DKP_A1_00">
+            <summary>
+              Looks up a localized string similar to lLh5XE3h9/e9h7N3yRCKKAohpBJKc4hCNBgqmidpVmmgCUlzqaikQYYKDaRBaaBRmqR51qDSPM/Dvfb5fl/3736e1/3H85z3a13rsz5rXdfe55w6chAUQZBVeFCZeqzDYLly+ZaxhaWMpbm5pcXhXSqG1jbGlhaSQvyC/MeOwINfUPjwLhlbszu21oaSFoa2d6x1zQ7vUrLVMzPWlze8e9XS1BCmhY4eFRE0FD2hf0JISOjYEYK6Agv9YH45Q0tzwzvWd/kvGdrcooHPYPefazDpWuvfMrYzPGZgvsbytqGFha21ng3NQPeOLjXEyMiIUbe3kQdBqF1rirB1a3AQzNRiEo8g2IIrhuiBWFzFEFYwe2obFOT+1WzK+4tsdEP3jPFlcmgsQe9pLIIILZAIkk9D/veDW+zCBt/dedJD222tOU/2S3/xzJq/IzAkXRKXvUG40vrkgY03X+TteXASSU6K9t9+6mR73XSNYIHVyY3jnEpBIxYn6YectDz5Pf96 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_DKP_A2_00">
+            <summary>
+              Looks up a localized string similar to rLh5OJRx1P9/L1PapFJJtkqohJB9mUpSSSoVsoUke8i+VRKytdspErIn+zJlLzIk+zLZ931fht+ZeZ7nep7n972u71/feV2f836fcz73ucd9z4wBQREE2YAHTWmPHRgEtRsPTCytFKwsLKwsTx66bWRja2JlKScmKCwoegoegsLiJw8p2Jk/srMxkrM0sntko29+8tA1OwNzE0NlI6ebVmZGsFtMRERS2EhKwlBCTExM9NQm2hmY6YMFlYysLIwe2TgJqhjZPiBAncH+P86xTd/G8IGJvZHoPYutVg+NLC3tbAxsCff0H+nTNm3ZsgWjPb1dfAhCO2prObZjKw6GiRbmtBEEW/HAkDEwqxsYsheKfX+bryoNN+wm9SO7PNEjUwJ5bNpr0OPUQhCxlzCkDAb2mJGD24bqiHNts3Hign1Epgt7LOPfUYj5cQG8bJmjxJ3FdmEWZ8y/i/6HnqFfqHTz7/h/6Bl2et31DIGeu54xwQ1K8cdGpch36fNWuIHC [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A0_00">
+            <summary>
+              Looks up a localized string similar to pJt5NFbv1//PfO5SGiiV5klFSWWemjVSqSRFEUKahJRoHkkjRdGsQQlN5iRUkiaRRBEqZUxmnvd1+qz1e9bz789r7Wu/93vv6zrnPvdt4fv9RNEURXXgi2Ty1YXBYr5ordP6DdM2uLpuWK82eKn9ZjenDesNNcdpjJs4Hl/jNLTUBk9zX7fFfbO94Xp79y2bV69TG7zA3Xadk91ce6/FG1zsMa05YYKOhr2utp22pqbmxPE8uYKCdPA4E/sNrvZbNnuNm2/vtpaDL3r8u0bn1Zvt1jp52E9c49ppw0b79evdN9u6cWtWb1lNhmQyGUNur7sKRZFdndKYLp1YiG5kaZpFU0yzL0PVQLR0MJQizG/vc01NfrzrkVxKdd9DD60eG6u8ohW9+9spSnODjKKmitT/+ao2/v+rKeqUbGrqn+QPT4h+ejJn6sXnb6Y6OuyeRlE7jf9XJP+v+D/ef1/MfysPRKqTlHlk8iUHpyvoRvWUXEVET6BI9Zbq3uj/y12h [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A1_00">
+            <summary>
+              Looks up a localized string similar to pJp3PNbfG//f87ayZWRHoWSVmdmgKDSQFNmUIrKiECkV0rBHpaIkpOwtI1kpozLSICSrkPm73vfn+8fv8fv35/k553pd17nOdc7d++1z37f3QVAEQVbhh7LUzxoMukMHXVzPuO90P33a/YysmLmjp5er+xktZTlFua0K8COnqCIrttPb7Zy3p6PWGUfvc562brJipt52bq72Ro7+h91POUK2spKSmqKjuqq9qrKy8lYFklqBm15YzsDR/bTjOU9/uf2OXi4ExBl8/luD2dbT3sXVx3Grw2kmdw/HM2e8Pe28CAfbc7ZUEiMjI0Ztj0MKQahZTHXYGiYcBDvV2fGgCLYQhCFHQSyuYggPBL9/6DY2GHnPWfkD4QhF109uKRY8tgRjUYEIoqxMQ5BQEvl/fiZ1/v98BNn28HPN20vMtf2rR3Y6MZE7Dywy7syTmdmJIME6/1er/L/a/xP73w/2v55EGBFmUIwAAmoNwoZwQJwLIMFyADwIH0TZIILRLR8o [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A2_00">
+            <summary>
+              Looks up a localized string similar to pJx3XI9d3Mevda5zDZKIskcyKiuRSHb2FskqslVGRELJjiSbrKwbKZKEjGySvWdCdiFbPJ9z+ON5Pf8+vV/nfD/feZ3ryq/fj9tNEAVB+IMvZtlXEQlbzx4jRgYEtgocOzYwwLGSl//4CSMDA9xdater7VwXX7XrNXSs1Cp4zMTg8f7uAf7BE8f7jnGs1C3Yb8zIIR39p/QKHO2Papf69V3r+TduNKSRi4uLc13CrlCCD67t6R841n/i+Cm1O/tPGKEgTif9vYbhO37IiJGT/J2HjtUDg/wDAoLH+01QhvpO9GVFmqZJ7HiW1QWBdemnpSK6DFGMbdMUSZB+zJCEiRA//0hCSQSf3bjdxfPV9eLHnguWs8Qq+U5pZfv/Qq7Ma0FwSTUFobQh/J+vfI//ny8I9p9DM/Qi9zKKiOtaNX2c3bK9+LjluS8RrQVhpsf/Wsf+1/o/sX9f0r+dAMpuGODM3BegisIvKhQTrABTf62VYA1shXLoodgFbisKVXjc [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A2_01">
+            <summary>
+              Looks up a localized string similar to zLsJPFfP//d9zpGQrVKWsguVpST79rFk3/fsu+zJml2KsoYiZc1aIYVky6eUyFqyZymECMmS/ZrP8fvqf/1/t66f/tfjvm+vx3xmzvPMmTPnzPaemQOCIQjaBH84H/dHgoAfLc0Lds4u0i5OTi7OnIy61pfc7Fycxfi4ebh5T4M/bh5+TkZpD0d3j0vWYs7WHu6XzB05GdU9LBztLJWsL2u7OFiD2HxnzgjyWAsJWArw8fHxnsbH3YECTZhbztrFydr90mVuFWu3C3sAJ/Dcusc+80uWF+w8rXmtnIhcLlo7O3tcsnDbY2Xubo6LREhIiOCyt58dgnBXEb1BSIjwQIAc9xNwDYKQlUAE8gSB1U0EOgTgyMcuVbmJ9gM1o9D+EJh5lqv8qNEaOPdKEIL4DoHLPv7z4Nt/sxL/s2MIIjOzeAVDcO1Vo0np91mlUjA0K3WQPUgGgoIk/our+S/uv7F//SH/+t0DEUCE0D6IFIIhcuggRAYRg6ejgiig/dBh [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A3_00">
+            <summary>
+              Looks up a localized string similar to pLh3PFd/+P9/VmkYSRkR2maSFFktoUJTiGRTRsgqo8jK3rJJkozsHZnZlJA9kuxR2eN3ndf787vdPt/vv1/3ntf1uMbz+TzOOb2c80JQBEE24Yf05A81BubWTQNDE9OLpsbGpiZ8nEq65haGpiYSwscFjwudgJ/jgqf5OC9aGj2xNNeVMNG1fGKuacTHed1Sy8hQ+6qu7W3TR7rQLXzypIigrugZ7TPCwsJCJ7aQOzBQFj4uo2tqrPvE3Pa4vK6FAQF5Kqv/9tihaa5tYGilK6RjvN30sa6JiaW5lgWho/lEk2zatm0bRh7ermMIQs7aXoVRb8dB0JEm9CuCYCuOGOILYnUTQ/ZA8mdbh4LM2Df60hFklzN6cJa/gFVtDWpZKggiPAGLbODI//UzK/X/FiMIiiiUo4hb+Wa/2iUUob0I+oK2n/MlBHku9b9G6f8a/0fu/78WCPY/lqD8ulTIdtA7wVIBNAgdQg/QwO/JCJoZ7B5gH8KGsANsCCdyCPw+ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A4_00">
+            <summary>
+              Looks up a localized string similar to pJt3PFbvH//PPueuUEikJEVaRoNkVTQ0aJeWhkJGQ/ZqiSQNSoMk7aUiFNKikoxUdilJpUVCpH6vcz7fP36P37+/no/rer/e47rOda77OO7c5yZIgiD+4Z9oxX89KHTz5jq7eGyw2uDuvsFjhObCtZs9XTZ4mI/VM9QbbYB/eoZGIzStvNy2eG1ea+6x1mvL5lVuIzRne612c1kzY63f/A2ua1E9dtSocYZrTYzXGI8dO3a0ASseQUmaWG/q2g3ua7ds9tObtdbTmUGc9/7vGN1WbV7j7OK9drSju2zDxrUeHl6bV3syjqu2rBKLBEGgxOX1HEIQ4ihZLtVDRkMoiN36vSRBdYRQxGqIzn8UoYzg+xdltlM/lfbKqSd67iC1foy8pb7sD3Jbkwli7CgZQZzhif/n3w/L/z+fICb+o60S5Dbc3/h2vbXq8V7WerTHJPLuDmuC2Gr5f7Wc/6v9P7H//aOkniY4ICN6ENK5wsqAEiFH9CT6EOqEBjGQGEwM [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A4_01">
+            <summary>
+              Looks up a localized string similar to 7ZgJNNTt28fHGrKVvUeRNUskKbtRdkZ2WbLvYuzZRfaskawhRdYIoc1kSbIXCtlCsmTfsuS9x/PIc3in98zznPf/nvec+Z4zZubz+7nnuq/ruq/7vn4QLAgEsg2EfEeKGBv8UVezsraHX4Lb2cHtuRm1zJ2creH2YgI8fDz8Z4B4+M5zM15yvebi6mQuZm/u6uJkfI2bUcXV5Jq1qaK5hwbc1hzcLXD2rCCfudAF0wsCAgL8Z/CQv0CxMzCPrDncztzFyYMHZu5shQv4Ibc/f4PI2MnUytrNnN/MjhDuYG5v7+pk4oxrZuxijLyJgIAAG2keOTsEgvwvwnpsYkIc8IEM+YcVUOx1P2zIcfBhYxsbQgngaOdHZdmJD0eqxyDkN7GY5k5X/aG/Ca7hkEIgAtvgBlfIfs1J/LvvEMjQ9LtL+pCAGlIrN6mYMIhU01XbGmU8LykI5IbE317Vf3vtY39pJyg4+PiE+Dg4xGRHj1IRHz2KT0hL9QfhiRM4JwgJ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A5_00">
+            <summary>
+              Looks up a localized string similar to 7boJPBbf+/9/zq2NSKHslOzKLmS7pYUWoVKSbEkpFBEqa5vKUpIlkVQqqbQiy91Cq1SylUJEiYSypfyumd6i+918ffp+v4////d4/O7rZe5zneecOTNz5jhznZlBGCHUD0akhHHS4GeJxbr1bu5G7q6u7m7TJls6eXiud3fT01BUUVRTBlNUmTFtspHXxi1eHk56bk5eWzzsN06bbOblsHG94wIn36XuG5ygtIaqqpaKk7amo6aGhoaa8khiD7xkxYrznNxdnbZ4+CoucvJcNwL4aO+f++Cw93Bct97bSW2NK7v7Jic3Ny8PB88Ra+y32BOFxowZQyMOb7wMQsRW7AU0TnY2cLiJnzIbhGi9ATT0BJxv/TTEB7D+RbnpvA8lE/LfofEhWOLz9CzhVX2wLlsKIQ0tqOz+wIn/ss8G/7M8tKdBrxFGYrf7q91mK6wTmI2RyCxsFjQboUCDIUv+kOU39uuQaOQvGxoJGgMLG2gs4kRcaBwsnIgbjUcTSJ8H [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_10_R1100_A6_00">
+            <summary>
+              Looks up a localized string similar to 7b0JXA3f//g/55xrX8pWlpS1or0oS8slyU52KimSClG2SCESbQhZy74VKtqELhUpCpWKFIlCpKK0/18z3fvx6V7XvL+f3+P7+f9+j8d9vR7TeZ3nnDnnzJkzZ15n7sxEIYqimkHokJbOGP7Mmb3Sfo2TsdPq1U5rVAfMt3V2sXdaYzBSXUtdRxNEXUtXdYDxhlXrNzjbGqyx3bDe2XqV6oBZG2xW2S+baus618nRFlKP1NYepWU7Wm+Z3siRI3U029Al9GAyVje1dVptu97ZVX26rctKDvB2G1vK6GjtvGyl/UZbneWrOzittV2zZoOzjQtnufV6azpR+/btMV09aSWKorfqkIw7dyBgSNF/5I9RFK7zwJQMGPXNmOoJsDgrZ4bpp8xuCR8oaU806LtaXD+LBlg3XpOiRnLpTAglJN+N/s/i0J4hshP6UeQB2r92wjiq34RlzXh8nuv2CRS13ejfloR/W4QYXzD/LwcUU22p9qAU1RFsek1nqitoZ4pi [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A0_00">
+            <summary>
+              Looks up a localized string similar to XJt5XE3t+/33ePbZpoxlLGOmipBQilKZEoUIGZJQSbM0mTMWihBCMgsVSSqh0iQ00KBoTpIGzcNv7f15/vi+ft7Pda91rfva9z4nT+roIEiCIHrwS1DhVx8Ki4nxzl177HTtbG3t9iiNXmvp4LjLbs98NRVVlZnT8UtFdbbSaF1nGydnB8v5eyydnRy22iiNXum8zWaXxTJLt9V21paYVpsxY46q5Vx1C3U1NbWZ01nhDoPEg1UMLO1sLZ0c3FQMLR13Msg5l//do9dWB4udu1wsZ2635e32Wu7Z4+ywzZHZvtVpqzAklUop4eH1n0gQwlV8ItWHp2FkhGXlIpKg2r0pYjFMRw9FDEZYlv11hUF11oD4cqL/YXLsX+XoERs7sbdfhyTUbvEE0YsjCHtHW3rb4E/at4p/3S5Jy9UmHVQOVUSWaVvVLbHd/6BKW14x/Gbyqe1vtP6nC9R+1+w+UGr15j9doCTmTgtmib3rgtAr/d7fYjLfxSgcjvU8naZL [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A1_00">
+            <summary>
+              Looks up a localized string similar to fJ0FtBTJ1qXTKisrrS7u7u7u0jg07u7u7k7jNO7u7m6NNda4u7u7M18EzFr/zJo1fCty77PPicisutyieU3zFFVRlJ/8ECp+uBqXShWbt2jbrki7Nm3atU2bsGqTjp1atGubL1v6TOmzZORH+kzZ0yYs0qV15y4dm+Rr26RL544NWqdNWL5Lw9YtGpVu0qNyu1ZNmM6WOXPOTE1y5WiUI1u2bFkyBsQdosiD0xdv0q5Nk84de6Qv26RTc4M82PXXPewGHRs1b9G1SZbGbULt2jdp27ZLx4adjMYNOjcQQ5ZlaeLxIlIoitgVOqi5IR0TFpd/E+uK9qWfpuzBfP2pKVEJ7527WK7447OR9txXIgapiV+l2xan9jd6rxPqSrZ10RTFZOrO607HY7kXCjRr8eptps2XCtS9OdWL9HBngc11D57fOmV/AVO+M0n3ukL6Nyyo/K6N37UndG+jgsZv3TZJPaAoffdPn1atyI2GXlFF6VJk8Ya6aP8C/2Pt+R/r [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A1_01">
+            <summary>
+              Looks up a localized string similar to nPt5WI9r28aNX/N8fc0l8zxXMk8JmSmzEFLJGCEylcyhMs8i85hIIVPGZKYQEiEKZYxQ0ruf57p/2/YOv+394/V5jvPY9/04zvNqrft+1rKe+7kZlmGYYvwinfwyOBwD+o8bP9nP2W/SJL/JjaoN9pnmP95vsmNzOwe7po3xy86hRaNqzjN8p8+Y5uM42WfG9Gmevo2q9Z3h5Tveu5fP7IF+E32w3bxJk1YOPq1berds3rx508Yi+UIZ+rBdNx+/ST7Tp822c/HxHycglwP++4bmOc173PgAn6ajJ6l+U3wmT54xzctfGO053ZMsKYrCkR+vZF2GIbfURM5QeYgS5EjrwzJcQTDHpEAUFnNMWYRvHz1x7fbhYamL75iSi9gaX23PVBz+FzPBlWWau1gYxl5jmJTKTXdc+P2u+P9rZ/5vv97d+neVmb/5arWoTGemQ4Yzc2mj827FpTPDzHf6P9XF/1P9X7L/378WDPmDpX/aAIuqDsqiiK9BdTnk1ZmS [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A2_00">
+            <summary>
+              Looks up a localized string similar to XJ0DFBzLFq57Ztoz3T2xbdu2bdu2bdu2befEtm3bzvuqct9ab7351q79b9Tu6p5Ozklucq7iUxTlLx/hxSfkZ6lUsXmLtu0KtWvTpl3b1PGrNunYqUW7tnmypM2QNlN6PmkzZE0dv1CX1p27dGySp22TLp07NmidOn75Lg1bt2hUqkmPyu1aNaE7S8aM2TM0yZGtUbYsWbJkSq+JK0SSg9MWa9KuTZPOHXukLdOkU3OVvNH13zXsBh0bNW/RtUmmxm2sdu2btG3bpWPDTmrjBp0biCbTNP3ieOFkiiJ2WYf9ISuA8MSy9KFf8f/o51fmIn7+9SuRST66dLVssecXI+x7rIQH+RK+S7MjVu1f1M7d9ytZEkdUlA5hRXk/+PeRc1Gf53vTeMnrMtGf5xu9PcPtKb8X5mte52C+4faifErpBHF79bqxT9nfyZ80wfZ8yv/93HvS9uKq8/mWxK9X7kGBe/mK3/kXBz+tLljkxOWD81K+LvRuWczCihK/wL15 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A3_00">
+            <summary>
+              Looks up a localized string similar to XJ1juCRL03YL3V1V3YUe27Zt27Zt27Zt27Zt27atb2We58d7fbOuyLgjMlLVe++qOnNmRlEVRfnHL+HFL1ujqVSxeYu27Qq1a9OmXdvU8as26dipRbu2ebKkzZA2U3p+pc2QNXX8Ql1ad+7SsUmetk26dO7YoHXq+OW7NGzdolGpJj0qt2vVhOosGTNmz9AkR7ZG2bJkyZIpvV+sEElOnLZYk3ZtmnTu2CNtmSadmvvIG13/WyPYoGOj5i26NsnUuI3Vrn2Ttm27dGzYyde4QecGosg0TU1sL5xMUcQo64hmWzrCE0304Zqi/eynKWHEr3+aEpnk48vXyhZ7cSnCvidKeJCa8H2aHbFq/6av4FBNyXI+rCgTPUUZefHDyy09zuQr867v18W+s/lO380W7eOI+/lmfav3MfrRx/n+d2mUXIWu1Bi9sFP+H5+T1x538Eu+BnGHvKqwPWn+9fV/VE0+sFP+/6oS5//0L0ohRcl4KOfHw4WV8KLCMYYqhSbP [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A3_01">
+            <summary>
+              Looks up a localized string similar to nLl3PNd/9P/92q8kJEUi2ipZyV6VSkVUWhRCUslKVkJbRbRLVkiUWfbeIzOSlRXZe2+u835/vr/r9rtu1/jjcr+dcx7ncc7r+eRVHx8VgiIIsgQfjMr4WIFB0j555aqFpaqlubmlxa4NZ0xu2Fy1tFCSEpUQlRSHD1EJ6V0bVG2v37S9YaJkYWJ784bh9V0bjtsaXb9qrG7ieMrSzAS2pXbvlpUwkZMxlpGSkpIUJxk3cDEPFlUzsTQ3uXnDUfSYic0VAnza7r87lhveML5y1c5E8pI5i6WViYWF7Q0jG+KS4U1DxtKyZcswxqe3UghBGE+x5GMrWHAQHIzE/x5BsFlXDFkNYm4JKpj/qms11Xp+cWZ2ICvvo5uGRZL5LszD7NBbBJGqphEkCw6qWi/pnz7dsfT/tyL/t4+8nJhXrLlIVukBZDjsAJIVpXrPe+QAgtxR+d8i83+L/4v3v34tEIyZUWQlwomsQjgQdoQL1EpQq+CrY0NWIGsQboQVWY7w [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A4_00">
+            <summary>
+              Looks up a localized string similar to XJp5XA7v9/9n7pl7bkmIQkUhRJvSglaKsqWShDZJolWRopKlhCS7FLK0SCUtiDatKClbabNEQmlRof33mnl//vg+fp6P65zXda5zzjX3zOReCZIgiBH8Yz37bwwPxmLdjp0enoae7u6eHorTNzh5797p6aGroayqrKaCf8qqmorTDX3c9vh4O+l6OPns8XZwU5xu5rPVbafjaqd96z1dnZCtsWDBIlWnxQsdF2poaKip8NkdJnKNlY2dPN2d9njvUzZx2r2DRlyw9789Rjt4O+7YuddJbZu7kOcuJw8PH++tu+ltDnsc2KRRo0bx2MMbL0cQbJVQCW+MEAUxjjUb5UiC1x/EI8wgBkZ4hBiCX9/WrDX+8UY0v5kYf4Sc2an0SMpmEGuHZ5OExhsBQShh7LQ4EPlmWp3+0jEjJt/X/NDXb1D5XejQpn9ni5NY+OM2/f+dGkLb8N2mkzd3LxnsmWsTUdir7yAd0mqeNWfJvS19G+Ye3r3kv6xZS4iqG8u+ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A5_00">
+            <summary>
+              Looks up a localized string similar to XJxjuFxJ14a33R0nE05s27Zt28nE5sS2bdsT27Y9sa3vrsr8eK8v97VqPQtVu6r7nMyc9D5bURVF+cUf4cWfQGOoVLF5i7btCrVr06Zd29Txqzbp0LFFu7Z5sqTNkDZTev6kzZA1dfxCnVt36tyhSZ62TTp36tCgder45Ts3bN2iUakm3Su3a9WE7iwZM2bP0CRHtkbZsmTJkim9Ka4QRS6ctliTdm2adOrQPW2ZJh2bG+TtLr+v4TXo0Kh5iy5NMjVu47Zr36Rt284dGnY0Gjfo1EA0OY6jie1FTKYoYpZ7UAtcHRFBDN8TaIr2ta+mvEd8+6UpUUk+uHC5bLEn5yPtfqhEHKgmfJ1mW+za36klja8pWS6HFSVeSFEuvp8+tOaEa/kWJjr1q2LbG/mWj7+Ua0SxJfmOl2qxpFXX5fkG7ei/Zdq0bbs/1TlRMlOmxPkHvbpRcNHxK7t/Vd7XdO3YQvkPN8jVp2nTxPkPh4uvK7avUP5qQzcWbrnV26/s [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R2700_A6_00">
+            <summary>
+              Looks up a localized string similar to VLx1WFTdF/c9Z2iQFEFaEAGlQbpLQAlFKekG6W4QkO4SkAalQZBuEaRTkJaQbqSbZ8/87ue9nnc+1zrru9fae58Yr7Xm8IcwCAaD3YIPwiM+d+Dg8FrF3MLGVsrW2trWhuWBmomDo4WtjQgPGycbNwf4sHHysjyQcrZycnYwEbExcXZyMLBiefDS2dDKwuiFifsbW0sTMJuHi4uf00SAz4iPh4eHmwMNcYa7yI3ZZE1srU2cHNzZFE0czVFBHMPlf+fANnAwMrdwMeE2tsaytTOxsXF2MHRENTZwMkBMwsTEhCMuj4ARBkOswvoJv4OFAgQ+4sBrCoPBL3zhMDYgLm/hMGIQXB6bUJLdGCVsXYERBEB0+6z1FNpXIKdvDIPxlILN9ICpPDiwPhn/K/bUidYrmW9b7L9HAbPy2XQZnfol9hIx+P7q+39efGrVK+Mk5tX3faVpjB4w/l/cQHz5E/PofIGBeLDYlDQMFvUD9mBc2iR7FqElYQtrwL8X+3+s [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A0_00">
+            <summary>
+              Looks up a localized string similar to pJxj2F5HtIa38SK2bTtpbNu2baNRkyYNGtu2bdu2k8ZN0jQ895qvP851/p7vuWbWszDYs2cP3kLTNU37yZ9I+QsZZNWqtm7TsVOxTh06dOqYIUnNFl27tenUsUDOTFkzZc/CX6asuTIkKdajffceXVsU6NiiR/euTdpnSFK5R9P2bZqVa9Gneqd2LYjOmS1bnqwt8uZuljtnzpzZs9jSQnRVcaZSLTp1aNG9a59MFVp0a21hd3tGtBFo0rVZ6zY9W2Rv3sHv1LlFx449ujbtZjVv0r2JBHmeZ0j3oqTWNCnlHzZCvgmJLFmyWZE048sgQ4sH+frT0GJgfHTpasVSzy9G3ftYizJUT/Y24/b49b/hW9LM1nLmb6ppoxpp/+fvbaH/n65pL9omPPRgx9eDuvZ2P7KYpNR1dxTTtMGF/lfa+7/S/7H992eoXEeawOChbc3RXM3TfC2gBbWQFoZ5sAAeC4+jRdIiYw2RR9KiaFFBFC2aFp3RiKnF0mJrcbS4 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A1_00">
+            <summary>
+              Looks up a localized string similar to nJ1l2BXlt4f33pN7z8weSrob6e7ubpCU7m6kQaQFBAREGqSR7u7ukBYpkQbpOvd68MO5zsfDfT2zfitnzY6XP0f0BIKBQOAzv8TKLzfEpWaNNm07dS7ZuWPHzp0yJa/Tslv3tp07Fc6dJXuWnNn4lSV7nkzJS/bs0KNnt5aFO7Xs2aNb0w6Zklfr2axD2+YVW/at1bl9S6pz58iRL3vL/Hmb582dO3fObIbcIbYanKVsy84dW/bo1jdL5Zbd2+jErV5f7hFp2q15m7a9WuZs0THcuUvLTp16dmvWXW/RtEdTKbJtOyTrxUgXCEhXeH/IDWsIXy7Jl2mB0LtBoUB8xPvPoUAcgrfPXaxS9v7ZmDvvBGIMC6Z8mnlzooYfyFVYogVyf2JO8lSBwJkkOWdtf3Pn8//XBv7Pr2C5tXsDgXOcdSUDc2qWCuz6uWRgV/lSgcDgov/r7Pxf5//E/vsV+jIOGwpo6pElZgRMCBE3wELboFMRhkjAQWkBF+UpIsq3 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A1_01">
+            <summary>
+              Looks up a localized string similar to pL1z9B3ZFq5dVbt2YVftql9s27bdsW3bTjp2x7Zt27aN7ti2k/uslTO+ccf998szZs33nXOuVdi1k5PT6bSiKorymx8iix+uxqFypRYt27Uv0r5t2/bt0ias1rRT55bt2+XLlj5T+iwZ+ZE+U/a0CYt0bdOla6em+do17dqlU8M2aRNW6NqoTcvGpZv2rNK+dVOms2XOnDNT01w5GufIli1bloxBcYYocuP0JZq2b9u0S6ee6cs27dxCp252+3OOUMNOjVu07NY0S5O2dvsOTdu169qpUWe9ScMuDcWQZVmauLyIFIoiVtmHNdcOIHxx2NJPV7Rv/TRlDeL7b02JSvHBpavlSjy9GGnvQyVikJr4Tbrtcer8oKddVJVsLeMqyv1Yyv/z402B/39eUVIZRw6qSt+Dc6dXL/K+eaei26f0KaLuK11UUfoX+L9i7/8V/0/tfz80eVTJmhIgdFAJTXaCaFUxFPP/mzbAUmwlJLEVB1wlrHgQVnwlAkRFeEuJ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A2_00">
+            <summary>
+              Looks up a localized string similar to pJ1l+BVVu4dn7+n6092NCEiX0l3SgoASCtIgjVLSId3d3d2dEpICAgLS3YL0uZ+FH851vh7ua83ze3KtmT0b0Bd8tYimaR/4IVZ+BFEuNao3a96mbcm2rVu3bZM19VdN2ndo3rZN4bzZc2bPnYMf2XPmy5q6ZKdWHTu1b1K4TZNOHds3apU1ddVOjVs1/65ik24127ZsQnXeXLkK5GxSMP93+fPmzZs7hyk7xFODs5dt0rZ1k47tu2Wv3KRDM4O43fnjHl6j9t81a965Se7vW7tt2zVp06ZT+8YdjO8bdWwkRY7jROV4sTNpmnS5+6KBqyNiyWX0MF2Lvu4V1YYg3nyIavEJXj999suyd07F2XFDi903kvZxtk3J6r8l13NaRMs7jIqa8bX/8+Nx0f+fr2npEzwruXP5hT0jH+4umWVez1IRbWaxrJ300prWu+j/Wjv+1/o/sf9+RNU1gtW5YVOTR2hpNsrQHM1FWZqn+ShHC7QQ5WkxWixUoMXW4qBi [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A3_00">
+            <summary>
+              Looks up a localized string similar to pJ1l2FVVF67X2qtr0wgC0t0dgnR3SpekdHd3IyUf3Y0gIS0iAiplg4Ii0iEt0px7TPxxrvP3vPc153jGM8acK/cG+dBP0zVNe82PRPkJY0z163Xq3L1H+R7duvXonitdo/a9+3Tu0b1U4Tz58xTMx0+e/EVypSvfr2vffr3bl+revl/f3m265kpXp1/brp0/qN5+UIMeXdrTXbhAgWL52xcv+kHRwoULF8xnyRGSqI3zVG7fo1v7vr0H5anZvk8nE9/p/+YYfpveH3Tq3L99wXbdvB4923fv3q932z5muzZ920iT67oxOb2EWTVNVnlHYqFnIBLI9Lq7ocWejYhp/yKev45pSTEv/3SmVuUbPyY6eEVLOEbPcC/3nlTNX1B72UfXCidJpmk7kmj/z8+90v9/OWcywqugawUOF6j9YwU94c0KI/e9Knd+mFlR00aW/r/Gwf9r/D/efz8xNetEgwu2NFtzUDGUqbmap/laoIVapMW1BCgfFWoJqTjgojxI [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A3_01">
+            <summary>
+              Looks up a localized string similar to pJxjmF1Z1K2399k4sY2ObVc6tlVRJakYFdu2batjGx2bFdu2nfuulf7x3Xuf++vmfeaaY4w11977oLo7LUVVFOU3v0QXv3yNpVrVFi3btivWLiKiXduMyWo27dipZbu2hXJlzpY5R1Z+Zc6WO2OyYl3adO7SsWmhtk27dO7YqE3GZJW7hLdp2bhc0x7V27VuynSu7NnzZmuaL0/jPLly5cqR1RR3iCkvnLlU03YRTTt37JG5QtNOLQxyu+ufe7iNOjZu0bJr0xxNIpx27Zu2bdulY3gno0mjzo3EUCAQ0MTjRUujKOKUc0jzHR0RVSwZHqmK9q2fpqREfP+tKbEIH1y4XLHU08joex8q0QapKd5k2p6w3g/2JsxXlFyDg4oy3VP+j19vCv//efF+Ti22bpJ34HfS68VDh0YWV/9dUEx987u4ovQv/D9q7/+o/yP775f232qCRWkQQLkgkgAElahKDIiFEj02Ki7EoGJBAiWRkhSSo0RPgfoLklLJIY2S [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A4_00">
+            <summary>
+              Looks up a localized string similar to pJp3XI99G/fP+bOVPZLsCKUdleyMKLMkobSnorQREg0tLRVCSGUlo4Ro0KKlbTQklYbSfj7neV9/PK/n38f7dXyPz/E5ju9xnj/uy3W5/QiSIIhh/OAy92MshWP3LlMza5v1NlZWNtbL5uwzsrM3s7FWlZeUlpRdgR+S0grL5qw/YXn8hJ2RqrXRieN2RyyXzdE6YWBpZrjNyGmPjYURpuVlZJSkjVYqGirKy8vLrmC5J0ziF0uqG9lYGR23c5LcbmRvysAf4fC/Z4w+YmdoauZgJHvUapSNrZG19Qk7A3vm6JHjR7ihkSNHUtzrCYsTBHdr1Htq7CgaQog7/PAEqs+DIs5D9A9TxGSYdcVlO9Sbiiak1xPCnuS8P8ufi+gNoPfBkCDkYwQE8YIl/p8ff9T+/2r8fAr92qBW/uHtcPrXDdM7FmyEXkcSfRsI4pTa/xXp/1f8P95/Pyj+ZInRxFhiPCFMTMRnmoxzKjEdzmg444mZxCxiNjEHeQ4xj1hA [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A5_00">
+            <summary>
+              Looks up a localized string similar to pJ1l2NVGtIUzSSaCu7u7FtciheLu7u7uxSlQpLi7u1txL+4UKVashVKsFL3vno8f97l/L+uZ7LX2zOyZnRP9yMmxlGVZX/gnVv5FsVlUr9ambafOJTt37Ni5U5YUtVp26962c6ciebLlzJY7B/+y5cybJUXJnh169OzWskinlj17dGvaIUuKKj2bdWjbvHzLvjU6t29J6zy5cuXP2bJAvub58uTJkzuHlhFim8DZyrTs3LFlj259s1Vs2b2Ni9/vFTFGpKbdmrdp26tl7hYdw85dWnbq1LNbs+5ui6Y9mkqjIAhsmV6M9JYlvcIjdpTQgUSXRfHKjmW/H2xb+SEfvthWHJwPLl2tVObJxZj7/rBiDFOpXmTdmbjBR+qmXFNWnkHRLatBAuv//HtR7P+nLSvT4QSl2++IdOhL8jul1MRMpVceS19SLXhfyrKGFPtfZd//Kv/H9/WfbZYKa1skB1Mkri0PyOr0QWCFRkeyIltRQGTT1kHb8Mi0sKyoIBos [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_120_R3900_A6_00">
+            <summary>
+              Looks up a localized string similar to pJt3PFDtH/fPPuc6qz1Fe2tpaBhtDS0tiZJ2kkoqLU0N0d7RTksqLSENaSlaKu1Fi5RQiOdzzu/+43k9/z7er3Ouz/X5rusccuu+3RRNUVQpPozV+FAZ3Aa7TJo8zbebr4+P7zTrWsPGz/Sb7DvNvm3zVs1bt8RH81btrGt18586y3/mePtp4/1nzRwz1brWQH+vqZPH9h0fMMTXezyy29rYtG81voPtWNu2bdu2bskbEyqYjZs7jff1GT9rZkDzfuP9JnHwxdn/myGPmTl20uTZ41uP8yG+08dPm+Y/08uPGzdm1hgjSZIkxjhe2YYUZVSRG4xKWIgyxq29BUMxhYEM1RKiqJShKsL8+Phpf6cvj8olfKLKLqPr5DSLsXAvRmxtNEW1fa1T1ElC/T8fOY7/f3u8z3VNeswN2XOtdPSH7vRn6x40tbcr7VnQnaIWO/5fV8L/df0/3n8fjHlvQjUFNGVNNQMM1ZxqAViqJdUKcJQN1RrwVBuqLRCodpQt [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A0_00">
+            <summary>
+              Looks up a localized string similar to VJwD2BxZtHaru6yObdu2bdv5Ytu2bdu2bZsT23byr3OS/z73Zj2n9rvfvQ+qqjuZzCSjBBRF+cMPEcUPL8ilUsVmzdu0LdS2deu2bVLHrxrWoWPztm3yZEmbIW2m9PxImyFr6viFOrfq1LlDWJ42YZ07dWjQKnX88p0btmreqFRY98ptW4bRnSVjxuwZwnJka5QtS5YsmdLrYodIcuG0xcLatg7r1KF72jJhHZtp+GaXv3s4DTo0ata8S1imxq3ttu3C2rTp3KFhR61xg04NRJNlWUFxvPDJFEXMOr8v6NkqIpy4vC4XUILf+waVx4gff4JKZMyHl66WLfbsYoS9j5TwAwMJ36bZHqv2T2rRywaULD1CivLMU5TTH34v7Dvybr55rXotGrjkeb4aF+/VPpjiWb46rTrPeD7lRb7P4gHdqbIvrnhAd6vkj1570eP86bvsizhy8/Eadbrmt6Ufln/Sh9TVTx8Zkl/p9/6g0u/SwdYl368kFvo7XhdSlH75 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A1_00">
+            <summary>
+              Looks up a localized string similar to VJ0D1GRJs663UVW7qqZt27Zt27ZtT/e0bdu2bZvTtqZtnCfz67PWOf2syHjjjcjcuau+e3v6zj99FVVRlN/8Eln8CmgslSu1aNmufeH2bdu2b5cmQbWmnTq3bN8ub9Z0GdNlzsCvdBmzpUlQuGubLl07Nc3brmnXLp0atkmToELXRm1aNi7dtGeV9q2bMp01U6YcGZvmzN44e9asWTNnMMUTIsuD0xVv2r5t0y6deqYr27RzCwPf7hbxDF/DTo1btOzWNHOTtm77Dk3btevaqVFno0nDLg3FkOM4mrheOLmiiF3n92kBV0eExBLtuKpo3/prShDx/bemRMF8eOlqueLPLv6195ESHqwmepN2e+w6P+gVOKoqWYeEFaWDpyi7PrdsmL7L/fzNHv6q+Crqw/zlRlXYFT78JP/XHo9Wnan1LP8X8QH9rr7PkZ9QjQI//tTKnzoit/jjNy+gDHhyUBnwgHhduHeW1EXQhX/3H1NEUQbk/z+x9//E//P+97tQ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A1_01">
+            <summary>
+              Looks up a localized string similar to 7Zd5OJR928d/Q2WPspY97tRNpGxlGaWijVKRLEOaRJiQZJuJEkO2NslWIeQuJKGyFDWEtMiS7DI1ZOzrMM95zf087/u8x/H88f7xHsf7j/PT+Tu/5/c855o5rqZLEA4hxIbAKhaCXHAcsTzj6kkyIXl4kDzVFKyI3j6uJE9DbXVN9a2bIdQ1ddQUTHzdz/t6Ew09ib7nvZ3c1RQO+Z50d3XeT/Q/SjpLhG3tLVv0NInbdJ11tbW1t25ejr2DKOfC6qZEkgfxvLe/+kGiz5ll4PNc+Ps9+J28nc+4XiBuPeXBRzpH9PT09T7ps+yU03knbImXl5cL+3giKghhr/pUySXIxw1CGDuWSSLENUfhQiwJhObZXEgMzP6mFnPTX19WVfxAIpdx60Y2lUrbsWD2EXa0N8BHGkb/HQ527c9kKF/w8YferFZ8QMdzzAnm37XbsnIGu1HyVsbKHON45VesZ1sbT2CFcsqYxeldjBGqfMPJboVdUHdy0tEa9CX8v2XF [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A1_02">
+            <summary>
+              Looks up a localized string similar to 7Zh5NNR938e/Q6ioUSopDClaRJIty9AkSi5tVyhbJiLL1CDrUEl1KekipWypaBUhe0ZlvTAqW9ZBlizZs8wYc39+c933/Vz3c+7znOc85znn+ePxeZ3P9/P+vL/f72+bM79JCIcQ4kJgFQsRPhiOHnFydqeQKG5uFHdFmeMOVA9niruumpKKkuoOCCUVdUUZkperpxfVQdfdwcuTespVUeaQl72rM9nEwfcYxcUBVqvt3Kmp4qClQdZQU1NT3SGAnUGMd2AlIweKm4Mn1VfJ1MHDaRH4Qhf+PMfSU1Syk/MFB9XTbkso5xzc3b2o9h6LTp/yPIUtWrx4MR92eaIKCGG7PhfxiSzhB4HHBve1CPGxgviQIwg2lw+tArO7rvEXo/7aFfQeJBqM2zC6PXe91RzMRa9BSG0zXNIg+o+4btWSKRlUS7TZs8TkyvV2YvShDytl7/YReZMdR4qo2IMiHNefwyrXvOjPXRb6OVgbdPrv/hl9k62xJIRa9rzsIO41 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A2_00">
+            <summary>
+              Looks up a localized string similar to hLx3XIjtG/d/7ZmRvcke2bITGdnZ2SvZZCvZe+9N9lZkJKlkZFOIjDKKhGwRMp7Pcdzf5/V6fn/9et8dn+M6r3Mc4+y2E0RBEP7hg5Q+HCSYzp2GDhvt29R31Cjf0c4luvmMGz/Md7SrS5XqVWpWw0eV6rWdSzSdOHLCxHE+rqN9Jk4YN2Ckc4kOEweOHObdxse/i+8IH8x2qVGjbnWfenW867i4uNSsptIJuXnjKh4+vqN8Jozzr9LOZ/xQBeP6pP/OsAaM8x46bJJPzUGjTN8xPqNHTxw3cLwyaMCEATTJMAyJwstZThBo1Z1zkoMpw8lB5n03UZB+zZCEVDhZ/yQhDwZf3nvQ3uNNvGN0qpBzjljyU+Xwwr1/413+rqLgks1BEBzxOW+wR62kYx/d/qvAJ7e1w+3REZ2S3VYsvDrnYlT6/8YFwW3ZL8fSr1c0/r/PJwuu3vPhS5PGGw8t/tcV4w8rbhtS961r45yf8zft5nv/omOX8s2aDs/XTBDG [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A3_00">
+            <summary>
+              Looks up a localized string similar to nJt5XE1f9PfPfG5EEQqpzENIQkVFMmcWocmUqVmiDBmKzJkSKhkyz2OhAUlUypQolEYqmufU89n7+3s9r9/r+fPxfp31WWfvdfZee+1zrnuvi2EZhmnFH6LkjzIHM2/u6jWubhZuLi5uroN1Fjiu81zj5mo6cqj+UINh+DNUf9RgHQsv5/Ve6xxNXR291q9b6jxYZ7bXMuc1yy0dfazcnBwRPXL4cCN9R2PD5YYjR440GCaSGdTowEMnO7q5OK5f5zN0hqPnagHt8ob/5mizdN3y1Ws2OBqscFFyc3d0dfVat8xTWLF0/VISpFAoOJKean+GIVe9f8YpK/FwVIj5c49huMZtHFMAp6mVYzqhMf9TxszJvz92iCtgVP3YXuVDHne3bUaf+l2GGemuYJjFOD70MDgTU1/Q+v+rzP/7J2yWxcghhS9aw19PmBCwZAL88WPz2kxkmO1j/9cR97+O/6ftf/5w1DoxLDwOlseyeUZiRKgIlYHEKDEKqALahqLE [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A3_01">
+            <summary>
+              Looks up a localized string similar to 7Zh5NNfbu8efTZIxDlEZK6UiJX0zZShTFNJgCBm/ocyzjCWH0qFJIdKg1DFFGcqQojQZCiczjVKJQsh0996dde9ZZ937u7911rp/Xc9rfZ7389nPHp7P3l8ffAEBwDQ2osS4WbDbsd3Zxd1Dy8PNzcNdVtKU6e3j4uGuxpCTl1NYg01Ofr2spJafq6+fN1PNnenn623nKiu5zc/e1cVhCzNop8d+Ju7NWLtWSZ6prOigyGAwFNawkRUE6MRyekwPN6avd5CcIdPHeRZuZ/f/uQannbeDs4s/U8HRjcPDk+nu7udt7zPL0c7XjnSaM2cOCymPTxqAjHpewcLNwYqDucR5CgOw/AhnAWccjE+zgCBufNv40kivt4H/7jvgi0SLB1bdFrGawLnkeQAMZ1ySKL5eiCmcLxt9N/1PFf5miWMntADiNlXtbtUu5p+lDRHHtVTfjWgDRGj85br7l+tvbX8aedgAfAVjABBVhFu1MCzASpUVbwXRWcBGlQ1mgzhm [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A3_02">
+            <summary>
+              Looks up a localized string similar to Y2BkYGD4DwQgGgR4mIBEcFBGZl6+c35ubn6ejkJYalFxZn6erameoZ6xARDoGZrpKDiX5pSUFqXa5qWWlhQl5ugoBJQm5WQme6dWhuRnpwJVmxoZWRimWponm5uamhobsIJsEAYbrOeemp+bWlJUqeebWpzBAhRnL4PYwZVYlJyRWZZqnJLLmV+QmpdXWpRUzJKSWJIIUsTBwcEEcp6AOgMDSNfFA0w8nMxABj+I8ONkYGD6Vc/E4AZk/P7PxCACFHxy5bqf+8vLgvufMgg0Myp90N0pHfMHKFfBzsBguguooAqIL8kaz9v74+l/cmkGdPAjaT8DQ9+h//a/XARkA52BbCdGBjZXBoYGeyS8HwmjiUEBKMia1peXr1o4f/6M9smT+wtqayvXzp07e2J19RaG4mIGxro6Rqa6OqadbW1tdUxMdaUMDJuYu7qYWaZMYWGdMoV1a1FR4RRW1ik9zMzb2JYsYWOfPp2dY/p0js2dnR3TOTimL2Nj28HZ2MjJ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A3_03">
+            <summary>
+              Looks up a localized string similar to Y2BkYGD4DwQgGgR4mIBEcFBGZl6+c35ubn6ejkJYalFxZn6erameoZ6xARDoGZrpKDiX5pSUFqXa5qWWlhQl5ugoBJQm5WQme6dWhuRnpwJVmxoZWRimWponm5uamhobsIJsEAYbrOeemp+bWlJUqeebWpzBAhRnL4PYwZVYlJyRWZZqnJLLmV+QmpdXWpRUzJKSWJIIUsTBwcEEcp6AOgMDSNfFA0w8nMxABj+IyGdnYGD6Vc/EkA5k/P7PxCACFHxy5bqf+8vLgvufMgg0Myp90N0pHfMHKGcNVGO6HaigCogvyRrP2/vj6X9yaQZ08CNpPwND3yGGhosuHLKBzkC2E4PDYxcGhgZ7JLwfCaOJQQEoyGauaWtbPqGpqaZw0aJ5pT09HasaGuoWdHVtZKioYGDs7WVk6u1l2jZ37txeJqZeoG/WMxcUMLMsXszCungx66by8rLFrKyLC5iZN7NNnszG3tzMztHczLGhpKSkmYOjeSob21bOGTM4uZYt [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A3_04">
+            <summary>
+              Looks up a localized string similar to Y2BkYGD4DwQgGgR4mIBEcFBGZl6+c35ubn6ejkJYalFxZn6erameoZ6xARDoGZrpKDiX5pSUFqXa5qWWlhQl5ugoBJQm5WQme6dWhuRnpwJVmxoZWRimWponm5uamhobsIJsEAYbrOeemp+bWlJUqeebWpzBAhRnL4PYwZVYlJyRWZZqnJLLmV+QmpdXWpRUzJKSWJIIUsTBwcEEcp6AOgMDSNfFA0w8nMxABj+I+MDGwMD0q56J4QWQ8fs/E4MIUPDJlet+7i8vC+5/yiDQzKj0QXendMwfoNweoBrTHUAFVUB8SdZ43t4fT/+TSzNggOT9DAx9hxgePHXhkA10BrKdmBZ8d2FgaLBHwvuRMJoYFICCrKFm4sRpC1auLOwpK5u1rKOjatGUKV1LKir8QoODQxODgxPjgoPjooODwwNzcgJ9MjNzczIzcwIzM02T7O2TUtPTXe3T0+2T0tNtXaysXDwdHc2tHB2tXBwd5dWAMZmRkiKpJi/vlqGmppZh [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A4_00">
+            <summary>
+              Looks up a localized string similar to hLoHONdt+Pf/2SrkbiJFpZIKlRBCk/YuKiMhysrObtKkUiSrYSQ7WRGJKLMhW5KZGUL2/7yu+z6O/+95nuN4nu+r7/W+Puc1z/ENiSAJgpiEF1L04qOgOXTQ5IyF5RZLc3NLi1ULjxpZ25yxtFCRk14jLbsaXtJr5Fct3GJnZmtnbaRiYWRna61vtmrhfrtTZmcMdhk5HrY0NYLZcmvXrl9jpKhgoCAnJye7mkUnzMIbS2sYWZob2Vo7Su8xsjFhwM5j/+8Z0/StDUzO2BvJGppPtTxnZGFhZ33KhjHUt9VHk6ZMmUKh6/0jQRBo1ee3FN9UGjoCqHnzkiCoEXeKSILO6CRFzAZjU1nFXo1fX2dkNRP/XCYX/5ZKE9Eeg7HWeIKQm+AIwhXe9dUKfFc9f6oN+zzLuCzbqPZk6OTO6qGPajPW+K79LfBJTV4WXokaG1cgPaS/8WaVwqN1apvfatbXTne+MW3jbxTAyYMb7/Lu/HXLd+PGfwJPbi1wXJxD [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A4_01">
+            <summary>
+              Looks up a localized string similar to 7Zd3NNzbt8BH73VENwRBRO8SNWqCaIk6+ujMMAzGMIPRo19XiYRccoMIo0QQRIuSaBGJFiUEE4keMcYoj3t/763fW+u+t94f70+ftfY5++y9T1lnr32+6wsgAwAAp2ec9+cwkp811lY+vlCYHiwwEAaVErLxhIf4wqCayjLyMopyZ8jIq0gJ6SECQhFwT02oJyIU7hYgJWSBcA/w9TDxRN6F+XueRSsrKKjJe6qreqgqKysrylGd7wD8a2EZI09YoGcoHClj5hniQ3lmpwn7ew96N7iHj2+YpyIkkA4W5AmFIuDuIZQQt1C38yBaWlry8+OxigMA57PGOskZ6SjOFJbzJpsFACA/xJADUs4U0ik5gOPMuPxx8o7R2jhbxwqAFUsmvC3dwgc+OvM5ncUoZ50FBJ7J/PenV164zWgrsyXbP/06r/2vqwCAKy9bHFO2ao8IV4xVngp2dpPSczjp2v7Lz+Gs2jthJqHjJ028hFcV0vnm9PeYBHquTw4Q6cmP [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A4_02">
+            <summary>
+              Looks up a localized string similar to 7Zd3MBzet8AXq0WNFqJbq0QvS7SQIHrZ6N1ay4q1u3b1GgTRQgi/EKwgiYggIWSjd1EikRBCrKhfURMtyvLI7/3m/d7Md968P95fb3xm7r1nzjn33jPnzD0zF0ABAACOTzhdT2GkPJmsbiB90BhdjJ8fBi0tZIvA4X0waC2IrIKskvwJsgoq0kK6gaiAQBxCC40IDMDBUNJCloEeKB+4CSLUGuOLOPGGKCpeVkCoqcJVIRCIkjz16Q3sfw6WNUBg/BABuFBZMwQeCTzR0wb9845zMBwc6ROEUPL0o8dgEWh0IM4DD/SEBcBOnejo6ChPw2MVBwBOd31spWSkpzoRWE6nK8wAAOV+NCVA5UQ4OKYEcJwo5z5/MTdY+nS+ZR7AGkchsiFD5HU+PLGdO/GBhJw4OAL+C7Pf3BwrvF3allC5+Napl9r3czJvt1e0af/LXr5Qe/6rGr3OTzopT1GhY+1Wj/hU4BxIp/autXHBD0Wdyj9JFNKRkHyoRwUAdbxF [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A4_03">
+            <summary>
+              Looks up a localized string similar to 7Zd5NNT/u8AHURhbYx8mWSJkF5NlFJF9LDPZGWYwthHGvpWGiqiU7FOWUmRLyTqyZin7HvK1TEmGpkxMuPS9957vvff3x/3j/nPP8Trneb+f8zzPe3ue835/zgfAAAAA9vY56A8AMu43Ntbe2ACcPs7fHxcgL4bEBAVjcQE66grKCqpK+ygon5UX08f7heCDMDoBGHxIEMpPXgyOd/fDephiImxxvpj9aHUVFU1lDFTDQ0NdXV1ViflgBdCfiRWMMDh/TEhQhII5Jtj7yL79aOjfa7Chgjy8saEYVbQ/Ky4QExCAD3IPPoJGhaAOgo4dO8Z4sD1uaQDgYNRgCyOQlWlf4TpoIJwAAON2HCOAf1+h7zECePeNiyPjFkZfhnlISwDuBAbx9TN1YKff+74VDgBAPXw/wHZfjIriLuV0DMHeJWt/Dvcahz3SIlheaZmDjXkVBMa2fYXp9uiljoCNWm4NfGtnRljCnpY1ZSQwirf8e8oA8DTDBSrYSK/gb7ue [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A4_04">
+            <summary>
+              Looks up a localized string similar to 7ZcHUFPdtscDARQRAgICglQJICH0TgJIk96NdJMQigSCIZAAgSAKWJCiIIIlCoLwCSooCtICiDSlfxQREBFB0dBLqC/43XvHe9+dN2/evJk384bfzD5rnbXXOWuf/T/7nNkAFgAAsMNk1+5ykJV5cHYKCAzBmeCCg3EhEMlTGHxYIC4EpglVhaqrMIGqakEkTcKxhHA8BhaCCSfgkViIpEM4ChuItsZEuuCCMMxsTTU1HVWMrjZaW1NTU12FfbcC/68bQy0wuGAMAR8JtcWEBbAx4/si/qpxAIlHBwRGYNR9gzlxoZiQkHA8KozNF0lA7ibt37+fdXd4vHIAwO5V3TTWg5xApgPaPajzAgCs6xRWgCLT2dhhBQgwg1/6BuwsvvXy1U0CeC+wSM8pVYp6bjL7vHgAAE0yMwHBbGrt/vGrjGlD4Pj1eDWeGcO/TQWA7UTaDV7zVkO2wb74GUcdmq9CycxMo7VhMk/PPUcWSdrf87SfFh+QcdIxIv4VNzrw [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A5_00">
+            <summary>
+              Looks up a localized string similar to 1Lt5WE/v9/+751eGIklUypwpJEqaUJnShDSXRKUkSZoLkSllFkXmUCSk0oRUqIQmRKGUQoOUNJ617s/nd67f9zrnus7v39Pj/VrPve+9932v9Vz3VoY3RVMUNQBfqPg1lIGwZrXr5q2eep4eHp5bZ45bt2m792bPrdrzZ6nMUp0DX7NU1GaO0/PZssNn+ybtrZt8dmx33DJznKnPhi2bnQw3+a/1dN8Ed8+fO3eByiYNdSf1+fPnq87hcQUpMvGsZZs8PTbt2O4/y2iTtysH46Kd/1ljsON2J9fNOzepbvQY5Llt09atPts3eHMbHXc44k1iYmIMpjdciaLwqTePmaGDWDgYhmFaNUUx3aEMNR4OegYYaiQM1pVVGi9rLJXM+UYND6MntCqny9n2wrU1Hylq/nERRVnC582B6aN1hEZd2Z9hb81/NerOPy226ZZcle6+wGUfMh580bXfO65cwXPjY7fm4IS9ekse/1OFr/sqi144w9f1pYvuOm3Jd95u [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_125_A6_00">
+            <summary>
+              Looks up a localized string similar to nL119FbVFvV/us/50t3d3d0hKS3d3d0gIEgISAmINNJIinQJiIh0h3S3dL5zLu9vjHe8f/7uZ5w1997P85yz1lx7H673Xr2KqijKZ/yLyn8FGkLtWu07dO1WtluXLt26ZktVr03PXh26dS2eP0fuHHlz4V85chfIlqpsn869+/RsU7xrmz69e7bonC1VzT4tO3doVaXNgDrdOrXBt/PnyVMod5vCBVsVzJ8/f95cJp8QV26co2Kbbl3a9O45IEe1Nr3aG1i3+/73DK9Fz1btO/Rtk7d1F7db9zZdu/bp2bKX0bpF7xb8kuM4GtOLlVFR+Kvju7XA1TGIYRic0FC0d8M0pTcG7z9rSjws3jx1tnrFeydj77qlxBqppnmafUvSxh/w2c/xDSV/+lyK0hrXieR55+54c+vz/19V/p9/acf2lzOK/7H321LXy7159Fe572P9UWZ/mfflFGV4yf/r2vV/Xf/P2v93I4kqVFN0KVlRTMXCWFdsxcHYVFzFw9hW [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A0_00">
+            <summary>
+              Looks up a localized string similar to nJx1VJbd9q6fztcObExMMJAwADsxsDFAUUCllFIUwS5UbEUETDBQbAywxQLxU8DGQEFFLBQFiXOvpWeM3zj/nHGO15jPvOe95pprPe+rfrq/vTfDMgxTgR8kkx8GDo+RI6bP8Pbp7ePl5ePdrvEYV1+/GT7eNhZmHc3MO+CHWUfLdo17B3j6B/i62ni7Bvj7TvFs13h4gIvnjKmDXYNG+Xi4otuiUyfrjq5drKZaWVhYmHcQyQk16GCz/q4+Xq7+vkFmQ1z9pgvw5cC/Z2hTfKdOnxHoaj7NS/WZ5ertHeDr4idMm+I/hTQpisKR61VtyTBkV1o3waDyEFXIw6cZy3AloRzjDvGngmNqwnyb8Who/w8Pq116x1Rdwjb9anqu/sRSrEU0YRmL4waGCVMZ5kFD8+jk3+8q/n8z83/86D+m3XWGKbk2s96Fs8OKintD9z4bsh95od3/iEv/I/4P798P8rLkY5MAURx1eLy8AMXTHpExYuoBDT0y0BiF9suM [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A1_00">
+            <summary>
+              Looks up a localized string similar to nJxjlF3b1q6n1ppeQVVs27Zt2xXbtm1bO9mxbdvasW079xkj58dt9+fdTxuzv28ffWD2VGqtnK+1T1EVRfnDfyKK/zyNR5XKLVq2a1+kfdu27dulTVi9aafOLdu3y5ctfab0WTLyX/pM2dMmLNK1TZeunZrma9e0a5dOjdqkTVixa+M2LZuUadqzavvWTanOljlzzkxNc+VokiNbtmxZMgbECWFy4/QlmrZv27RLp57pyzXt3MIgb3b7e4bTqFOTFi27Nc0S0dZu36Fpu3ZdOzXubEQ06tJIFFmWpYnrRU6hKGLV6TyGZ+uISOKR/b6qaN/7a0p6xI8/mhJO8uGlq+VLPLsYZe8jJfJgNfHbdNvj1P3JXMO7qpKtZUhRdnmKciFelnm7vz768/8blf/nv8SrlEOLLz86uK3f0iKvD4QXPWM/KjJnV4+iijKgwP819v5f4//J/e8/8bKqjLpiKkFe2uBpKQEwiUGwlZDigo/ywGHYMmuT85UoSkwlMsQi [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A1_01">
+            <summary>
+              Looks up a localized string similar to rLkJWI779/97zw+SkFSkDJsQUtGgyRxCCKEoKqFJpUmTTCHKnKHBlIwNSKUUJRKVOZXmNKeSJk3/933v7znX73eG6zr/c/289lrrvYbPuj/P81TaexMkQRAD+MNH/s9QCs543a7dDo6LHO3tHR1mjN9o7eyy29FBd+4slVlqs/Fnlor6jPGLXO32uTpb6zpYu+5z3m43Y/wa1x12uy0NrT3XO9paY3quqqqmirWWhqXG3Llz1Waz/BMkhcWzDKwd7a33OXvOWmXtsotBXeT27zOGbHe23LXbzVrNyn6w415rBwdX5x0ujNX2fdv5oUGDBlH89YYrEgR/KkebGTqYhpDg3bQnBEH99aOICRA9AxQxCsWqL/mrDeo+j0j7SQw/RE5smZk01qwXvfbHBDE3RUQQF1mC+DROLfx518+B/7+R+L/8ydk86BXxojyDOPBp0dTDKQtzNfQXRddsWEwQB/T/i6X9F/tvtf/jsyAowasQqwiSUCXUCENiJTJV+FXE [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A2_00">
+            <summary>
+              Looks up a localized string similar to nJ1j2FxZl4arDurUUdWJ2bFtdmzbdt7Ytm3btm12OnbHtu25905+zDU/J/e19nrWs9beZ59630l3vk4yPr/P5/vFD5HFD0dhqVSxeUSbtoXatm7dtk2aBFWbdOgY0bZNnqzpMqbLnIEf6TJmS5OgUOdWnTp3aJKnTZPOnTo0aJUmQfnODVtFNCrVpHvlti2bMJ01U6YcGZvkzN4oe9asWTNn0MUTosiD0xVr0rZ1k04duqcr06Rjcw3f6PL7GVaDDo2aR3Rpkrlxa7NtuyZt2nTu0LCj1rhBpwZiKBgMKuJ6XnKfT+w6mVtzTBURFkvELs2nfO2r+Bogvv1SfFEx71+4XLbYk/OR9j7weQP9iV6n3R6n9nd6E3dovqxuEp/va1yf79xfmefs/vzg1/83+/7PjwbWqYK+fjcPnpquFp6rRCrs8/1dcM+jYBGfr1++/xV7/1f8H+/PD/Gyuk98cJovQOWnMnwqKuAzCd0X9NmooM/yeT7X5/jCvki+EMrz [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A3_00">
+            <summary>
+              Looks up a localized string similar to nJxjuF1XtIb32gt7ecfmSRrbtm3baWzbttXYauyksW3bTmPcd870x33uz3veZ6zxjW+MibVPmqZN2oASCAR+8SWy+HKDPCpXatGybbvC7dq0adc2TaJqTTt2atmubd6s6TKmy5yBr3QZs6VJVLhL685dOjbN27Zpl84dG7ZOk6hCl0atWzYu3bRHlXatmjKdNVOmHBmb5szeOHvWrFkzZ9DFCVHlxumKN23Xpmnnjj3SlW3aqYWGH+r6+wy7YcfGLVp2bZq5SRurXfumbdt26diok9akYeeGYsg0zaC4XqTkgYBYdTK35loqIiweZ78qgeDXfsHAUcS3X8FANMwHFy6XK/70fOQ9DwORBikRb9Jui1vnO71vn5VA1tnhQED1AoFz8TPP3fX54a//bw78n6+JR34WCgRy7M897WyRQKBxkZol3xUyk9tFA4H++f9X7Plf8X+8/77EyxoBnacSCKF4wYCJCgbUgIVS+RicgM2EEXBRBj0PFaIXDvh0nEAk [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A3_01">
+            <summary>
+              Looks up a localized string similar to 7Zl3UFPtF+fvveqLioLICygdERALRQSkRlFEpNkAqRGQJgjSO1FRERVQkN5ElF5URECBSJcaAem9hh5aSICUfcLuzvx2Z3ZnZ2d2/+J85jnne77n3JtAkJARgiEIooNgVEYcQEC6ddPO3sn5kvODB85OpwUNrF3d7J2dVGQlpCVkpEBISMudFrzk4eju4Wqt4mTt4e5q4Xha8LqHpaO9lZa1z21nB2uwLXv27HlpawV5K3lZWVkZqT2MR2DfvrGEhrXzA2t3Vx8JHWs3u93AZ/L8r4+x38LVys7e01rm3oN9zg+tnZw8XC3ddt+zcLdgLO3duxdhPL1DYhDEuKpFafeBfbuAYGWko2cgCNnEIBAbEFt0BPoXmBN/u3U1ZjrYsJPQoSD42NKZUh5TCphNnoYg2a/gZo7gabXzySSXkyfp/7cV+p+ipdm0CoLCqqALXZfFj41fgh5FXIKgveoQ9Aj1Hwf7H+d/8P77awExvthd2xWB9kD/AL0bZHjbZQL1 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A4_00">
+            <summary>
+              Looks up a localized string similar to nLx3VBVb87/Z8fQ5GFBRUVExR8SAOeecc0BQMYsgGFHEnDDnDOaAATFhQLwq5pwVM4KYFVAEEZxnt++s9Vsz/8wan+/u+lTt2ruq+3Sf0/d+va8kS5L0lz/Cij/ZFQ7dug4f4ePbzHf0aF8fl2I9h/iPHeHr06CGa1VXtyr8ca1a06VYs/He48b7D2ngM2T8OP+B3i7FOo8f5D3Cq92QgO6+o4aQXaNatdpVh9Sp5VWrRo0ablV0UcHB3Ni11RDf0UPG+Qe4dhgydrhG3Jjwr4bdQH+v4SMmDHEbPNrmO2aIj894/0FjtcEDxw0USVarVRHt5SorSWLVzXpadpuKsBeHee1lSfk9TZGmITL+KlJegvEPHnds9eF+7rMJUq5ZconvlU46uf9hLqKtLNUoZidJY2ySdK+IW8iZtIS//3+t9P/649W8YaVKFyjf/KLn+eaSVKqZVExuIUnTG/0f4+z/Mf4fsf/9ESebnWM2UCSraXNIOYll5yib1ibZmfFs [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A4_01">
+            <summary>
+              Looks up a localized string similar to nLsHUBXBt+47MwgIqKgIiGQkKUkkKllAwAQKiGRJApIzSNgigiI55yhByUFyzrAlqOQsGSQJSNzA3Ib/uVXnnvte1au3f9W9vv56dfcakZk9VgnBEASh4HMSTz7nENApPzMxtbSStrKwsLLkZHhuZGtnamUpJsDNy813C3y4eQU5GaQdzO0dbI3ELI0c7G31zDkZlBz0zU0NHhq5qFiZGYFsgdu3hXmN7ggZCAkICPDdwj85gex0Y245IysLI3tbF+7HRnYmZ4BP6PifM4j1bA1MTB2N+AwtiKysjSwtHWz17c4Y6tnrnSSdPXsWOSnvIhsEnazqEjlzjggPCNKTTlsRgpADDAKpAoFDEegKMGf7Bp/ILfVeqpuDLnrBTH+5Kqi1DsHcDZAj8BtsRgzaL1q+xJq9OfT/b4T+x4e3PVbmwfKtJt2ZVZmrN8pkcsdYms417MlA0FuJ/9bq/lv7P7z//bOATi4WBj0eAIH+YxOAS8cHnAGKEEACnYWIAWeB [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A5_00">
+            <summary>
+              Looks up a localized string similar to nLh3PNf/F//9WpTMolBmRciKzIyiUgolRUaSkMjMXmWrjDRERggpM7uMJCGbQtmZZZaZeZ3X+/O9btfvuv683G/neR7ncc7z+Xq+3hoKQREE2YQvMpNfdBgsF7RvWNrYqtreumVrI8xzyczB0dLWRlFK9JCopDh8iR6SFuZRdbK+7eRgpmhj5nTbwcRamOec0zVrS9MzZm46tlZmMC0lISF7yExOxlRGSkpKUpyKfAIz5WBRNTPbW2a3HdxENcwcbxDgb3H+7xnbTBxMb1g6m0lev0Vja2dmY+PkcM2RuG5y24Qc2rp1K0Zej+kAgpC7Go8QdDQ4CEZyeZGKINiKD4Y8A7G6iSEsYA5/7dRU+9W+vWIEYfJD986KlOwxXIPel5cIIiVAhSA34aA2Tsn4suWRzf+/Gfn/fG0opx7vi539+O3g8HHkXOPxwZVplZ3b0BMIckf5/4iK/yP+P97/vsiX3YnsQgQRIVhZEQFQbAg7wo8cgHU3wgdqN7IHMh90 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R2700_A6_00">
+            <summary>
+              Looks up a localized string similar to nLx12FZVt7e9uuOiu7u7U0RCGqS7O6QRkAZBpDulEUUJQSkBAQEJ6e7u7nzPuXi+43i/78+P85hrjPEbvznWXOuOfd3P3s+WZEmSPvJPRPHPU7jUqtmufZeun3ft3Llrl+yp67Tu3qN91y4lCuTMkzNfbv7lzFMwe+rPe3Xq2at76xJdWvfq2b15p+ypq/dq0al9y0qt+33VtWNr3AXy5i2cp3WRQi0LFShQIF9uXdwhXjQ4Z/nWXTu37tm9X84qrXu009DN3p/u4TTv3rJd+96t87XqbHft1rpLl17dW/TQWjXv2VyYLMtSxPFimSRJ7DpQTPNslSQUl++HK5LyZpAiDSN5+1GR4iNeO3ayavnbR+NsvS7FhslpH+XYkKzRO3rrhipSgaEpJWluQkk6kiLfvC2vrn/8/xul/++/6gfKdh63829p242yTBd5GWnwR/LBpf6vtfX/Wv8v7f/5WkhKdM0i+VLANavkkWWTskuO5HLNIdlkWVFcOjmlXJIh [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A0_00">
+            <summary>
+              Looks up a localized string similar to nJ1ltFXH1m33kr3W2ku2HVyCu7u7u7sFd3cL7u7uGghBgrtL0CAhQNBACO5ur1dxf7z2fr7T26wx5pizap/wtcaFGy6fT/H5fN/4Eiq+XJWjRvU2bTt1LtG5Y8fOnTImrd2yW/e2nTsVypU5W+YcWfnKnC13xqQlenbo0bNby0KdWvbs0a1ph4xJq/Zs1qFt8wot+9bs3L4l27myZ8+brWW+PM3z5MqVK0dWv/iEGPlw5jItO3ds2aNb38yVWnZvo5Obvb5/ht20W/M2bXu1zNGiY6Bzl5adOvXs1qy73qJpj6ZiybIsVXx74TQ+n7gVOKK6AQ0TEsd2v+5TPw5SfRswn76pvliEdy9erlzmwYXIvnu+8DAl+fNMOxI2/Mzsjqb7co3O5vNlSeHznU+cY+Ge9/e+/f+q7//5etAu8eE7Oz8d8vmeH0BLiMpaY2cJn29wkf+r9v1f9f9k//sS/7AJKQUS4IQm9AXlLIFP88WHeJQGCtsJZJoAp/o88eMC [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A1_00">
+            <summary>
+              Looks up a localized string similar to nJ1l2BXHloXPaT+n5TQuwQnu7sHd3d3d3d3dPbg7QYM7BCe4huBOcJ23Cn7MMz8n77N7rb1qV7XANze5N8kEgoFA4Dt/CBV/OAqXypVatGzXvnD7tm3bt0ubqFrTTp1btm+XL1v6TOmzZOSP9Jmyp01UuGubLl07Nc3XrmnXLp0atkmbqELXRm1aNi7dtGeV9q2bMp0tc+acmZrmytE4R7Zs2bJk1MUdosmD0xdv2r5t0y6deqYv27RzC43c7PbjHuGGnRq3aNmtaZYmbUPtOzRt165rp0adtSYNuzQUQ5ZlKeLx/BSBgNgVOqQ4IRUTEZcLlZSA8qm/EvgL8/m7EohO+O+FS+WKPzofZc+9gD84mORluu2/1PnC2rcKSiBbqyiBwDEvEDgXP8u8XR/uff//auD//HFnZ/BgINDvwKyZ1Quna+QWCQS6Fg4E6qMD8v+v2vO/6v9kP/8QLxsvED+QABIGEgWKBYpzTRwoIZ3IEgZKBooGfoF4OKGZ6UtC [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A1_01">
+            <summary>
+              Looks up a localized string similar to nJxlGFVlt67XXGt2x5Lu7k7pEqRblO4OaQSku0NARAFFQJASBFEQVEAQFBCQEKQlpKSbc8/5+eNc5+fhvt4xnucZ433Xwm/LBrf7iwmxWOwVP8Ie/jDjlEYNu3Tt1btK7549e/fKl6lpx779uvbuVa54gcIFihbiR4HCJfJlqjKgR/8BfTuW69VxQP++bXvky1R/QLseXdvX6jikce/uHdkuXqRIqcIdS5dsX7J48eJFC0nhJwTRwwWqd+zds2P/vkMK1OnYr4tIrgz832fobfu279J1YMeiHXpqvft07NVrQN92/cQObfu3DZdUVY2HX8/NGYuFt7TdcVNLIJywLH0Wj8WfjojHPkQ8exWPJQkvHT1et/q1I96OyzF3jJDlTv6taVs8Z7b/STxWfGGmWCwnW7+nL/rJ9seXX/3/9tj/82Pw0OSuDZW1XdapjVViFc9Wie2cV+VTtU7VWGxkhf/r7Pi/zv+T/fcj/MlWiVWLJaAqvQoEaB+q8ZcgzJOc [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A2_00">
+            <summary>
+              Looks up a localized string similar to XL0FdNzKom0rbLWgZTvM7DAzMzMzJw4zMzMzMzMzg8NxmJmZwYlD/rO0z3/jjZc1pJqrpKq1Ysvd7Xv23leSJUmK5o8YxR9H4VSjepu2nTqX6NyxY+dOGZPVDuvWvW3nToVyZc6WOUdW/mTOljtjshI9O/To2S2sUKewnj26NeuQMVnVns07tG1RIaxvzc7tw7g7V/bsebOF5cvTIk+uXLlyZNVFQkxv48xlwjp3DOvRrW/mSmHd22jMG73+y7CadWvRpm2vsBwtO5qdu4R16tSzW/PuWstmPZqJm/x+vyLqBaeRJLHKPKE4pgoEidPjipqk/BqsSLeB39GKFIvJZ9duVi7z+mrI4edS8HA5xadMexM2/MM1u4Im5TqeRJL6J5b+z5+5sVOvjZnxWpFHB8sPSfD9QxG3fUd1++iPRf7/62fnDAvb3WJ60WX91chCBZMWdfM2fXi8e42iu4vHMfeXmF60lrhpSLWidcM3FpeG3D++Lsv7EmlXJigpScmK [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A2_01">
+            <summary>
+              Looks up a localized string similar to nHl3PNX/3/57Sak0JVmh0jCSZFMhlZXMzJDsEdmr+CC7aYWSrLJXtsySlS0z2dl783sen+99/+7H7/7v5zqv1/O6ruf1fJ3DOb2dIwRFEGQbvkiV9LUPg03hrqGRuYWYhZmZhTnbSWV9K2sjC3NhHg4uDu6L8MXBdYXtpJiN6WMbK31hc32bx1Y6pmwn79jomhrpSek7KFqY6EOa59IlPi59fl49Xh4eHu6LZKR7OLJzMIekvoWZ/mMrBw4ZfWtDAnxy23/vg0LHSs/QyFaf+4HZHgtLfXNzGytda+KBzmMdUmj37t0Y6eEdZEUQ0tSeSmzfHhzIAdKW/ARBsDU3DIkFsr6NIUfBHGxpl5Ucaz5UMoQc9ECZZ9jzaDU2oNfuiiA85mQIIg+jTfTcUUUrQ9v/vxX5X18vxE7cp6xAvtKIi8S1ir0Wflbedm5THEGeiP6PVfI/1v/j/eeL9M0SCBlCgewFjiP7kP0ICmw/sgsUAe4+5DByBCFHdiMHkUPI [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A3_00">
+            <summary>
+              Looks up a localized string similar to nLxjuB3LGmjdnrPnbMS2bdu2bdvZsW3b1o5t27ZtZ4ffqMr5cZ/v/rsZT3WNequ63rc6WWvNztk5iqooyh9+iV78cjQulSu1aNmufeH2bdu2b5cmQbWmnTq3bN8ub9Z0GdNlzsCvdBmzpUlQuGubLl07Nc3brmnXLp0atkmToELXRm1aNi7dtEeV9q2bsjprpkw5MjbNmb1x9qxZs2bOYIoMkeXG6Yo3bd+2aZdOPdKVbdq5hUE80O1vjlDDTo1btOzWNHOTtnb7Dk3btevaqVFno0nDLg3FomAwqInyIiRXFHGXfVhzbB3xxWVVOV3RvvfTlEXIjz+aEoXgo0tXyxV/fjHi3sdKhEFqondpt8eu85O57qzJasVUlAfRFeVC3Mxzd397/Of/tVf+r1/RCitKpoNXv98uokTYVmTwzt+Fbp62iypK//z/R9v7f7T/X+x/vzR5Vek1RefIJlhKQAmCrYSUMDiKq3jgKxGUiBBJiczJoyhRlWhKdIihxFRi [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A3_01">
+            <summary>
+              Looks up a localized string similar to nLxl1BTX1q7dJV3VXVXdpU2CO8Hd3d3d3d0lENxJkOAWgktwiSBBk+AECw5JkAAJGiRAgO+qyv5xxnf+Ha6x1rzve865uh/2GIG8e483JIRCoff88qv/yxC56tXt3KVnr3K9evTo1TN7moYd+vbr0qtniQI58+TMl5tfOfMUzJ6m3IDu/Qf07VCiZ4cB/fu26Z49Te0Bbbt3aVetw5D6vbp1YLpA3ryF83QoUqhdoQIFCuTLHfY/wQ0ezlmpQ68eHfr3HZKzRod+nWVydeB/n6G16duuc5eBHfK17xHt1btDz54D+rbtJ7dv07+NPxSJRET/61kfhUL+VvQH0YhKCNO/NuwVQ+LrEWJoJeLNezHkEd46d6FmpXtn7b23Q9YYId3jHN8lb/4vvSHMFMibJhTa5oZCZ1Lm+2LPP7ff/7/W0P/1a9OBH7Z4h0L7bpdvPH5p+dDIPeXGXnEqhEIjS/0fZ+//cf5/2f9+icEtUMWQxI/s/xaGQwpKCqmhCCoc [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A4_00">
+            <summary>
+              Looks up a localized string similar to VJx1WBVd+7b3xJ69BwyQUGzF7gQDC2wEEbsxUFRAFLATxUaxMREDxcCWsFFsQUVEEbFbLOziO2ee9zuO73uuY/Y6r7Vm1nXf7Nkz/vF7fwbBYDAU8J82av8VEvno7u03KnCs29iAgLGBtcr38h0fPGpsYIvGderXaViP/+rUd6pV3i3UPyR0vG+LQN/QkPFD/GuV9wod6j9qmLvv5B5jx/hyduMGDZrU923qPMy5cePGDesZtQQbfeM6HXzHBviGjJ9cx8M32E9m3jThvwyLIeOH+Y2a4NtweIA6Nsg3MDB0/NBgefiQkCHaSWazWdTKs6pqMGhXqaliIVUCimofvs6CQfw1UzQMBH4XiAZbJp/dzvLs8DrD+vRzg9UcoeLH2kmlBvxhbVljwdDYYGEweHMse12jQaUfo1s556xz23B8SqtbB92X725/p1W+bfcKH8Luttrd0K3FvyvlW7eqmD5+6BTX1lqa4eOzEys+b+vftpqx9ZLdfy60W+bSetOn [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A4_01">
+            <summary>
+              Looks up a localized string similar to 7Zp5NFVx2O9/m8xlyBShTBEyHUKmkBCiKDLP8xDHPFbKkDKmyFTIkFLIPGUmYyhDIpETMh7zwXl/x3v/eNd7173r3rvW/c/3s57f832e37P3PnuvcxxrARAAAB6KkAk6TgQXvZsOjm7uKu6uru5uQmdv23qiHd3d5CWFxYRRolDCYheFzqp4u3h5e9rKu9l6e3laugid1fW2cnG01rT113d3toXTkuLi0mK2MlLWUpKSkihREsIV6A9PLKxm6+5q6+XpL6xti3Y4BvtkPv95DUpLT2sHRx9blI0rhftdWzc3b08r9DEbSy9LwhA5OTkR4eXR8gFAOIqileg4BTE0NITlKzcARLuhRKATGhyeCDDA5szQ8HW1uUG6hj+ANgzhWrlQddpkD+6lwxlJX/iSiGEMsKMy6rb/4P9fM/jvoq28knVrsQmcnbsCVhqvALCkDO4SqwJwT/G/RMN/if/W+x8iOlwRmInhDZMAwiMkBWTQHQPkgAI6UkAJqKAjB8fB [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A5_00">
+            <summary>
+              Looks up a localized string similar to jLxjuB1d1rZdWKuqVinJHdu2bds2dmybO7Zt27Zt27adfOec6e843vffm/MZNa5rjDFn1Vx717o73f20oiqK8pc/Ios/rsalcqXmLdq2K9yuTZt2bdMkqBbWsVOLdm3zZk2XMV3mDPxJlzFbmgSFu7Tu3KVjWN62YV06d2zYOk2CCl0atW7RuHRYjyrtWoUxnTVTphwZw3Jmb5w9a9asmTMExR0iy43TFQ9r1yasc8ce6cqGdWoeoG52/XcPu2HHxs1bdA3L3KRNqF37sLZtu3Rs1CnQpGHnhmLIsixNPF7E5IoiVoUOa25IR0QQl4h7VUX70U9TLMTPv5oSheKjS1fLFX9+MdLex0rEQWqid2m3x67zi16u3aqSNRhBUXK4irLq8vuaWb5dyb+hTzEvT/1r+ct9Wr/0jf00/7r5Q3NlWP80/79PJu2+/+UCYyZea3K7aJp9o/7lAv/qeQvskz5PAWXfySKjV9oHu/16VkRp8KVI/Py5Ch8aoBdVlP75 [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_210_R3100_A6_00">
+            <summary>
+              Looks up a localized string similar to nJp3XI79G/fPPS+yk5VZaQ9bw87eFEppICMlJKlssjJCVmYZJSOjSCEVDVtKiCIjIqloPp/zvH9/PK/nz6f36ziOz/E5ju/3vK7r7nbX60aQBEE04kupypeGQpoyeb6X95KhSxYvXuJt3Hm651I/ryXeNr1NLUytzPFlatHHuPPQ5YuWLV/qaePtuXzZ0jmLjDtPXO62yMt9jGfA1CULPbHd29Kyn4Vn/77ufXv37m1lzipPaKlebGrvuWSx57KlAabjPP3mM/D5Ff89Q5qz1H2+1wpPK4/F4hIfT2/v5Uvd/BiPOcvmKEuCIFDKy2umTxDKKTGN0og0hJaSnvAkQdWEUMQDiNpGimgF8+OLV+Ptvz5vnvKJaLae7PrLJLG9Ux1mR7DT21VDEN0FgnjW0Sry9t9Pjf+/lfh/vk6kfx9GEFRq7IvPw07MrR22o1eLofvJlsMJYo3d/xUp/1f8P97/vig1420B5eOjAaP6Ss+qlYPHAxqKVF2SEFRIQgQS [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A0_00">
+            <summary>
+              Looks up a localized string similar to nJxl2BNXt4YnM0kmmYwluLsVd3d3d3d3dyvu7u7u7l6guBV3K17cz703/DjX+Xm4r7WeZ8nemeSF92v7AYpHUZSf/BAqfpgqqXKlFi3btS/cvm3b9u3SJKzWtFPnlu3b5c2aLmO6zBn4kS5jtjQJC3dt06Vrp6Z52zXt2qVTwzZpElbo2qhNy8alm/as0r51U7azZsqUI2PTnNkbZ8+aNWvmDD7xClHkxemKN23ftmmXTj3TlW3auYWXvt7t12sYDTs1btGyW9PMTdoG23do2q5d106NOnubNOzSUCwFAgFVPJ6bQlHEqeAR1QxqGEekE4k0Rf3SX1UOYr7+VJWoNB9cvFKu+NML4X0PFXewJ/HrtDvi1PnG7F0CTcnaJaGiLImhKOfjZZ6759PDn/9fVf7Pj9Z5Yh5WCqiHZVFALZIrnVqEpyYG5P9fse9/xf/p/f4h3qyt/KGkhlSoDUlwQoO4X1oUlwS1lQpgK+WU8mArZXHllPpKQCktKYOvTy6r [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A1_00">
+            <summary>
+              Looks up a localized string similar to nJxlXFRdF7dn5pwz55yxu1ssFANR7E5UTMTCBAuwBWwRLFTs7k7EDlQEE7vFbkFRbMVA32vv+/nw/t6Pr9dvn/Vfsddee+CeGZ+4LVaLxfKPP8KKPxltPDq0HzAwcEijIQEBQwLLF/XyHT5i4JDAOm4ulV1cK/HHpXK18kUbjfIfOWq4b51A31Ejh/f2L1+07ag+/gP7eviGdBwy2JdqtypV3Cv71qjet7qbm5trJU2ckEM2dmnmOyTAd+TwEJfWviMGqMT10f+d4eg9vO+AgaN9XfsFmEOG+gYGjhreZ4Tar/fI3qLIMAybGC9raYtF7DLP2DKaCiKLeKyaa7XYfk20WRYhfv+zWXISfHnrbptmb25mi31lyTrFWvxjhSMFuv8hN5Aat3CHxdKAdaOQ6+rjaa/+/f9ay//zJ9z516mp1Z6fslgyNB4VUqtxVP5njerfWNfYYplU7/9asf/X+n9i//tjk0+uBYr0BSpasWgsFexErKCjDLCy7GCydHBY [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A1_01">
+            <summary>
+              Looks up a localized string similar to nJxl1FVVG67X3nutvbpp6e7u7g5BBBWR7u4GCUW6JKW7Q0C6GxGQbkRAVLobzrWW348zzs/zXmPO577v55lzrXe/YyB84idEBEH4yFdQgy8jyvZZndZtOnYq16lDh04ds6eu16JrtzadOpYokDNPzny5+cqZp2D21OV6tO/eo2uLEh1b9OjetUn77Kk/7dG0fZtm1Vr0qdupXQumC+TNWzhPiyKFmhUqUKBAvtxS8AQ/vDhnpRadOrTo3rVPzhoturUWyeWe/z1Da9K1Wes2PVvka95B7dS5RceOPbo27SY2b9K9STCkKEo0eD0nkyAEp9QDUUONIexgq94/KkTfDIoK5RFvP0aFBIS3zpyvWemf0+6u24IzNJL2UY4tn3z9jl4SZgq8SCoIQxxBOJUi3+wdr25//P+twv/zla3Gu31ionT7x19JUF5InbD8rd7zyj2uMb68IHxb6v9au/6v9f9k//uKhnuEGuMbloQ4yCgFJKoMqqAJumAIpmAJtuAI [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A2_00">
+            <summary>
+              Looks up a localized string similar to nJ1l+NTWFq8nyWSSiQzu7u7uLsXd3d2hLU5xK1CcUkrx4u7u7u7uWtzvuzbnw33ux8v77Kzfkr332vknw9ByegJaIBD4zi+x8svTuVSv1qZtp84lOnfs2LlTxqS1Wnbr3rZzp0K5MmfLnCMrvzJny50xaYmeHXr07NayUKeWPXt0a9ohY9IqPZt1aNu8fMtfa3Ru35LqXNmz583WMl+e5nly5cqVI6spO8RQC2cu07Jzx5Y9uv2auWLL7m2CxK1eP/ZwmnZr3qZtr5Y5WnQMd+7SslOnnt2adQ+2aNqjqRTZtq1Le1HTBAIyK7xP98IGIopcEhw2AvqnAXogBuLzdz0Qk+DdsxcqlXl0JtqOe4Gog7XkLzNtStDgC7lSB41Arn3xAoHmjNOJcsza9uHe9/9fG/h/fuW/EK9EnkXBvXbiQiXHd6tUMhCoszvQJEmpQGBgkf9r7Pi/xv8T+98vOazNVVOIFiwiesDkFhgQQllgEhNrqJwZiB7wA04gHIjB [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A2_01">
+            <summary>
+              Looks up a localized string similar to nLp5WE57H/a9xmutkCkkFEJJJUmaCyGReahImZI5IppDFEWZIjTIrCRTVEqGJmmSipTSoFRoLk16znXtfd/PfTz/vW+f4/f7nud3Wld7X1LtTZAEQfThQ4jCxwAK18oV27bvsTe2373bfo/KuDW2Dvu32+8x0JyqPlVjGj6mqs9UGWfsuOuAo4OtwR5bxwMOG3epjFvmuGnX9s2LbJ1X2e+0Rbfm9Ona6rY6Wpu1NDU1NaaxwhOkxIunmtja77Y94OA8dbHt/m0M8tzBf57Rb6PD5m3bD9pqbNktYb/Xds8eR4dN+5ktGw9sFJp4nqeElzdYkSCEKYkUaoAEDTFIuKpSCILq8qSIEojuPooYJiTzPy0xqf04JOk7MdiLlG9UjRtt1YPawGSC0KzgCeILSxB5shqhiX++9/3/jcT/+3G41PhPrVwycfjQ3OOWg+cSh2++fZk+dB4KRv9zkv7n/D+5fz+ET5bETePTZQhW7EQET3CEBNGf6EcMICQJeWIc [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A3_00">
+            <summary>
+              Looks up a localized string similar to nJ1juCRZ067TlVmVmdW2bdu2bduetm3btq2Ztm3btrvPvVa/P851fp6+r5XxPLFiRWRl9d679jfzzqeoiqL84Y+I4o+rcalcqUXLdu0Lt2/btn27NAmqNe3UuWX7dnmzpsuYLnMG/qTLmC1NgsJd23Tp2qlp3nZNu3bp1LBNmgQVujZq07Jx6aY9qrRv3ZTqrJky5cjYNGf2xtmzZs2aOYMpJkSWjdMVb9q+bdMunXqkK9u0cwuDfKDb3xnBhp0at2jZrWnmJm2d9h2atmvXtVOjzkaThl0aiiLbtjVxexGSK4o45RzSXEdHhMVlZgdd0b7305SJiB9/NCUKyYcXr5Qr/uxCxH8fKREGqYnept0Ru85P9ppRk3VvLEXpFF1RzsfNPHfP10d//n+j8v/8+fMnQmFF6XdAafC7iFJgcZHxpWIXHnI1UVFF6Z///1r//l/r/8n9748mrypRU3ResgmWElBscJSgEgJX8RQfwkoEJaISSYnM646EiqpEU6Ir [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A3_01">
+            <summary>
+              Looks up a localized string similar to nLx19BXl9789cebMnMkzcwAp6e7uFhBpaZDu7u4SkBYB6ZYWEWnpLhEREBARERARkZbmd93j51nr96znv4dr3fd+7dfe+54478MHXHy/kixJ0lt+iSh+2Qpb3TodO3Xv8V6Pbt16dM+VrkG73n069eheunCe/HkK5uNXnvxFcqV7r1/Xvv16tyvdvV2/vr1bdc2Vrna/1l07tanWblC9Hl3a0V24QIFi+dsVL9qmaOHChQvm08QVEuHBed5v16Nbu769B+Wp0a5Pxwi+3v+/a5iterfp2Kl/u4Jtu8V69GzXvXu/3q37RNq26ttKNBmGoYjbi2eVJDEVO6zYMRXhie31OkVSXoxQpCeIl28VKQnmjXM/1Xz/zx/9vTel+Bg5w/3cO1I1fUXtOD2F76WTpFRJJensuwUX7X528+3/3yj9f37dOjCjT45D0v23Fe8Un1hRKnf1vX57c1aSpJFl/6+19/9a/y/v//ksJCXcZaLKA2tSVNKJhhRDy+goFUMy [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A4_00">
+            <summary>
+              Looks up a localized string similar to nJ1j2BzrloYLXd3V1YXYtm3btv3FyRfbtm3btm3bts253zf7x1zzc3Jfq9aznrVeVHdy9mSyT46iKorylx8iix+2xqNypeYt2oYXDm/TJrxtmgTVwjp0bBHeNm/WdBnTZc7Aj3QZs6VJULhz606dO4TlbRvWuVOHhq3TJKjQuVHrFo1Lh3WvEt4qjOmsmTLlyBiWM3vj7FmzZs2cwRAnRJYbpyseFt4mrFOH7unKhnVs7sMPdPl3htWwQ+PmLbqEZW7SJhjeLqxt284dGnX0NWnYqaEYMk1TE9eLkFxRxKrgYc0O6ghPPEIhTdF+9NUUHfHzr6ZEwXx06Wq54s8vRtz7WIkwUE30Lu322HV+0btqaUrWW56ipHQV5ULczHN2f3v89/+blf/7o9+aIoP+VjhY8qS/6Pbpb4oo/WoV3topelEa+f9X7P1f8X+8/35o8qmSeSte2QC/ElBMCCqWEgJbcRQXPCWCEhEikT2IzPtHhWhEFIimRFdigHBEjqzE [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A4_01">
+            <summary>
+              Looks up a localized string similar to 7Zp5MNXv//evN8qWpQ9SKMqWiDhZw0mFZC0lssuSfd8dKllSCGXnWCpU9mSLk4hkLULo2Jdsh+yO49wXn/ue+c7vnvuee+6Ze+5/PB/zuq7na3lf522O82YGgAAAyFC7+64OUcBF98Y9Wyfny86Ojs5OIjx6Vm7uts5OCpKi4qKoc1Ci4lIiPJc9HTw83awUnKw8PdzMHUR4dDwtHGzvqlv53nS2t4LTkhISMuJWstJ3pSUlJVHnDuy+AsvewaKqVs6OVh5uvqKaVu73qGCd2uvf16Azd7t7z9bLCmXpSOvsYuXk5Olm4U5lae5hvjtEQ0NDsXt7zIIA7F5F+4XiEC0lNEy7Cwc/ABRbQRTgH2iIZArACovj3b1aqn+6DuMmAHMwcmrxbCWn0TbsTfIBIPkF3tICHPpxHJVeszFB/r/dwX/VxZdXALhRfwAcVManDl0B91kuE9FHlQG4j/6PwP1H/JfafxfF3orAnRJ+wfA4QA1oAC3cD8AqFcwoAB2g [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A5_00">
+            <summary>
+              Looks up a localized string similar to nJxlWBVtG65n1lqTC7sL7ESwG7ALuxMVOwAVAxS7EzswsLs7ALtF7EJFMRAVQVEEQdjnzPv92Mf+ubmOZ+7rup/7mTnx/cA1XwmiIAhZfBnV+HKwcOncadhwX78mfj4+fr7OxbsNHus/3M/XraZLVZfqVfhyqVrLuXiT8aPGjR872M138PhxYweMci7eYbz3qOEDPQcHdvEbOZjpmtWq1ak6uG7tgbVr1qxZvYpkPCGPeWOXFoP9fAaPGxvo0naw/zAbfWXCf8/QB4wdOGz4hMHVB/lofqMH+/qOH+vtbxs0YNwAY0hVVYuBl7OcIBintGsWB82KyWFcLncXBcvfaRbhHCY9yyLkpfnh8bN2LeIf5brwUcg5SyyZVPlskT4Z7H3rKgo1A+2C0EkXhIfFqm8OT/2Y9f9bhf/3q8OdpoKQcjnrmdRMuJiBd20iDivYTBCme/xf68L/tf6f3v++jG+2jKALZVE+lo7K4fIio1MO5RXKm7WUkE1wQNmppVBp [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_420_R3080_A6_00">
+            <summary>
+              Looks up a localized string similar to nJxTuCTbEm7TqMzKrGrbtm3b9mrbtm3btm3btm2778jc5+F+9/Gu8UXEH3/EnFlVvXb36n0giIIg/OPLq96XLZEqV2reom27wu3atGnXNk2Cak06dmrRrm3erOkypsucga90GbOlSVC4S+vOXTo2ydu2SZfOHSNap0lQoUvD1i0alW7So0q7Vk3YzpopU46MTXJmb5Q9a9asmTOo3hMi+xenK96kXZsmnTv2SFe2SafmCr7e9b9nBCI6NmreomuTzI3bmO3aN2nbtkvHhp2UxhGdI7wlwzAk7+WFkguCd8o8ItmmjHC99LqFKEg/+0nCY8Svf5IQBfPx5Wvlir+4FN73RAgNEhO9T7sjdp3fzLazkzUiLAgTLUG4GDfz3D3fn/z7/63C//P1KPmXIkJ//ZCwXiv68ZFYNE/NJIWzF0leVBD65/+/Yt//Ff+P978v780mEIJCQkhE2BAkvD6B4KCDQnwhJLgQnz4BhFDxfMJob+bgxBcC3GCBTSQCU0iM [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A0_00">
+            <summary>
+              Looks up a localized string similar to nNxjsOvuGzf6NG3TJk1jq9u2bdu2bdu2bdu2bdu2+dvn2/85L555Xp77M23XdK+9MJN140IIH0EQ/zDir/HBkniqXKlFy3btC7dv27Z9uzQJqjXt1Lll+3Z5s6bLmC5zBox0GbOlSVC4a5suXTs1zduuadcunRq2SZOgQtdGbVo2Lt20Z5X2rZvis7NmypQjY9Oc2Rtnz5o1a+YMwfh3kP/3hdMVb9q+bdMunXqmK9u0c4sA3g91+3+/B9OwU+MWLbs1zdykLd2+Q9N27bp2atQ50KRhl4bxTwqHw2T8xxOSE0T8f9FHSZb24wM+/tQxxhHkr/4k0RIf/P5HEgrefHLlerniLy+L+58SwmBfog9pd9p1/uDflg72E1mZjgSxLilBXHIzz9v74+m//7+vxP812uQxjqRISx7x9Wi2Eq9F4g8fIRQhiAH5/4/H/v/j8X+99/8N8n/PPryShB+/chAoIkSEgSYYIgIsESU44AmBEEEiZPzmCqESGqGDQZiE [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A1_00">
+            <summary>
+              Looks up a localized string similar to nNxjsPPuGzbqNG3TJk1jq49t27Zt27Zt27Zt27Zt8/fss/+9P7zzftz3Matd0+WZrBsXQvgIgviHEX+OD5bEQ+VKLVq2a1+4fdu27dulSVCtaafOLdu3y5s1XcZ0mTNgpMuYLU2Cwl3bdOnaqWnedk27dunUsE2aBBW6NmrTsnHppj2rtG/dFJ+dNVOmHBmb5szeOHvWrFkzZwjGf4L8v2+crnjT9m2bdunUM13Zpp1bBPB6qNv/+zOYhp0at2jZrWnmJm3p9h2atmvXtVOjzoEmDbs0jH9SOBwm47+ekJwg4l9FHyVZ2o93+PhD/fMMQf7qTxLV8c7vfySh4MUnV66XK/7ysrj/KSEM9iX6kHanXecPPpaZ8BNZ01UmiF02QVxyM8/b++Ppv/+/z8T/NW5W+XX4bI9Hh//9Y4qYLXIXedLrUeH9xxcWIYgB+f+Pt/3/x9v/9dr/N8j/PfrwTOL3DRBBoIgQEQaaYIgIsESU4IAnBEIEiZDxlyuESmiE [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A1_01">
+            <summary>
+              Looks up a localized string similar to nNxzlCPfGz/4qkpSSSWVspWxbdu2bdu2bdu2bdu2bX5m3/nu2XN+u3/ufZ1O+qQz09Nnbte990ERJEEQ/zDiz/HBUnioXKlFy3btC7dv27Z9uzQJqjXt1Lll+3Z5s6bLmC5zBox0GbOlSVC4a5suXTs1zduuadcunRq2SZOgQtdGbVo2Lt20Z5X2rZvi3VkzZcqRsWnO7I2zZ82aNXOGQPw7yP/7i9MVb9q+bdMunXqmK9u0cws/Xg92+7+/R7hhp8YtWnZrmrlJW6Z9h6bt2nXt1Kizv0nDLg3jbwqFQlT8nyckJ4j4n2KOUizjwyd8/OHz6yBB/epPEa/xye9/FKHgxSdXrpcr/vKyuP8pIQwmE31Iu9Ou8wdfK/6VJLL2y08QqVSCuORmnrf3x9N//3+fif/PyJftz2FywO3Dc9qnLEImUIuQB6YXvpdvQhGCGJD///jY/398/L9e+3/+Lwjqf48kninChx85ADQRJELAEGEiAiwRJTjgCYEQQSJk [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A2_00">
+            <summary>
+              Looks up a localized string similar to nNxzlCPfGz/4SiWVpJKynbFt27Zt27Zt27Zt27Ztfmbf+e7Zc367f+59nU76pDPT02du1733QRE+giD+YcSf44Mh8VC5UouW7doXbt+2bft2aRJUa9qpc8v27fJmTZcxXeYMGOkyZkuToHDXNl26dmqat13Trl06NWyTJkGFro3atGxcumnPKu1bN8W7s2bKlCNj05zZG2fPmjVr5gxU/DvI//uL0xVv2r5t0y6deqYr27RziwBeD3X7v79HpGGnxi1admuauUlbun2Hpu3ade3UqHOgScMuDeNvCofDZPyfJyQniPifoo+SDO3HJ3z8YfoKmSB/9SeJ8fjk9z+SUPDikyvXyxV/eVnc/5QQBvsSfUi7067zB1873Y0ispaaThBtMhHEJTfzvL0/nv77//tM/H/G+LtG4WlLA0doL2+RrX3LFfn3r/ihLbVjRQliQP7/42P///Hx/3rt//m/IMj/PfrwTBJ+/MgUBIkQEQaaiBBRYAiW4IAnBEIEiZDx [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A3_00">
+            <summary>
+              Looks up a localized string similar to nNxjsOxcGy7qJM100rHVy7Zt27Zt27Zt27Zt27b1rnXu/s75sWv/POOq2T2rp6syBx6EIAmC+IcRf44PlsJD5UotWrZrX7h927bt26VJUK1pp84t27fLmzVdxnSZM2Cky5gtTYLCXdt06dqpad52Tbt26dSwTZoEFbo2atOycemmPau0b90Un501U6YcGZvmzN44e9asWTNnCMR/gvy/b5yueNP2bZt26dQzXdmmnVv48Xqo2//7MyINOzVu0bJb08xN2tLtOzRt165rp0ad/U0admkY/6RwOEzFfz0hOUHEv4o+SrG0D+/w8Yf0XxiC+tWfIpLjnd//KELBi0+uXC9X/OVlcf9TQhhMJvqQdqdd5w8+VrmQj8i6oA5BPPAI4pKbed7eH0///f99Jv6v8e+fUJgk+h/+V/9vEfJAzyK1M2uFK91IVJQgBuT/P972/x9v/9dr/9+g/vdI4pkifPiTAxAkQkQYaCJCMMASUYIDnhAIESRCxl+uECqhEToY [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A3_01">
+            <summary>
+              Looks up a localized string similar to zNwJVE3r+zjwPZw9nb2J20WZMuaaG4SkMo9lHkOGSkiiJM3GcomQoUgZI0mmJJpEJRoMKUMKqRClea7fk0znXG8n37X+a/37LI6eHs9597vf/ex3lwXDMQyrh4+G14YPgYDfZs5YsXKNxWgLc3OLNf26zDGxtFppsUZbY4DqAHUV+BigOrhfl9HWq9dbW5porzGxXm+5dHW/LtOsl61eaTTZxHaWhZkJZGuoqQ1VNdEcYjREQ0NDXYVqeAf5r4UHjDexMDdZb2k7QN/EaoUI4syGxvcQL7U0WrFyg4m6sTlnsdZkzRpry2VWIuOl65c2JLEsSzQMr1UvDGv4W1wMIXAk/EGu4beTjjhGVDkT2BH4Q3U9gf0NwXcpaVPGf3jSOjIba7UV7/alf2iHhTXwtXOjMUyDbYFh86DQ407qPuEV2fX/6ysm9YFjOdE4djS6vqB+zGKftmPwERmj8Qmdx2LYJt1ffkX+8ksq9u2D+FaOACQcMgVojMFYwGFijAcC [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A4_00">
+            <summary>
+              Looks up a localized string similar to nNxjsCtdGy7qTiedpJO2nWXbtm3btm3btm3btm3bfNe5853zY9f+ecZVM5mV6aqeAw+a8BEE8Q8j/hwfDImHypVatGzXvnD7tm3bt0uToFrTTp1btm+XN2u6jOkyZ8BIlzFbmgSFu7bp0rVT07ztmnbt0qlhmzQJKnRt1KZl49JNe1Zp37opPjtrpkw5MjbNmb1x9qxZs2bOQMV/gvy/b5yueNP2bZt26dQzXdmmnVsE8Hqo2//7MyINOzVu0bJb08xN2tLtOzRt165rp0adA00admkY/6RwOEzGfz0hOUHEv4o+SjK0H+/w8YdqP1mC/NWfJMrhnd//SELBi0+uXC9X/OVlcf9TQhjsS/Qh7U67zh98bNFzP5G1ZGuCOJyYIC65meft/fH03//fZ+L/Gv/ydy/iI8of/neeKjqz17kij//VKezrYBQliAH5/4+3/f/H2//12v83yP89+vBMEn78yRQEiRARBpqIEFFgCJbggCcEQgSJkPGXK4RKaIQO [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A4_01">
+            <summary>
+              Looks up a localized string similar to nNp3VBTN2iDwDtPT06LyIoqSxQAqSVRAshkVARUVCYISRCQJSM5ilqCCIEgSJChJcpCgouQMggRBJWclSt4H773ft/uds/vH9u9MONXVVV3TVV1P9RkERRBkGbaVz5VtNQZvamevGZtbHLYwM7MwF9p8wdDK2tjCXE5cRExk727YRMQkhDYftjG9aWNlKGduaHPT6oqp0ObTNnqmxvpKhg7nLEwMIbf4nj37xQylJPUlxcXF9+4mVmpg/VuwiKKhhZnhTSsHEWVD62s0SCdt/1XHqitW+teMbQ33GphRFjcMzc1trPSsaQZXbl5ZycRgMLCV0/tHAEFWjqI+Y6spHL4wr7xtOIwi2JwbhqyBL/PLGLIeErsbm1UUBxpYCnuQfzzRLb+Eczi1F2DfB1UEESdWIYg6HFrPvTcs/0/P8v/vJ/I/tmUF1yMoolpUmUAcdaPyj6Du5w5nq286iiDuCv/bq/B/e/2PtH9v2N93aBbAockEoCMkwgAUsgphAquR [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A5_00">
+            <summary>
+              Looks up a localized string similar to nNxjlCtdtC7gQlJJpVyVclVv27Zt27Zt27Zt27Zt2/be9813748zzs+7ntFJRjrd6R69emHOuYogCYL4hxa7jzWewk2lis1btG1XqF2bNu3apo5ftUnHTi3atc2TJW2GtJnSo6XNkDV1/EJdWnfu0rFJnrZNunTu2KB16vjluzRs3aJRqSY9Krdr1QSvzpIxY/YMTXJka5QtS5YsmdIHY++g/feN0xZr0q5Nk84de6Qt06RT8wCeD3X9v+8RadCxUfMWXZtkatyGbde+Sdu2XTo27BRo3KBzg9iLwuEwFfvx5GQEEfsq9gjFszQeSLGbpt9ogvrZjyLq4sGvfxQRxZOPL18rW+zFJWXfE0IeRCZ8n2aHW/s3PtfQI4ks1eIIwo4QxEU/09w935/8+/+9J/5X+3dvVWGSeH9Q3B8sQva/g8ffC37sZxUhiP75/sfHvv/x8b+e+3+N+u+WxD1F0PiVg8AQISIMLBEhOOAJgRBBImRCAZXQ8JtHCZ0wCBMs [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A5_01">
+            <summary>
+              Looks up a localized string similar to nNkJOBXv3zj+Wc7MnFkOSYtSfCppRbKGaFEqIQmVoqgUSrYkW3tkKy0KUSkJUSTK1mJJWVoshSi7hOzZ8nvz+f6e//M81/+6/tf1n9flOHOfmfu+Z+beB0ERBBmDbfz/+MZh8GG09eChI/Zr7Q8ftj+y9B+T/Y5Oh+yPrFSSlZdVWAabrLzy0n/Wutg5uzjuX3lkv4uz4167pf9scbG0O2Slu99tm73tfjhaaflyVfn9K1SsVJSUlBSWEeMpiE5ELKuz3/7wfmdHN1m9/U4HeRBOHfs3DWavo9XBQ8f2K+w7TNsf3X/kiIujpRNv317nveMH8fl8bDx7kxYgyPhZdC7G0Th8ER7/iH+EItiQN4bcgy/DYxgyBQIbSiv0dVo/i2Q3IpPOoHN/yzwX3zUCv82FCJWKBQgSChF9mq0Qkfmncez/73/kf21jcvHaKNLxWrSFWIeuqobvkmsrTcXWIchJrf/2l/3f/v5X2H82bOITLgvgcMkEIBEK4QMaYRAW [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.KUKA_KR_500_3_A6_00">
+            <summary>
+              Looks up a localized string similar to nNxjsOvuGzf6NG3Tpkljq9u2bdu2bdu2bdu2bdu2+dvn2/85L555Xp77M6ur092lmewbF0L4CIL4hxH/HB8siYfKlVq0bNe+cPu2bdu3S5OgWtNOnVu2b5c3a7qM6TJnwEiXMVuaBIW7tunStVPTvO2adu3SqWGbNAkqdG3UpmXj0k17VmnfuinenTVTphwZm+bM3jh71qxZM2cIxn+C/L9vnK540/Ztm3bp1DNd2aadWwTweqjb//szIg07NW7RslvTzE3a0u07NG3XrmunRp0DTRp2aRh/UzgcJuO/npCcIOJfRR8lWdqPJ3z8oX75EEH+6k8S1fHk9z+SUPDikyvXyxV/eVnc/5QQBvsSfUi7067zB/92eaGPyNopD0Ekw7suuZnn7f3x9N//38/E/zVGTr5QxEckPfzvH1X06fCneE4WzsGmKkoQA/L/Hx/7/4+P/+u1/2+Q/3vEl4Mff3IQKCJEhIEmIgQDLBElOOAJgRBBImT85QqhEhqhg0GY [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A0_00">
+            <summary>
+              Looks up a localized string similar to dJx19BRHs4Z3ZMd2ZnZxd3d3d3cL7u7ursHdIbgGt+CuwS1ICBDc3e0+3eSPe+45l+dU11tvVffI7o+EfF8SUAKBwA9+iSx+uSpLzaqtWnfoWKxj+/YdO6RPXLN5l66tO3YokDNjnoxZcmfNlSVj1sw58mRJn7hY93bdundpXqBD8+7dujRulz5x5e5N2rVuWq557+od2zbvUCBHjqxZc2dpnidX01w5cuTIljkoLhJNnp2xVPOO7Zt369I7Y4XmXVvp+GaPn5dxGndp2qp1j+bZmrW3O3Zq3qFD9y5NuurNGndrLIYsy1LFHUZSBQL5yd3bJh9ra4iwWJod0ALq54Fq4JcDmnyaLz/UQPT/nuzuxb8qlnp0Icree4HIUCXpywzb49X7Sj/xf7O5TycPBOYlCATOJ8g2f/fHez/+v1w6atMWLU632lf21aeFdZqPKtz+V3avb76vy+xws5NxNhUO/J9fyqDiB7vZ9w4cfb1nvRJ4XhRdVBmUt1ggMKjQ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A1_00">
+            <summary>
+              Looks up a localized string similar to dJ11lBNbs7fTnnSCuzscXIfB3d3dYXAfBnd3d3d3GBwGd3d3d3e5T2344353rY9nVdevZNfe3QnJcDjnfT2ax+P5wy/x8iugc6lRpWWr9h2KdmjXrkP7DElrhHQObdWhff6cmXJnyporW3DWTNmyBOXOmiFp0bC2XcI6h+RvHxLWpXPjthmSVgpr0rZV07IhPap1aBPSPn9QULZsubKG5A5uGhwUFJQ9iyWbxFCzM5UM6dAupEvnHpnKh4S2NMk7Xf9u4zbu3LRlq64h2Zu183XoGNK+fVjnJqFms8ZdGkuT1+vV5YRR03g8+fBhbVKO9hmIKHKp7uge/Xs/3VPa0dXd/Pije2L+u7OHF69UKPnsQrSIR56og7TkbzNuT1DvJ/Vo/3pz3QuwADufKPvc3V8f/fn/+bc9QlNciKi+NzT7pSW7M/cu1LbWr6WR3nTbO2XisQbXW4QW8vyfX5pn7f60+Tbu/9Mvf1F0Ea2/hX9S1OPpX/B/WcT/sv+T+/dL [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A2_00">
+            <summary>
+              Looks up a localized string similar to dL112FZVt769eq37Xms9dHd3N4g0qIQ0iiAtIN0iIggq0g3S3d2dElLSLd3dXfscE//Yxz6O7XnMOa5xjTHnmivu543f++1P0zVN+8A/EuWfwGCqXb1Fy7btyrRr06Zd2+ypazfr2Kllu7bFC+YskjNP4byF8uTMm7tAkTzZU5fp0rpzl47Nirdt1qVzx0ats6eu2qVx65ZNKjbrXrNdq2ZtixcokDdv4TzNihRqUqhAgQL5cttykXhq75wVmrVr06xzx+45Kzfr1MLCd7t+vEy0UccmLVp2bZavaZtIu/bN2rbt0rFxJ6tpo86NpMnzPENOGDuTpn1C7NIq/aCIiYgl0+vPTc143cvQ7n9uqrt588HQ4v93Z1ePnaxS4dbROFuuabH76mkf5liXrN5b6qv/6y38bxJNG8E4kiLf5E0vr334/+LxxJvO5ezXZWuxMse/HjR9RslfH50fPelCw63V2w9ZdCzJ7JLa//mn8Q9Lt3/o5ZTZX2loGXRpvXfd [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A3_00">
+            <summary>
+              Looks up a localized string similar to dJ1ldBXLtkZ37/bujWtw12DBXYK7hODuLgGCu7u7E9ydQIJbcHcnaHB33qzi/HjjjfEyx+r1LalV1bWRAxe4HsXj8fzlS3jx5fPyCK7dvkPXboHdunTp1tU/TXCbniEdunUtXiBn4Zx5CgUUzJMzIHf+wnn80wT27tyrd882xbu26d2rZ4vO/mlq9m7ZuUOrKm36BXXr1KZr8fz5AwIK5WlTuGCrgvnz58+bWxebJJCzc1Zo061Lm149++Ws1iakvUbe7PNvG6dFz1btO/Rpk7d1F7tb9zZdu/bu2TJEa92iVwvRZFmWV5wwbmaPpxi+d6cME20VEUc8Nt5RPN4fQ7yeZXf+vc/Pv15Pwv/eLPrK9eoVXlyOd+CJJ+4IJd27HOHJG/+i3uG/3kLLfB5PYuxSyryLI789+fv/+asLhttxCrY5GDtxgsMvV/crVXhUqdpZ/o45mPXpyxr1sy8p5fk/X4u2eI7sed718N8D/mUVz+0yylA9UBlat6zHM7Tk [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A4_00">
+            <summary>
+              Looks up a localized string similar to dJ1llBRXt4a7q7qkq6p7cHd3dwkQ3N3d3d1dExyCQ3B3dwjuHlwDwZ3gcp99hh933bUuz9pnv/vd55w63TNT1XyZfPH5fT7fD/5Ilj+exlCjSqvWHToW7di+fccOGZLUaN6la+uOHQrmypQ3U9Y82XJnzZQtS868WTMkKdq9XbfuXZoX7NC8e7cujdtlSFKpe5N2rZuWbd67Wse2zTsUzJkzW7Y8WZvnzd00d86cObNnMeQi0dXemUo279i+ebcuvTOVb961VQDf6hF5Gadxl6atWvdonr1Z+2DHTs07dOjepUnXQLPG3RrLJNu2NTlhlNQ+XwFy97Ypfg/qiAgZsp/1+7TPAzVf6rORr+fLD80X4+cru3/xcoWSjy9E3fvAF2WoP9mrjNvj1/tK/+WZyLl50kT4fCtDPt/5hNnn7v744Mf/l1uvu5+sz5u2+04WnFpk6IjehZOeufHiyok2+zoVyX3u6bYBhX3/58+PHzd+beDL8dePH9mL5f33QFHD [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A4_01">
+            <summary>
+              Looks up a localized string similar to nJ1luJTVF7fn6ZiZZ+gG6e4G6e6Slu7ukJAQlZIQRATpUDpEQkBCEZCQDulO6e73Xvv8P7zX+/HlvvZev/Vba+8nZs45M3MQQ1ooFPrAH4nyJ6IzNazXqXOPnuV7du/es0fOtA3b9+nbuWePkoVzF8udr2j+Ivly589bqFi+nGnL9+/Wr3+f9iV7tO/fr0/rbjnT1unfplvnttXbD6rfs2v7HiULFcqfv2i+9sWKtC1SqFChAnktOUhCtXfuyu17dm/fr8+g3DXb9+1k4jsD4g7jt+7TtlPnAe0LtOvu9ezVvkeP/n3a9DXbte7XWppc19XlDONlCYVKEPt3zfiNZyBiMnXupof018P1UPNuurqaNx/0UKL/Xdm146dqVb59LP7266F4o7T0D3P9lrLZW+qZ/tdbdE3CUOhV/FDoaOoCc35/ef3D/28M/T9/xgery2uhgn/0DBWpsHT4c/Sycn62OhVCoRGl/6+x/f8a/4/3vz9ynilDqUIpUKlCqUPJ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A5_00">
+            <summary>
+              Looks up a localized string similar to dJ1lkFVJk4aP3KP3XNzdHRporHF3d6eRRht3d3d3d3d3dxr3wd3dG/apgh8bG7H9RFa++WZWHeuI+WaG2VVURVH+8COy+PE0lppVW7Zq175Y+7Zt27fLlKxmWKfOrdq3K5ArS0iWbHmy586WJXvWnCHZMiUr1jW8S9dOYQXahXXt0qlxeKZklbs2CW/VtFxYz+rt24S1K5AzZ/bsebKFheRumjtnzpzBWQ1xkZjy7Cylwtq3DevSqWeWCmGdW/rwrW5/L+M27tS0ZatuYcHN2jrtO4S1a9e1U5POvmaNuzQWQ7Zta+IOo6VVlPzkrm1SjXF0RFSxFN+uKtqP/pqSZ/vf5/n5R1Ni/XuyR5evVSz1/FL0/Y+VaIPVFO8y70xY/xd95d9snr0BRSnmKcrFxMHz9n57/Of/y6vidKr1+EyRA8kW6l19ydsXbtUk/X8//hQ7sOvjocrF8lQrrPyfH0uJKKYqB/b/2Z+nuBqqFI+lpCmqHihbXFEGFPpfsf9/ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.Staubli_TX60L_A6_00">
+            <summary>
+              Looks up a localized string similar to 7bt5PFTx+/99zlFpVykqolJJQkjIVknKmhaSLXvaZM82U0mUUCI7EdmSShJhKmQ3ZN/Lvm8zDDNm5nfN9Pn+7u/v97h/9+P+477/cz17n+t1va7rvM+ZI9PweISgCIIwIViZFesxOOhfuG53x17V/vZt+zuHd+tbOzrZ2d9ROiYuLy4pJyUrKS51REZe8vBuVZdbzi6O1kp3rF2cHc1vHd593sXilp2lprX7Jfub1neUZGSkpOQkreVlLWVlZGSkj6xkXYSbvbe4urX9bWtnR3dxbWun6yvA53T9d5m15o6W1+1craWtbq+xv2t9546Lo4XTCitzZ3PW0OrVqzHWHW4SRhBFyC439z1bwwGCi3WQUkcQjIrHkAPq/14NjYkhW//zyvobW3TURxo2EwaQTT7o3mmxPD7jJehPnvnXl9sHW3jD5r93SccVLgww/0/5Anv86Pdzo8y4jmCDEzXnOI/7TEp//08+gfxvwSTQVFnZtETxNIpgsHafSvx25jSC [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A0_00">
+            <summary>
+              Looks up a localized string similar to nLl3PJb9G/9/Xud5RSFKAwlFyF5ljzIiREZG9lZm9laISqjMKHuGzOxoIZuUMiLJ3jsyfsd13Z8/vo/f97/v9Xwc79freB3H+7ykx3257xuCQxBkH14EJbwoUDi0NG1vOTrJOTk4ODlyn9GxcnG95eQodZFXgFeIH168AsLcZ+Tc7d3cXaykHK3c3VzM7LnPXHc3t79loWLlre1kZwXbFwUFRQWsxEQsRC5evCjEf4DwDseID+ZVtHJysHJz8ea9ZuVqi4ec1OO/9yAzc7GwveVhJWTpcMjJ2crR0d3F3BVvaeZmRlg6ePAgSvjyjrAjCOHWoUaU4hAGhopwJN1FEHQ7EEWiwfzbR5HjEP75+l1Ncbr3aMM4ciQYx7zEU01vuAOzxgAEuZgDD2GDq18YhJLf/h3f/39V5P96xX0YvRD34TVbQgF4WVekShaH0MoiyF2Z/6Ma/o/6/2X/e6HEEweKIoQ/Ih44AD0JAN8PcDjoSZCDwCHYIAMwcOQAAkUK [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A1_00">
+            <summary>
+              Looks up a localized string similar to nJtlWBZbH6+nZx5bEbFbsRNUVLBb7MDuREUpRVFsRUwMFHMb28BukbCwFQtRVAxUwEaxUc498+4P5zofj/f1/n/3rLWmZ9Yz7r1fQRQEIZs/Zpp/ckmU7t1Gj5ng1cJr/HivCdVK9xrh7TPGa4Krc43aNerW4k+N2vWqlW7hN87Xz3uE64QRfr7eQ8ZVK93Fb+i4McM6jAjo4eU5gtHOdeo0qD3Cpf6w+s7OznVrqeYe7KwN12gzwmv8CF/vgBruI3xGK7Tr/v/bR44h3sNGj/EfUXf4eJvXxBETJvh5D/VRhg/xHWIOMgxDMg8vn6MgmGvZ4qRcNhnJa5YzlUVB+hUkCSeR39mSUJDGl/cSO7VJv5s/9pWQb45Y9lP1U8X6Z9H3xlEUnPvaBOGnIQh3StTdFP3jVfb/bwr/z59VXdacU4S952rXrdD8dZc1zccOXNM8tm7vFoIws8n/9b/Y/+t//0/bf38kq3JagswJq4Im6IIh2DBFyCHkxAwhl5Ab [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A2_00">
+            <summary>
+              Looks up a localized string similar to nJ1j2B7JGm7b7i+2bdu2nYmtiSbOZGLbtm3bNiaaOJnYds6q2vPjXOfnybq+ulc9XV3tft/sJLMVVVGUX/wSKX4FGk21qq1at+9QrEO7dh3ap09cs3mnzq07tC+QI2OWjNky8ytjlpzpExfr2rZL107NC7Rv3rVLp8Zt0yeu3LVJ29ZNyzXvWb3D780ZnSNr1txZmufJ1TRXjhw5smU2xRaiyYkzlmreoV3zLp16ZqzQvHMrg7rd7X/b8Bp3atqqdbfm2Zq1czt0bN6+fddOTTobzRp3aSwGOY6jid2LnEpRxFruYS1wdSSSaILXmqJ97aspBvLtl6ZEp/jg0pWKpZ5cjLL3XyXyQDXp6wzb49X7zrKcLzUlx4ZYijIkjqJcSJBtzu7P//76/03l//n1qPKUA7enDzyYvli1opMqTymqKKsOnE5furii9Cv0f/3s/b9+/p/af7802aqkzgGbiqXYiqO4mKF4io85SqCEmKdEKJGwQImsRMEilKhKNCwy [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A3_00">
+            <summary>
+              Looks up a localized string similar to nJxTtB1LuEbbXrFt27Zt27Zt27ZtnNi2bdtO7qxKHu64j3fPseub9Xe1a3Xv5JxsRVUU5Q9fIsVXoNFUrNCseZu2Bdu2bt22Tap4VRp36Ni8bZvcmdOkT5MxHV9p0mdJFa9g51adOndonLtN486dOtRvlSpeuc4NWjVvWLJx90ptWzZmdOYMGbKlb5w9a8OsmTNnzpjOFHuIKDecpmjjtq0bd+rQPU3pxh2bGdTtLn/34dXv0LBZ8y6NMzZq7bZt17hNm84dGnQ0GtXvVF8MchxHE4cXLqmiiLXcQ1rg6khY0Vzcrina976achL58UdTIlF8ePFKmaLPLoTf80gJN1BN8Db19pi1frLs91ZNyRw5sqJkjaYo52NnnLPr66M//99U/s/Xrz9t9y+b/nT/qVQpCj2qG6NQP2Nu/lOpihVSlH55/9f3nv/1/X9q/7402aqkpojLp3PapmIptuIoruJhJukrAe4rISUMFlYJR4aU8EoELKwiLk0EehG5HpEh [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A4_00">
+            <summary>
+              Looks up a localized string similar to nJxlWBVrA2inw27FLmzFFgvF7u5CRWxFxEJUxG7F7u7C7sDublGxC7sx4K73Pd+P+9yf1/V8s9a8887s2Zu9Zw/f8RxFVRQlgT/C4k8SjUXTJt179A2sGtinT2DfQtlbBPQP7hHYt2KpIsWKlCjKnyLFShfKXnVg7wED+wdU7BswcED/Tr0LZW80sHPvHv51A0KaBfYKYHap4sW9iwWULeNfplSpUiWKmuIRUssDF6kZENgnYED/kCL1A4K7G4zbg/57jESd+vt37zEooESXPm5gv4C+fQf27xxsdOk0oJOY5DiOJk4vRV5FEXu5p7Qkrk4kFwv/tpqi/Q7TlLbEnwRNScPg85t3GtR8cyPl0RdKitFqzk+F92dq95dtdwJVpdQOV1EuJlaU61lKLD3860XC/6+V/+fP0RF6NfV84xNnLuav1r1Cxmqtul45Xr1fzWqKMrLS//W/o//X//6fsf/90eRSxZqi85RN0BWLMhQb62ArDmUpLrbBVRJRjpIY [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A5_00">
+            <summary>
+              Looks up a localized string similar to nJxlXFTt3nB37z3YHajYXdiigt1d2IXYjaig2N3d3d3djY0tFgYKiigidsC7rus+H97f+/G91+/Za81/rtmzZxj2bM5zn6OoiqIk8Y+w+Ce5xqZF8169BwysMbB//4EDiuZs7T8koPfAAVXKFvcsXrok/xT3LFc0Z43AfkMDh/hXGeAfOHRI135FczYN7Navt18D/6CWA/v6s7psqVIVPP0rlvcrX7Zs2dIlTfEM6eSOi9fxH9jff+iQoOKN/AN6GcztYf89h1vXIX69eg/zL929v2vgIP8BAwKHdAswuncd2lUschxHE4eXuoCiiEe5LmnJXTqRSmw6ttMU7fcYTWlF/EnSlPQM39x/1LjO+3tpzrxVUk9Qc38udsy9w1/u6x2gKmXHuRRlbjJFuZu99OpTP98m/f9a+X/+ab1eqTnAu9mFcZdT17xXK0fNxXNiz6tnC9VUlLE+/9f/nfm//u//mf3vH01uVawpOi/ZBEuxFQd0xcXEUNywDm5KMsql [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="P:ICD.VirtualRobot.Core.Properties.Resources.UR10_A6_00">
+            <summary>
+              Looks up a localized string similar to nLxlXBR9wHA9tVOrYnchthioKCqKgd3doCAWiGKCYjeKKCrY3YXdggk2dosdl4qoiIIivGf3fj7cz/Px3fPbOWdm/uzuxLouLAiiIAjZXGy2XXJITLp2GToscGSzkSNGjAx0Lt3Db/SYYSMDG7pWc6lWqwaXai51nEs3Gxcwdtxov4aBfuPGjh4Y4Fy60zifgGG+bf1Cuo3092O0a82abi5+9er61nV1da1Vw2K7h3z2G67W0m/kCL+xo0OqtfcbM1RhuTb+f+7DHDjad+iw8X61Bo0wRo7yCwwcN9pnjDJo4NiBtkG6rku2h5e7giDYvsq4JOUwZMLBNkmvLwnSn6mS8I34my0J+Vn49t7DDi3/u5sn7p2Qe6ZY5lvVE8X6ZbKunaMouK6zCoLO9U6JWuvOpL/L/v9r4f+5rOtS0tPvfacL2dm5PTf8KOcZfz35vDitgqcgTPP4X9e4/3X9f5b9n4tkn4pYEmQ22QIqlkHDKuhYAwPrIDHeBKuQQ8gJ [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="T:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot">
+            <summary>
+            6-Axis robot with spherical wrist
+            </summary>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputeXYZABCFromFrame(Rhino.Geometry.Plane,System.Int32)">
+            <summary>Compute the XYZABC representation (in mm and degrees) of a coordinate frame, relative to the world frame</summary>
+            <param name="frame">The coordinate frame</param>
+            <param name="roundingDigitCount"></param>
+            <returns>An array of 6 values corresponding to the X, Y, Z, A, B and C value of the input coordinate frame</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputeXYZABCFromFrame(Rhino.Geometry.Plane,Rhino.Geometry.Plane,System.Int32)">
+            <summary>Compute the XYZABC representation (in mm and degrees) of a coordinate frame, relative to a given reference frame</summary>
+            <param name="frame">The coordinate frame</param>
+            <param name="referenceFrame">The reference coordinate frame</param>
+            <param name="roundingDigitCount"></param>
+            <returns>An array of 6 values corresponding to the X, Y, Z, A, B and C values of the input coordinate frame</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputeFrameFromXYZABC(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,Rhino.Geometry.Plane)">
+            <summary>Compute a coordinate frame given its XYZABC representation (in mm and degrees) with respect to the a reference frame</summary>
+            <param name="x">the X value</param>
+            <param name="y">the Y value</param>
+            <param name="z">the Z value</param>
+            <param name="a">the A value</param>
+            <param name="b">the B value</param>
+            <param name="c">the C value</param>
+            <param name="referenceFrame">The reference coordinate frame</param>
+            <returns>An array of 6 values corresponding to the X, Y, Z, A, B and C value of the input coordinate frame</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputeFrameFromXYZABC(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>Compute a coordinate frame given its XYZABC representation (in mm and degrees) with respect to the world frame</summary>
+            <param name="x">the X value</param>
+            <param name="y">the Y value</param>
+            <param name="z">the Z value</param>
+            <param name="a">the A value</param>
+            <param name="b">the B value</param>
+            <param name="c">the C value</param>
+            <returns>An array of 6 values corresponding to the X, Y, Z, A, B and C value of the input coordinate frame</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputePoseFromAxisValues(System.Collections.Generic.List{System.Double},Rhino.Geometry.Plane@)">
+            <summary>Apply forward kinematics (FK) to compute the robot pose based on the input axis values</summary>
+            <param name="axisValues">Axis values</param>
+            <param name="tcpFrame">The resulting TCP frame</param>
+            <returns>The pose geometry of the robot </returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputePoseFromAxisValues(System.Collections.Generic.List{System.Double},Rhino.Geometry.Plane@,System.Collections.Generic.List{Rhino.Geometry.Plane}@)">
+            <summary>Apply forward kinematics (FK) to compute the robot pose based on the input axis values</summary>
+            <param name="axisValues">Axis values</param>
+            <param name="tcpFrame">The resulting TCP frame</param>
+            <param name="axisFrames">The resulting frame associated with each joint</param>
+            <returns>The pose geometry of the robot </returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputePoseFromAxisValues(System.Collections.Generic.List{System.Double})">
+            <summary>Apply forward kinematics (FK) to compute the robot pose based on the input axis values</summary>
+            <param name="axisValues">Axis values</param>
+            <returns>The pose geometry of the robot </returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.ComputeAxisValuesFromTargetTcpFrame(Rhino.Geometry.Plane,System.Collections.Generic.List{System.Boolean})">
+            <summary>Compute the axis values that result in the robot reaching the input target TCP frame (Inverse Kinematics)</summary>
+            <param name="targetTcpFrame">The target TCP frame that the robot is trying to reach</param>
+            <param name="axisToggles">Axis toggles for shoulder, elbow and wrist</param>
+            <returns>The robot geometries</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.Create_KR_10_R1100">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.Create_KR_500_3">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.SphericalWrist6AxisRobot.Create_KR_120_R2700">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.GetAngleBetweenTwoUnitVectors(Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d)">
+            <summary>Compute the angle between two unit vectors. The result will always lie in the interval between 0 and PI</summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector</param>
+            <returns>The angle between two vectors</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.GetAngleBetweenTwoUnitVectors(Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d,System.Boolean)">
+            <summary>Compute the angle between two unit vectors, which can be smaller than 0 or larger than PI, based on a reference Z vector that indicates the positive rotation direction</summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector</param>
+            <param name="z">The vector that indicates the positive rotation direction</param>
+            <param name="positive">
+                <para>True: the result angle will be in the interval between 0 and 2 * PI</para>
+                <para>False: the result angle will be in the interval between -PI and PI</para>
+            </param>
+            <returns>The angle between two vectors</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.GetAngleBetweenTwoVectors(Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d)">
+            <summary>Compute the angle between two vectors. The result will always lie in the interval between 0 and PI</summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector</param>
+            <returns>The angle between two vectors</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.GetAngleBetweenTwoVectors(Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d,Rhino.Geometry.Vector3d,System.Boolean)">
+            <summary>Compute the angle between two vectors, which can be smaller than 0 or larger than PI, based on a reference Z vector that indicates the positive rotation direction</summary>
+            <param name="a">The first vector</param>
+            <param name="b">The second vector</param>
+            <param name="z">The vector that indicates the positive rotation direction</param>
+            <param name="positive">
+                <para>True: the result angle will be in the interval between 0 and 2 * PI</para>
+                <para>False: the result angle will be in the interval between -PI and PI</para>
+            </param>
+            <returns>The angle between two vectors</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.ChangeFrame(Rhino.Geometry.Point3d,Rhino.Geometry.Plane,Rhino.Geometry.Plane)">
+            <summary>Given a point whose coordinates are relative to the source frame, compute its coordinates relative to the target frame</summary>
+            <param name="point">the point coordinates relative to the source frame</param>
+            <param name="sourceFrame">The source frame</param>
+            <param name="targetFrame">The target frame</param>
+            <returns>The point coordinates relative to the target frame</returns>
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.ComputeRotationVector(Rhino.Geometry.Plane,Rhino.Geometry.Plane)">
+            <summary>Compute the rotation vector that transform one frame to another
+            The vector itself is the axis of rotation and its length equals the rotation angle (in radians)</summary>               
+        </member>
+        <member name="M:ICD.VirtualRobot.Core.Util.ComputeRotationVector(Rhino.Geometry.Plane)">
+            <summary>Compute the rotation vector from the world frame to an input frame. 
+            The vector itself is the axis of rotation and its length equals the rotation angle (in radians)</summary>               
+        </member>
+    </members>
+</doc>
